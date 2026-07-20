@@ -1,0 +1,33 @@
+artefact-operations
+Copyright © 2026 mentalpinG-Ops
+
+ALL RIGHTS RESERVED.
+
+This repository and its contents (the "Work") — including the operations
+register, the conflict and interoperability specification, the selection logic,
+and any triage or analysis tooling derived from them — are proprietary.
+
+No permission is granted to use, copy, reproduce, modify, adapt, publish,
+distribute, sublicense, or create derivative works from the Work, in whole
+or in part, in any form or by any means, without prior written permission
+from the copyright holder.
+
+Commercial licensing is available by arrangement. Contact the copyright
+holder to negotiate terms.
+
+The underlying method schema (Declarative Frame Schema, DFS) is maintained
+in a separate repository under its own licence; it is referenced by, and
+not part of, this Work. Nothing in this licence grants or restricts rights
+in that separate work.
+
+The operations register in this Work was distilled from a reading of prompt
+files held in that same separate repository, which is licensed under
+CC BY-SA 4.0. No text from those files is reproduced here: the register is an
+independent analytical work, authored by the copyright holder, who holds the
+rights in both. The share-alike obligation of that licence binds licensees,
+not the author, and therefore does not extend to this Work.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF OR INABILITY TO USE
+THE WORK.

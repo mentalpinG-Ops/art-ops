@@ -1,0 +1,90 @@
+# manifest.yaml — machine-readable master index of the repo
+#
+# Purpose: a consumer (machine/LLM) gets the whole picture from THIS file —
+#   which artefacts, which versions, what is derived from what, which direction of authority,
+#   what is machine-readable vs. prose, and the evidence state of the register.
+# This file is an INDEX, not a data source — it duplicates no content, it points.
+
+version: 0.2.0
+last_changed: 2026-07-19
+repo: art-ops   # official name (author, 2026-07-19); local path: repos/artefact-operations
+responsibility: maintainer (author + AI assistance)
+licence: proprietary                             # LICENSE; visibility target: public when mature (author gate), see README
+provenance: "[AI+] author brief machine-read-optimised; generated from the repo state as read; [AI+] full EN translation per author decision 2026-07-19."
+
+# --- Direction of authority (load-bearing) ---
+authority:
+  direction: prose_is_authoritative
+  justification: >
+    The prose files (operations-spec.md, catalogue.md) carry the reasoning, the hedges and the
+    evidence state — what a YAML field cannot carry. The YAML files are the derived
+    machine-readable rendering. On every discrepancy the prose governs. This is a deliberate
+    honesty decision, not an accident of format.
+  consequence: "Re-derive YAML from prose, not the other way round. A YAML edit without prose coverage is drift."
+
+# --- Artefacts ---
+artefacts:
+  register:
+    - file: operations.yaml
+      version: "0.2.1"
+      role: "canonical machine-readable register core (24 operations with pre/postconditions, conflicts, interop, screening, gates)"
+      derived_from: "operations-spec.md @ 0.5.1"
+      machine_readable: true
+    - file: catalogue.yaml
+      version: "0.1.1"
+      role: "analysis layer of the catalogue (operations map, clusters, falsifiability, residue, coverage gaps)"
+      derived_from: "catalogue.md @ 0.1.1"
+      cross_linked: "operations.yaml (shared O-IDs O1..O24)"
+      machine_readable: true
+  prose_authority:
+    - file: operations-spec.md
+      version: "0.5.1"
+      role: "prose authority: conflict/interop derivation, reasoning, evidence states (§8), authorship rule (§5)"
+      machine_readable: false
+      companion_yaml: operations.yaml
+    - file: catalogue.md
+      version: "0.1.1"
+      role: "prose authority: functional catalogue, verify retractions, hedges"
+      machine_readable: false
+      companion_yaml: catalogue.yaml
+  orchestrator:
+    - file: orchestrator/conductor.md
+      version: "0.1.3"
+      role: "LLM prompt (plan mode). Natural language by nature — not a YAML target. Reads operations.yaml as its primary source."
+      pins: {operations-spec: "0.5.1", operations.yaml: "0.2.1", artifact-triage: "1.2.2", catalogue.yaml: "0.1.1"}
+      machine_readable: false
+      mode: plan             # it plans, it does not run; run mode deliberately deferred
+  modules:   # OPC — executable single prompts per operation; built when a real analysis plan (image artefact) called for them (image modality gap)
+    - {file: operations/OPC-README.md, version: "0.1.1", role: "OPC contract stub + Region Citation Convention (RCC) for images + authorship-marking convention; repairs from the adversarial draft review documented", machine_readable: false}
+    - {file: operations/O06-image-segmentation.md, version: "0.1.1", role: "O6 image instance — the trigger module (RCC instead of verbatim passage)", op_id: O6, machine_readable: partial}
+    - {file: operations/O20-sign-binding.md, version: "0.1.1", role: "sign-binding similarity/contact/convention (denotation level)", op_id: O20, machine_readable: partial}
+    - {file: operations/O01-constructedness-exposure.md, version: "0.1.1", role: "constructedness/myth exposure (connotative level; verdict-only-where-positive as the honesty valve)", op_id: O1, machine_readable: partial}
+  other:
+    - {file: README.md, role: "positioning + visibility target"}
+    - {file: CLAUDE.md, role: "repo context, material boundary, known defects"}
+    - {file: plans/, role: "Conductor plan outputs. NOTE: person-related demo runs do NOT belong here (.gitignore protection)"}
+
+# --- Evidence state of the register (as of 2026-07-19) ---
+# The load-bearing honesty: the register is mostly hypothesis. Four material findings stand.
+evidence_state:
+  practice_proven:
+    - {claim: "authorship rule (both clauses: valuation/explanation of the source permitted, but marked)", support: "o8-knot v1-v3, three runs"}
+    - {claim: "O12 provisionally relieved across two material grades (0/3 both tiers, n=3/cell, 2 instances; a-priori high rank unrevised)", support: "o19-o12-authorship 2026-07-19"}
+  falsified:
+    - {claim: "O8 x O2 (§3.2 D2) does NOT collide within the same pass", support: "o8-knot-v3, C 3/3, GATE 6/6, AC1 1.0", note: "first conflict of the register ever tested — does not hold"}
+  real_but_probabilistic:
+    - {claim: "O19 authorship defect reachable", support: "gnomic 1/3 collapse, easily-attributable 0/3"}
+  hypothesis_untested:
+    scope: "everything else"
+    including: ["10 other O8 conflicts", "~35 cross-op conflicts", "223 interop edges", "8 remaining exposed operations (O7/O9/O24/O23/O11/O13/O15/O6)"]
+  consequence: >
+    The Conductor RECOMMENDS and DECLARES, it enforces nothing; every plan line carries its
+    evidence status. A run mode (enforcing) is deferred until the register is more broadly
+    validated (null-variant discipline).
+
+# --- Consumption order for a machine ---
+consumption:
+  entry: manifest.yaml
+  data: [operations.yaml, catalogue.yaml]
+  authority_on_doubt: [operations-spec.md, catalogue.md]
+  execution: orchestrator/conductor.md

@@ -1,0 +1,850 @@
+# operations.yaml — canonical machine-readable version of the operations register
+#
+# DERIVED, NOT NORMATIVE: operations-spec.md is the authority; on any discrepancy
+# the spec governs. A normativity reversal (YAML becomes source, spec becomes doc) would be
+# a separate author decision and is NOT enacted.
+#
+# Purpose: the ONE machine-readable register version from which
+# both usage scenarios (prompt framework · a sister-project-stateless) compile — instead of four
+# diverging second versions.
+#
+# Distillation rules (declared):
+#   1. Item decomposition follows the semicolon punctuation of the §5 table — mechanical,
+#      wording-close, no own itemisation, no invented item IDs.
+#   2. Every conflict entry carries `evidence` (reading | practice-void | practice-proven |
+#      falsified) — marking duty: no consumer may pass on
+#      a register entry without its evidence status. `falsified` (new,
+#      0.2.0): a material test has decidedly rejected the claimed conflict (not just
+#      VOID) — differing from `practice-void` (test ran, but without decision).
+#   3. The forbids column of the table is HARD per column header; soft conflicts exist
+#      only in the W register (§3.3) and are NOT derivable from profiles — taken over here as-is.
+
+meta:
+  name: operations-register
+  version: 0.2.1
+  last_changed: "2026-07-19"
+  status: draft-derived
+  derived_from: "operations-spec.md @ 0.4.0 (last_changed 2026-07-19)"
+  derivation_date: "2026-07-19"
+  derivation_provenance: >
+    [AI] Claude (Fable 5), author-commissioned — first derivation
+    2026-07-18 from Spec@0.3.0. Fidelity verification 2026-07-18 (adversarial Sonnet comparison,
+    sufficiency rule): verdict faithful-with-defects — 0 invented, 0 missing conflict/interop
+    entries, evidence assignment spec-exact; 3 findings (O5 evidence gap missing, O8 cell import,
+    O9 comment-in-value) all fixed. One fidelity finding AGAINST the spec documented:
+    O22 missing in the §4.2 stage ordering (23/24) — carried here as stage: undetermined.
+
+    [AI+] Re-derivation 2026-07-19 (Claude, author commission via maintainer/governance decision, drift-fix
+    direct commission): brought up to Spec@0.4.0. Changed: D2 (O8×O2) corrected from `practice-void` to
+    `falsified` (o8-knot-v3 finding, see declared_hard); screening note
+    O19/O12 supplemented with a test finding (o19-o12-author-2026-07-18 + gnomic follow-up test 2026-07-19,
+    see authorship_exposition_screening); `next_tests` updated. No structural break, no
+    new conflict/interop ID invented — source was operations-spec.md@0.4.0 (Read before Edit,
+    no adoption from memory/task text); [AI+] full EN translation per author decision 2026-07-19
+  normativity: spec-is-authority
+  evidence_global: >
+    All profiles from reading 21 prompt files; no operation enacted on an
+    artefact (Spec §8). Material tests so far: (1) K2 class O8×O2 (D2) — tested three times:
+    v1/v2 VOID, v3 FALSIFIED (no conflict — o8-knot-v3-2026-07-19, C 3/3, A both 3/3,
+    GATE 6/6, AC1 1.0); practice-proven from it: the authorship rule (both clauses). (2) Authorship
+    exposition O19/O12 (o19-o12-author-2026-07-18 + gnomic follow-up test 2026-07-19): O19 real-
+    but-probabilistic reachable (0/3 on easily-attributable, 1/3 unanimous on
+    gnomic material); O12 provisionally relieved across both material levels (0/3 both, n=3/cell). Everything else is
+    still hypothesis, including the file-declared conflicts.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AUTHORSHIP RULE (Spec §5, under the table) — the only practice-proven rule
+# ─────────────────────────────────────────────────────────────────────────────
+authorship_rule:
+  evidence: practice-proven
+  evidence_items: ["Test run o8-knot (internal test documentation)", "Test run o8-knot-v2 (internal test documentation)"]
+  rule: >
+    Every prohibition of the form 'no X' means: X brought in by the analyst. If the source carries X
+    itself and the analyst renders it, the condition is not violated — provided the
+    rendering is marked as such.
+  clauses:
+    - id: authorship-clause
+      from: o8-knot-2026-07-17
+      content: "Evaluation/explanation by the source is allowed — the prohibition targets only the analyst."
+    - id: marking-clause
+      from: o8-knot-v2-2026-07-17
+      content: >
+        The permitted rendering must be marked (quotation, paraphrase, 'the source says…').
+        Unmarked rendering violates the condition — at the output it is not distinguishable from
+        an own X.
+  validity: generic for all 24 operations (not an O8 special case)
+
+# Screening ranks (Spec §5, reading pass 2026-07-17): CANDIDATES, not verdicts.
+# 'Exposed' = the prohibition names a content act that the source, too, can perform.
+# O8 is the first practice-proven case (3/3 cells). O19/O12 are now TESTED (see `tested`
+# below, 2026-07-18/19) — O7/O9 are the remaining untested 'high' cases.
+authorship_exposition_screening:
+  evidence: reading
+  status: candidate-list-not-finding
+  proven: { O8: "3/3 cells, quote-evidenced (o8-knot-2026-07-17 + v2)" }
+  tested:
+    O19: >
+      Really reachable, probabilistic — not the 3/3 full collapse of O8. 0/3 collapse on
+      easily-attributable material (explicit 'I believe' markers); 1/3 unanimous collapse
+      on gnomic material (marker-free, like the O8 test case) — same runner, same
+      operation, only material difficulty changed. The null finding of the easy level was
+      material-dependent, not knot-dependent: the 'high' exposition is confirmed, not
+      refuted. Evidence: o19-o12-author-2026-07-18 (easy) + gnomic follow-up test 2026-07-19.
+    O12: >
+      More robust than the rank. 0/3 collapse on BOTH material levels (6/6 clean cells
+      in total) — despite the same 'high' rank as O19. Provisionally cleared (2 material
+      instances, n=3 per cell) — not revised (the rank stays a-priori reading), but the
+      collapse possibility has not materialised here. Evidence: the same runs.
+  high: [O19, O12, O7, O9]
+  medium: [O24, O23, O11, O13, O15]
+  low: [O6]
+  not_exposed: [O1, O2, O3, O4, O5, O10, O14, O16, O17, O18, O20, O21, O22]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# OPERATIONS (§5 table) — items wording-close, semicolon-decomposed
+# ─────────────────────────────────────────────────────────────────────────────
+operations:
+  O1:
+    label: "Expose what presents itself as self-evident as made"
+    stage: 4
+    requires_material:
+      - "citable passage without justification"
+      - "literal/connotative level separable"
+    requires_analyst:
+      - "predecision 'made' before the material"
+      - "declared own position"
+      - "external knowledge"
+    produces:
+      - "localised passage"
+      - "production claim + beneficiary"
+      - "exclusion list"
+      - "counter-reading"
+      - "verdict only where positive"
+    forbids_hard:
+      - "Suspending (O8)"
+      - "positionlessness"
+      - "use as a checking authority"
+    repeatable: "yes"
+    origin: [semiotics, critical-theory, poststructuralism, postcolonial-theory, feminist-theory, systems-theory, pragmatism, structuralism]
+
+  O2:
+    label: "Hold a ready-made compartment list up to the material"
+    stage: 1
+    requires_material:
+      - ">1 assignable unit"
+      - "stock large enough for a distribution"
+      - "genre homogeneity"
+    requires_analyst:
+      - "ready-made closed list (definition + anchor + boundary rule per compartment)"
+      - "declared origin"
+      - "NO suspending"
+    produces:
+      - "distribution"
+      - "gap list"
+      - "remainder"
+      - "assignment map"
+      - "log"
+    forbids_hard:
+      - "Suspending (O8)"
+      - "mixing with a content conclusion"
+    repeatable: "yes"
+    origin: [content-analysis, structuralism, speech-act-theory, phenomenology, existentialism, stoicism, form-linter, artifact-triage, asemic-pattern-detection]
+
+  O3:
+    label: "Extract the load-bearing pair of opposites"
+    stage: 0
+    requires_material:
+      - "coherent whole"
+      - "both poles evidenced on the material"
+      - "attributions per pole"
+    requires_analyst:
+      - "pair fixed as load-bearing"
+      - "descriptive/evaluative decided in advance"
+      - "outside position"
+    produces:
+      - "pair with clusters"
+      - "marked/unmarked"
+      - "belonging/exclusion"
+      - "intermediate positions"
+    forbids_hard:
+      - "simultaneous destabilisation of the pair"
+    repeatable: only-before-others
+    origin: [structuralism, semiotics, poststructuralism, feminist-theory]
+    origin_unproven: [systems-theory]   # Spec §8: no evidence in the file; given pair
+
+  O4:
+    label: "Trace a neutrally-presenting statement back to its place of production"
+    stage: 2
+    requires_material:
+      - "statement with a neutrality claim"
+      - "reconstructable production situation"
+      - "clue to interests"
+    requires_analyst:
+      - "brought-along axis"
+      - "context knowledge"
+      - "EITHER declared own position OR declared non-identification"
+    produces:
+      - "origin attribution"
+      - "annulled neutrality status"
+      - "centring/omission list"
+    forbids_hard:
+      - "carry a position AND claim observer neutrality"
+      - "posit the place as an effect of speech"
+    repeatable: "yes"
+    origin: [feminist-theory, postcolonial-theory, source-criticism, critical-theory, systems-theory]
+
+  O5:
+    label: "Register absence as a finding"
+    stage: 3
+    requires_material:
+      - "counted variant: bounded whole + counting unit"
+      - "counter-concept variant: a text"
+    requires_analyst:
+      - "named grid"
+      - "logged grid origin"
+    produces:
+      - "gap list per grid"
+      - "null cells marked"
+      - "unfilled voice positions"
+      - "suppressed term"
+    forbids_hard:
+      - "Suspending (O8)"
+      - "retroactively deleting categories that stayed empty"
+    repeatable: "yes"
+    origin: [content-analysis, feminist-theory, postcolonial-theory, poststructuralism, semiotics, structuralism]
+    origin_evidence_gap: [semiotics, structuralism]   # Spec §8 enactment attribution without field evidence
+
+  O6:
+    label: "Cut into smallest self-contained parts"
+    stage: 0
+    requires_material:
+      - "multi-part"
+      - "fixed, citable version"
+      - "surrounding context present"
+    requires_analyst:
+      - "declared cutting unit + surrounding-context reach + reference quantity"
+      - "state-lean"
+    produces:
+      - "segmentation"
+      - "cutting criterion"
+      - "countable element count"
+      - "order"
+      - "remainder"
+    forbids_hard:
+      - "rewrite the material"
+      - "drawing conclusions in the same pass"
+      - "simultaneous boundary contestation"
+    repeatable: "yes"
+    origin: [structuralism, semiotics, content-analysis, form-linter, asemic-pattern-detection, critical-theory, feminist-theory, hermeneutics, existentialism]
+
+  O7:
+    label: "List the web of conditions; no part stands alone"
+    stage: 1
+    requires_material:
+      - "named occurrence"
+      - ">1 element"
+      - "≥1 effect relation"
+      - "time course"
+    requires_analyst:
+      - "positing 'no element exists independently'"
+      - "cut set by oneself + disclosed"
+      - "no attribution of intent"
+    produces:
+      - "list with a condition per element"
+      - "mutual conditioning"
+      - "disclosed boundary"
+      - "contingency finding"
+      - "noted: intervention ranking"
+    forbids_hard:
+      - "posit an instance as an unconditioned starting point"
+    repeatable: "yes"
+    origin: [systems-theory, eastern-philosophy, pragmatism]
+
+  O8:
+    label: "Suspend one's own categories; describe only"
+    stage: 0
+    structurally_unsuppliable: true   # §4.2 — preconditions negative, any supply disqualifies
+    requires_material:
+      - "a single concrete incident as a course"
+      - "accessible from the position of the affected person"
+      - "able to be varied"
+    requires_analyst:
+      - "NO brought-along list"
+      - "NO fixed explanation BY THE ANALYST"
+      - "inside position"
+      - "no value judgement BY THE ANALYST — evaluations and explanations that the source itself carries may be rendered and do not violate the condition (see authorship rule)"
+      # Marking duty of the rendering is in the authorship rule (clause 2), not in the table cell
+    produces:
+      - "description without explanation by the analyst"
+      - "foreground/background"
+      - "temporal structuring"
+      - "background foil"
+      - "invariant features"
+    forbids_hard:
+      - "create an OWN list"
+      - "carry an OWN fixed explanation"
+      - "outside position"
+    repeatable: "yes"   # uniqueness prohibition was a blocker (§8) — K3 thereby empty
+    origin: [phenomenology, eastern-philosophy]
+
+  O9:
+    label: "Check whether the presentation is covered by the substance"
+    stage: 1
+    requires_material:
+      - "presentation and enactment separately ascertainable"
+      - "producer"
+      - "coverage claim"
+      - "external reference point"
+    requires_analyst:
+      - "brought-along check list"
+      - "contract/frame passage named"
+      - "declared observer position"
+      - "verdict set with 'undecidable'"
+    produces:
+      - "coverage balance per found passage"
+      - "condition balance"
+      - "misfire/abuse split"
+      - "warrant status"
+      - "count line"
+    forbids_hard:
+      - "repairing in the same pass"   # §8 blocker: cut back to repair of the checked passage (see blocked_forbids)
+      - "attribution of intent/being"
+      - "gate decision at the lowest maturity level"
+    repeatable: "yes"
+    origin: [speech-act-theory, form-linter, eastern-philosophy]
+
+  O10:
+    label: "Split the situation into fixed and influenceable"
+    stage: 0
+    requires_material:
+      - "a described single situation"
+      - ">1 element"
+      - "named carrier"
+      - "reaction statement"
+    requires_analyst:
+      - "cutting rule noted in advance"
+      - "declared inference figure"
+    produces:
+      - "split without remainder"
+      - "misassignment list"
+      - "marked engagement side"
+    forbids_hard:
+      - "two cutting rules at once"
+      - "a third bin"
+    repeatable: "yes"
+    origin: [stoicism, existentialism]
+
+  O11:
+    label: "Count the kinds; hold the distribution against chance"
+    stage: 2
+    requires_material:
+      - ">1 countable unit"
+      - "delimitable, stable counting unit"
+      - "assigned stock"
+    requires_analyst:
+      - "comparison model IN WRITING BEFORE the run"
+      - "output format with non-discard"
+      - "saturation state"
+    produces:
+      - "frequency distribution + ranking"
+      - "test result (test statistic, df, p, decision)"
+      - "empty slots"
+      - "characteristic values"
+      - "boundary statement"
+    forbids_hard:
+      - "choose the model after looking"
+      - "interpretation in the same pass"
+      - "meaning attribution under status 'not accessible'"
+      - "order test without a fixed sequence"
+    repeatable: "yes"
+    origin: [content-analysis, asemic-pattern-detection]
+
+  O12:
+    label: "Fix the material's status before interpreting"
+    stage: 0
+    requires_material:
+      - "single piece with a determinable carrier form"
+      - "origin claim"
+    requires_analyst:
+      - "NO running interpretation"
+      - "NO brought-along meaning explanation"
+      - "outside position"
+      - "period knowledge"
+    produces:
+      - "material status (primary/secondary/fabrication/unresolved)"
+      - "authenticity note"
+      - "credibility calibration"
+      - "descent determination"
+      - "licence statement"
+    forbids_hard:
+      - "interpretation"
+      - "utilisation before authenticity"
+      - "perspective adoption"
+      - "meaning from intent"
+    repeatable: only-before-others
+    origin: [artifact-triage, source-criticism]
+    note: "inventory stage overlaps in output with O24 (§8: at least one cut negotiable)"
+
+  O13:
+    label: "Inventory the channels; state their ranking"
+    stage: 0
+    requires_material:
+      - "artefact in original version"
+      - "centre/surrounding distinguishable"
+      - "presented as ONE"
+    requires_analyst:
+      - "no advance fixing of the load-bearing channel"
+      - "carried channel repertoire"
+      - "EITHER interpretation-free-outside OR first-person"
+    produces:
+      - "channel list incl. absent ones"
+      - "ranking"
+      - "switch finding single-/multi-channel"
+      - "foreground/surrounding cut"
+    forbids_hard:
+      - "running interpretation"
+      - "both versions as ONE ranking"
+    repeatable: only-before-others
+    origin: [multimodal-analysis, artifact-triage, phenomenology]
+
+  O14:
+    label: "Propose an intervention"
+    stage: 5
+    requires_material:
+      - "named gap"
+      - "identifiable carrier"
+      - ">1 engagement point"
+      - "declared purposes"
+    requires_analyst:
+      - "a completed external finding (never the first step)"
+      - "brought-along criterion + origin statement"
+      - "brought-along depth ranking"
+      - "attribution of disposal"
+    produces:
+      - "ranked list of engagement points"
+      - "revocable proposal + carrier"
+      - "consequence estimate"
+      - "refutation condition"
+      - "means-end balance"
+    forbids_hard:
+      - "operate without a brought-along criterion"
+      - "incompatible remediability assumptions without precedence"
+    repeatable: "yes"
+    origin: [pragmatism, systems-theory, postcolonial-theory, critical-theory, eastern-philosophy, stoicism, existentialism]
+    origin_evidence_gap: [stoicism, eastern-philosophy, existentialism]   # §8 enactment attribution without field evidence
+
+  O15:
+    label: "Assign a person's position/role"
+    stage: 2
+    requires_material:
+      - "identifiable person"
+      - "attribution utterance→person"
+      - "≥2 fillable positions"
+    requires_analyst:
+      - "logged attribution decision (person vs. system) before the assignment"
+      - "logged observer position"
+      - "for a set: closed position list"
+    produces:
+      - "casting list"
+      - "unfilled positions"
+      - "marked/unmarked"
+      - "warrant status"
+      - "attribution decision as an output line"
+    forbids_hard:
+      - "person and system attribution at once"
+      - "outside and inside mapping at once"
+      - "derive the position from prior constitution"
+    repeatable: "yes"
+    origin: [structuralism, feminist-theory, existentialism, speech-act-theory, semiotics]
+
+  O16:
+    label: "Reconstruct the mode of address toward the addressee"
+    stage: 0
+    requires_material:
+      - "readable addressing"
+      - "wording/presentation itself"
+      - "specifiable circumstance frame"
+    requires_analyst:
+      - "knowledge of the warrant order"
+      - "declared reading position"
+      - "declared governing addressee model"   # §8: reversed from a forbidden fixing to a declaration duty
+      - "effect 'designed-in' and 'occurred' kept separate"
+    produces:
+      - "manner of address"
+      - "gradient form/pull"
+      - "condition list + failure type"
+      - "preferred reading + position"
+      - "deviant readings"
+      - "role assignment"
+      - "load-bearing orders"
+    forbids_hard:
+      - "both addressee models unexplained"
+      - "an effect finding as evidence for the manner of address"
+    repeatable: "yes"
+    origin: [semiotics, structuralism, critical-theory, speech-act-theory]
+
+  O17:
+    label: "Log one's own preassumption; track its shift"
+    stage: 1
+    requires_material:
+      - "single piece with its own genesis situation"
+      - "clarified material status"
+      - "citable contradiction passages"
+    requires_analyst:
+      - "an EXISTING articulable expectation"
+      - "written down BEFORE the first interpretation step"
+      - "no treatment as a disturbance variable"
+    produces:
+      - "dated before-note"
+      - "shift log"
+      - "list of contradicting passages"
+      - "standpoint note"
+    forbids_hard:
+      - "an already-enacted suspension"
+      - "simultaneous outside check of the origin"
+    repeatable: only-before-others
+    origin: [hermeneutics, feminist-theory]
+
+  O18:
+    label: "Differentiate two renderings of the same content"
+    stage: 1
+    requires_material:
+      - "both versions simultaneously accessible"
+      - "a distinguishing non-content feature"
+      - "direction statement"
+      - "material form of both"
+    requires_analyst:
+      - "direction knowledge INDEPENDENT of the difference finding"
+      - "performance-limits inventory of the target carrier"
+      - "assumption that the transformation was not lossless"
+    produces:
+      - "difference list (missing/added/transformed)"
+      - "assignment to carrier limits (forced vs. chosen)"
+      - "chain with change points"
+      - "break-point list"
+      - "descent finding"
+    forbids_hard:
+      - "null-finding check in parallel"
+      - "derive the direction from the difference list"
+      - "count versions as independent pieces of evidence"
+    repeatable: "yes"
+    origin: [multimodal-analysis, source-criticism]
+
+  O19:
+    label: "Locate the tip-over from unremarkable to remarkable"
+    stage: 0
+    structurally_unsuppliable: true   # §4.2 — like O8
+    requires_material:
+      - "use PLUS user"
+      - "time course with two states"
+      - "concurrent references"
+      - "no context material"
+    requires_analyst:
+      - "no fixed cause/frequency explanation"
+      - "inside position"
+      - "no causal-statistical vocabulary"
+    produces:
+      - "two-state segmentation with tip-over point"
+      - "exposed background net"
+      - "gaps of normal operation"
+      - "typing (disruptive/obtrusive/resistant)"
+    forbids_hard:
+      - "a concurrent causal explanation"
+      - "exclusion of the experiencer"
+    repeatable: yes-hedged   # §8: evidence only carries 'not in the same pass'
+    origin: [phenomenology]
+    solo: true
+
+  O20:
+    label: "Sort sign-binding by similarity / contact / convention"
+    stage: 1
+    requires_material:
+      - "≥1 delimited carrier"
+      - "reconstructable meant"
+      - "a per-case checkable connection or community"
+    requires_analyst:
+      - "knowledge of the prevailing convention"
+      - "declared arity of the setup"
+      - "no predetermined binding judgement"
+    produces:
+      - "typology per carrier"
+      - "interplay for composite material"
+      - "named community per convention case"
+    forbids_hard:
+      - "a two-place model without explaining which governs"
+    repeatable: "yes"
+    origin: [semiotics]
+    solo: true
+
+  O21:
+    label: "Check whether a dispute has stakes"
+    stage: 6
+    sink: true   # §4.2 — only endpoint; no profile requires its output
+    requires_material:
+      - "a fully formulated claim"
+      - "≥2 distinguishable outcomes"
+      - "a nameable field of practice"
+    requires_analyst:
+      - "knowledge of the field of practice (domain named in the output)"
+      - "revision reservation on the finding"
+    produces:
+      - "stakes finding (difference OR null finding)"
+      - "translation into the observable"
+      - "sorting out"
+      - "revision reservation"
+      - "ranking of the versions"
+    forbids:
+      - item: "in advance: meaning is not exhausted by consequences"
+        hardness: contested   # §8: the check holds 'soft' to be covered, not 'hard'
+    repeatable: "yes"
+    origin: [pragmatism]
+    solo: true
+
+  O22:
+    label: "Test the crossing of several belonging-markers for an effect that arises only there"
+    stage: undetermined   # FIDELITY FINDING 2026-07-18: Spec §4.2 lists O22 in NO stage (8+6+5+1+1+1+1=23 of 24).
+                          # Depending on the reading of the weakest edge O14→O22 (cycle Z2): wide reading → after
+                          # stage 5; strict reading → 'O22 moves up to stage 3' (§4.2 cycles). Until spec clarification
+                          # carried here as undetermined rather than invented.
+    requires_material:
+      - "≥2 markers on the same cases"
+      - "nameable affected parties"
+      - "material conditions"
+      - "material on three levels"
+      - "named intervention"
+      - "representation stock"
+    requires_analyst:
+      - "brought-along marker list (OPEN, not conclusive)"
+      - "dimension tripartition"
+      - "level tripartition"
+      - "taking sides to centre the perspective"
+      - "no blinding"
+    produces:
+      - "crossing effects"
+      - "affectedness ranking"
+      - "gaps in the representation stock"
+      - "three-level assignment"
+      - "single-axis harm list"
+      - "no forecast"
+    forbids_hard:
+      - "single-effect decomposition (even completed)"
+      - "Suspending (O8)"
+    repeatable: "yes"
+    origin: [feminist-theory]
+    solo: true
+
+  O23:
+    label: "Find the spot where pressing produces the counter-pressure"
+    stage: 2
+    requires_material:
+      - "ongoing application of force with an originator"
+      - "an opposing effect AFTERWARDS"
+      - "≥2 points in time"
+      - "non-operation conceivable"
+    requires_analyst:
+      - "inside position"
+      - "NO fixed strong/weak assignment"
+      - "no continuation fixing"
+      - "access to the course"
+    produces:
+      - "named spot (application→counter-effect)"
+      - "reversal assignment"
+      - "counterfactual description"
+      - "releasable surplus"
+    forbids_hard:
+      - "a predetermined strong/weak assignment"
+    repeatable: yes-hedged   # §8: no-once-only was an overreach
+    origin: [eastern-philosophy]
+    solo: true
+    note: "hangs on a single supplier (O7) — §4.2"
+
+  O24:
+    label: "Check the independence of concurring pieces of evidence"
+    stage: 2
+    requires_material:
+      - "≥2 pieces of evidence with a point of agreement"
+      - "overlap region"
+      - "origin statement per piece of evidence"
+      - "predecessor nameable or ascertainable as not findable"
+    requires_analyst:
+      - "knowledge of transmission paths (predecessor candidate named in the output)"
+      - "outside position"
+      - "no fixing 'agreement = confirmation'"
+    produces:
+      - "independence classification (convergent/derived + predecessor)"
+      - "corrected evidence weight"
+      - "divergence explanations"
+      - "status 'uncontrolled' / 'formally impossible'"
+      - "undecidable pairs"
+    forbids_hard:
+      - "an enacted meaning interpretation"
+      - "perspective adoption"
+    repeatable: "yes"
+    origin: [source-criticism]
+    solo: true
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFLICT REGISTER (§3) — every line with an evidence status
+# ─────────────────────────────────────────────────────────────────────────────
+conflicts:
+  note: >
+    The load-bearing test is NOT 'sequenceable?', but: can the same analyst hold both
+    states in the same pass? (§2). Types: K1 state destruction → order ·
+    K2 incompatible analyst states → separate passes · K3 non-repeatability →
+    EMPTY IN THE INVENTORY (§8, O8 uniqueness was a blocker). hard = an operation becomes invalid ·
+    soft = executable, but distorted → declaration duty in the output.
+
+  undeclared_hard:
+    - { id: U1, a: O8, b: O22, type: K2, resolution: "O8→O22", what: "suspending / marker crossing on a brought-along list", evidence: reading }
+    - { id: U2, a: O8, b: O9,  type: K2, resolution: "O8→O9",  what: "suspending / hold a brought-along check list", evidence: reading }
+    - { id: U3, a: O8, b: O15, type: K2, resolution: "O8→O15", what: "suspending / assign a position set", evidence: reading }
+    - { id: U4, a: O8, b: O12, type: K2, resolution: "O12→O8 (O12 is only-before-others)", what: "inside enactment / interpretation-free outside classification", evidence: reading }
+    - { id: U5, a: O8, b: O5,  type: K2, resolution: "O8→O5", what: "counter-concept/position variant", evidence: reading }
+    - { id: U6, a: O7, b: O10, type: "K1+K2", resolution: "NOT by order — only separate passes with a declared precedence", what: "no part stands alone / person as the locus of movability", evidence: reading, hedge: "§8: the sharpest and at the same time most uncertain case — the hardness classification is a derivation, no file coverage" }
+    - { id: U7, a: O13, b: O13, type: K2, resolution: "choose one version; the rankings are not additive", what: "first-person ranking / outside-classification ranking", evidence: reading }
+    - { id: U8, a: O18, b: O24, type: K1, resolution: "O24→O18, or O18 supplies the descent finding to O24 — not both in the same ring", what: "version differentiation presupposes descent / the independence check determines it", evidence: reading }
+    - { id: U9,  unary: true, a: O16, against: "effect finding", type: K1, resolution: "carry the two effect quantities separately into the pass", evidence: reading }
+    - { id: U10, unary: true, a: O18, against: "null-finding check", type: K1, resolution: "none — the whether-question gets no outcome", evidence: reading }
+    - { id: U11, unary: true, a: O18, against: "direction circle", type: K1, resolution: "obtain direction knowledge externally (O12)", evidence: reading }
+
+  o8_knot:
+    description: >
+      U1–U5 all lie on O8 — the only operation that requires the ABSENCE of a
+      brought-along grid. It collides mechanically with every grid-carrying
+      (O1, O2, O5, O9, O11, O15, O22) and every outside-positioned operation
+      (O3, O12, O24): ~27 class instances. Rule: O8 always first (exception U4: O12→O8).
+    evidence: reading
+    evidence_detail: >
+      Only D2 is representatively tested (O8×O2, declared — not part of this UNDECLARED
+      list): run three times, v3 FALSIFIED (o8-knot-v3-2026-07-19, see declared_hard/D2).
+      The 11 undeclared instances here (U1–U5 + the rest of the ~27 class) remain untested —
+      a refuted pair is a warning signal (the derivation procedure 'conflict =
+      state negation' overproduces), not a class refutation.
+
+  declared_hard:
+    - { id: D1,  a: O8,  b: O1,  type: K2, resolution: "O8→O1", evidence: reading }
+    - { id: D2,  a: O8,  b: O2,  type: K2, status: falsified, resolution: "NO conflict — one agent holds both states in the same pass (simultaneous arm 3/3, positive control 3/3, GATE 6/6, AC1 1.0)", evidence: falsified, evidence_detail: "o8-knot-v3-2026-07-19: first tested conflict of the register, does not hold — an artefact of the underdetermined O8 instruction (two-clause fix), not a property of the operations", evidence_item: "Test run o8-knot-v3 (internal test documentation)" }
+    - { id: D3,  a: O8,  b: O11, type: K2, resolution: "O8→O11", evidence: reading }
+    - { id: D4,  a: O17, b: O8,  type: K1, resolution: "direction-forced O17→O8: O8 destroys the quantity that O17 logs", evidence: reading }
+    - { id: D5,  a: O12, b: "O1/O16/O17", type: K1, resolution: "O12→X (status before interpretation)", evidence: reading }
+    - { id: D6,  a: O24, b: O17, type: K1, resolution: "O24→O17", evidence: reading }
+    - { id: D7,  a: O11, b: O20, type: K1, resolution: "NOT AT ALL — O20 requires reconstructable meant; annulling the status forces a complete re-run", evidence: reading }
+    - { id: Governance-decision,  a: O22, b: O11, type: K1, resolution: "asymmetric: only O22→O11; O22 also forbids the ALREADY COMPLETED decomposition", evidence: reading }
+    - { id: D9,  a: "O11/O6", b: O1, type: K1, resolution: "O6/O11→O1 (counting or cutting / interpreting in the same pass)", evidence: reading }
+    - { id: D10, a: O7,  b: O19, type: K1, resolution: "O19→O7", evidence: reading }
+    - { id: D11, a: O7,  b: O8,  type: K1, resolution: "O8→O7", evidence: reading }
+
+  soft:
+    derivability: "NOT derivable from profiles — register inventory as-is (§3.3); resolution is always a declaration duty in the output"
+    entries:
+      - { id: W1, a: O10, b: "O1/O22", resolution: "precedence declaration of which question governs", evidence: reading }
+      - { id: W2, a: O17, b: "O2/O5/O22", resolution: "declaration of which side governs", evidence: reading }
+      - { id: W3, a: O3,  b: "O8/O10/O19/O23", resolution: "declaration before merging", evidence: reading }
+      - { id: W4, a: O23, b: O14, resolution: "declaration of the target direction", evidence: reading }
+
+  discarded:   # §3.4 — disagreement, not a conflict; do NOT use as a conflict source
+    - "O21 × O17/O8 (no analyst state hits O21.forbids[0])"
+    - "O3 × O5 (O5 consumes O3's pair)"
+    - "O18 × O12"
+    - "O15 × O3"
+    - "O13 × O8 (the experiencing version of O13 IS the O8 state)"
+    - "O10 × O14 (feeding relation)"
+
+  blocked_forbids:   # §8 blocker findings — BLOCKED as a conflict source
+    - { field: "O2.forbids[4]",  reason: "remainder compartment equivalent to revision; evidence was meta-critique", consequence: "no conflict entry; test-value note" }
+    - { field: "O7.forbids[2]",  reason: "no evidence; not compelling from the wording; not ascertainable at the output", consequence: "no conflict entry" }
+    - { field: "O8.forbids[4]",  reason: "uniqueness unproven; the nearest passage speaks against it", consequence: "repeatable=yes; K3 empty" }
+    - { field: "O9.forbids[0] recommendation clause", reason: "the extension annulled a file-mandated step", consequence: "cut back to repair of the checked passage" }
+    - { field: "O16.requires_analyst[5]", reason: "inverted the evidence — files require the advance declaration", consequence: "reversed into a declaration duty" }
+    - { field: "O21.forbids[3]", reason: "translation into the observation vocabulary IS a mandatory step of O21", consequence: "no conflict entry" }
+
+# ─────────────────────────────────────────────────────────────────────────────
+# INTEROP REGISTER (§4)
+# ─────────────────────────────────────────────────────────────────────────────
+interop:
+  rule: "A→B exactly when an A.produces item covers a NAMED REQUIRED item of B. Comparison, not a judgement."
+  evidence: reading
+  edges:
+    - { from: O6,  to: O2,  state: "segmentation = self-containedly assignable units" }
+    - { from: O6,  to: O11, state: "delimitable, recognisable counting unit + countable element count" }
+    - { from: O6,  to: O5,  state: "declared counting/analysis unit" }
+    - { from: O6,  to: O20, state: "individually delimitable carriers" }
+    - { from: O2,  to: O11, state: "fully assigned stock with a kind-marker" }
+    - { from: O2,  to: O5,  state: "completed distribution + grid against which absence is registered" }
+    - { from: O20, to: O11, state: "kind assignment per carrier" }
+    - { from: O11, to: O5,  state: "distribution with marked null cells" }
+    - { from: O11, to: O1,  state: "quantified distribution" }
+    - { from: O9,  to: O11, state: "count line per verdict" }
+    - { from: O3,  to: O5,  state: "fixed pair of opposites (suppressed term)" }
+    - { from: O3,  to: O1,  state: "fixed pair as a starting point" }
+    - { from: O12, to: O4,  state: "established material status" }
+    - { from: O12, to: O17, state: "authenticity/origin clarified before interpretation begins" }
+    - { from: O12, to: O24, state: "authenticity status per piece of evidence" }
+    - { from: O12, to: O18, state: "origin/dating statement = direction knowledge source→target" }
+    - { from: O18, to: O24, state: "descent finding of two concurring versions" }
+    - { from: O13, to: O18, state: "channel inventory + ranking = performance-limits inventory of the target carrier" }
+    - { from: O24, to: O12, state: "corrected evidence weight / status 'uncontrolled'", back_edge: true }
+    - { from: O17, to: "O1/O4/O5/O15", state: "logged standpoint note" }
+    - { from: O4,  to: O5,  state: "centring/omission list" }
+    - { from: O4,  to: O1,  state: "place finding" }
+    - { from: O15, to: O5,  state: "casting list + unfilled positions = voice grid" }
+    - { from: O15, to: O22, state: "named carriers/affected parties with positions" }
+    - { from: O16, to: O9,  state: "listing of the load-bearing orders = O9's warrant frame" }
+    - { from: O19, to: O7,  state: "exposed background net" }
+    - { from: O19, to: O1,  state: "finding about the systematically un-noticed" }
+    - { from: O8,  to: O1,  state: "background foil of the unthematised self-evidences = O1's point of attack" }
+    - { from: O7,  to: O23, state: "balancing loop + delay = application→counter-effect over two points in time" }
+    - { from: O7,  to: O14, state: "cycle map + ranking of the intervention points" }
+    - { from: O23, to: O14, state: "named spot + releasable surplus" }
+    - { from: O10, to: O14, state: "marked engagement side" }
+    - { from: O9,  to: O14, state: "self-contradiction proof / designation-vs-enactment list" }
+    - { from: O1,  to: O14, state: "divergence value/enactment + exclusion list" }
+    - { from: O5,  to: O14, state: "gap list" }
+    - { from: O14, to: O21, state: "a fully formulated proposal + competing hypotheses" }
+    - { from: O14, to: O22, state: "named intervention", weakest_edge: true, hedge: "O22 requires an intervention IN the artefact, not a produced one; on a strict reading the edge falls" }
+    - { from: O22, to: O5,  state: "gaps in the representation stock", back_edge: true }
+  anti_edges:
+    - { from: O6, to: O3, reason: "O6 decomposes exactly the uncut whole that O3 requires" }
+  stages:
+    0: [O3, O6, O8, O10, O12, O13, O16, O19]
+    1: [O2, O7, O9, O17, O18, O20]
+    2: [O4, O11, O15, O23, O24]
+    3: [O5]
+    4: [O1]
+    5: [O14]
+    6: [O21]
+  cycles:
+    - id: Z1
+      nodes: [O12, O24]
+      status: genuine
+      resolution: "only at stage granularity: O12.authenticity → O24 → O12.reliability; not resolvable at the operations level"
+    - id: Z2
+      nodes: [O5, O14, O22]
+      status: conditional
+      resolution: "holds only on a wide reading of O14→O22; on a strict reading it falls apart, O22 moves up to stage 3"
+  planning_rule: "back edges and cycles = plan two passes, not one (§7 step 3)"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TESTS THAT UNLOCK ENFORCEMENT (§8 + governance rule 'enforcing needs a test')
+# ─────────────────────────────────────────────────────────────────────────────
+enforcement_gates:
+  rule: >
+    Governance rule (author decision 2026-07-18): enforcing encoding of an entry
+    (block, discard, force-partition) presupposes a passed material test
+    of the respective hypothesis, per operationalisation. Declarative use is
+    free, but carries the evidence status in the output.
+  decisive_tests:
+    K2: "Two runs on the same artefact: simultaneous vs. sequenced. Does the simultaneous output carry both defining items? → refuted"
+    K1: "Run after B, then A. Is A.requires still ascertainable on the artefact?"
+    hardness: "Present the simultaneous output to a third party: are the defining items still nameable? no→hard, shortened→soft"
+    interop_edge: "B with A output as the only input. Does B run without a resupply?"
+    stage_ordering: "The same chain on three artefacts of different genre. Does the ordering hold?"
+    cycle_O12_O24: "Attempt a linear sequence without stage decomposition of O12. If it succeeds, O12 was cut wrongly"
+  # O19-author/O12-author (unmitigated) COMPLETED 2026-07-18/19 (see
+  # authorship_exposition_screening.tested). Next cheap step per gnomic-result.md
+  # Phase 4: the mitigated cells (B19g/B12g) — tests whether the authorship rule reaches the
+  # runner. O7/O9 are the remaining untested 'high' cases.
+  next_tests:
+    - "O19-author-mitigated (B19g/B12g, gnomic)"
+    - O7-author
+    - O9-author

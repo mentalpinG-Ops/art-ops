@@ -1,0 +1,26 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Scratch / transient
+scratch/
+tmp/
+*.tmp
+
+# Secrets — never
+.env
+.env.*
+*.key
+*.pem
+
+# Person-related demo runs (personal data) do not belong in this repo — kept outside the
+# repository. The patterns are deliberately left matching the local naming scheme.
+plans/*foto*
+plans/*PRIVAT*

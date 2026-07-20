@@ -1,0 +1,234 @@
+# catalogue.yaml — machine-readable version of the catalogue analysis
+#
+# version: 0.1.1
+# derived_from: catalogue.md @ 0.1.1        # PROSE IS AUTHORITATIVE on any discrepancy
+# status: draft
+# last_changed: 2026-07-19
+# provenance: "[AI+] faithful derivation from catalogue.md, author's commission (machine-read-optimised).
+#              No finding newly produced; prose source read directly, not from memory.
+#              ; [AI+] full EN translation per author decision 2026-07-19"
+#
+# What this file IS: the structured analysis layer of the functional catalogue —
+#   apparatus<->operations map, redundancy clusters, falsifiability classes, residue,
+#   coverage gaps. For machine consumption (routing, evaluation, index).
+# What this file is NOT: the pre-/post-condition profiles (those live in operations.yaml
+#   under `operations:`, cross-linked via the same O-IDs) and the REASONING/the hedges
+#   (those stay in catalogue.md — prose carries what a YAML field cannot carry).
+# Boundary: all mappings are READING findings (no artefact test), except where operations.yaml
+#   carries an evidence status. The catalogue proves nothing empirically (catalogue.md §8).
+
+meta:
+  inventory: 20               # apparatuses (17 framework prompts, 2 core, 1 custom-tool)
+  operations: 24
+  mappings: 76                # apparatus x operation (one apparatus performs several; one op lives in several)
+  source: "prompt-library, reading state 2026-07-16, de-named"
+  evidence_total: reading     # catalogue = reading, no artefact test (catalogue.md §8)
+
+# --- §2 Operations map: operation -> apparatuses that perform it ---
+# test_fail: true  == marked in the catalogue with "∘*" (performs it but with a test point that fails on the artefact)
+# apparatus qualifier in parentheses (e.g. "institution op") kept as `aspect`.
+operations_map:
+  - id: O1
+    de_named: "Expose what presents itself as self-evident as made"
+    n: 8
+    apparatuses: [semiotics, critical-theory, {name: poststructuralism, test_fail: true}, postcolonial-theory, feminist-theory, {name: systems-theory, test_fail: true}, pragmatism, {name: structuralism, aspect: institution op}]
+  - id: O2
+    de_named: "Hold a ready-made compartment list up to the material"
+    n: 9
+    apparatuses: [{name: content-analysis, test_fail: true}, structuralism, speech-act-theory, phenomenology, existentialism, stoicism, form-linter, artifact-triage, {name: asemic-pattern-detection, test_fail: true}]
+  - id: O3
+    de_named: "Extract the load-bearing pair of opposites"
+    n: 5
+    apparatuses: [structuralism, semiotics, poststructuralism, {name: feminist-theory, aspect: L3}, {name: systems-theory, aspect: code}]
+  - id: O4
+    de_named: "Trace a neutrally-presenting statement back to its place of production"
+    n: 5
+    apparatuses: [feminist-theory, postcolonial-theory, {name: source-criticism, test_fail: true}, critical-theory, systems-theory]
+  - id: O5
+    de_named: "Register absence as a finding"
+    n: 6
+    apparatuses: [{name: content-analysis, test_fail: true}, feminist-theory, postcolonial-theory, poststructuralism, semiotics, structuralism]
+  - id: O6
+    de_named: "Cut into smallest self-contained parts"
+    n: 9
+    apparatuses: [structuralism, semiotics, content-analysis, form-linter, asemic-pattern-detection, critical-theory, feminist-theory, hermeneutics, existentialism]
+  - id: O7
+    de_named: "List the web of conditions; no part stands alone"
+    n: 3
+    apparatuses: [systems-theory, eastern-philosophy, pragmatism]
+  - id: O8
+    de_named: "Suspend one's own categories; describe only"
+    n: 2
+    apparatuses: [phenomenology, eastern-philosophy]
+  - id: O9
+    de_named: "Check whether the presentation is covered by the substance"
+    n: 3
+    apparatuses: [{name: speech-act-theory, test_fail: true}, form-linter, eastern-philosophy]
+  - id: O10
+    de_named: "Split the situation into fixed and influenceable"
+    n: 2
+    apparatuses: [stoicism, existentialism]
+  - id: O11
+    de_named: "Count the kinds; hold the distribution against chance"
+    n: 2
+    apparatuses: [{name: content-analysis, test_fail: true}, {name: asemic-pattern-detection, test_fail: true}]
+  - id: O12
+    de_named: "Fix the material's status before interpreting"
+    n: 2
+    apparatuses: [{name: artifact-triage, test_fail: true}, {name: source-criticism, test_fail: true}]
+  - id: O13
+    de_named: "Inventory the channels; state their ranking"
+    n: 3
+    apparatuses: [{name: multimodal-analysis, test_fail: true}, artifact-triage, {name: phenomenology, aspect: figure/ground}]
+  - id: O14
+    de_named: "Propose an intervention"
+    n: 7
+    apparatuses: [{name: pragmatism, test_fail: true}, systems-theory, postcolonial-theory, critical-theory, eastern-philosophy, stoicism, existentialism]
+  - id: O15
+    de_named: "Assign a person's position/role"
+    n: 5
+    apparatuses: [structuralism, feminist-theory, existentialism, speech-act-theory, semiotics]
+  - id: O16
+    de_named: "Reconstruct the mode of address toward the addressee"
+    n: 4
+    apparatuses: [semiotics, {name: structuralism, aspect: institution op}, critical-theory, speech-act-theory]
+  - id: O17
+    de_named: "Log one's own preassumption; track its shift"
+    n: 2
+    apparatuses: [hermeneutics, {name: feminist-theory, aspect: situatedness}]
+  - id: O18
+    de_named: "Differentiate two renderings of the same content"
+    n: 2
+    apparatuses: [{name: multimodal-analysis, test_fail: true}, {name: source-criticism, aspect: transmission chain}]
+  - id: O19
+    de_named: "Locate the tip-over from unremarkable to remarkable"
+    n: 1
+    solo: true
+    apparatuses: [phenomenology]
+  - id: O20
+    de_named: "Sort sign-binding by similarity / contact / convention"
+    n: 1
+    solo: true
+    apparatuses: [{name: semiotics, test_fail: true}]
+  - id: O21
+    de_named: "Check whether a dispute has stakes"
+    n: 1
+    solo: true
+    apparatuses: [pragmatism]
+  - id: O22
+    de_named: "Test the crossing of several belonging-markers for an effect that arises only there"
+    n: 1
+    solo: true
+    apparatuses: [feminist-theory]
+  - id: O23
+    de_named: "Find the spot where pressing produces the counter-pressure"
+    n: 1
+    solo: true
+    apparatuses: [eastern-philosophy]
+  - id: O24
+    de_named: "Check the independence of concurring pieces of evidence"
+    n: 1
+    solo: true
+    apparatuses: [{name: source-criticism, test_fail: true}]
+
+map_reading:
+  solo_operations: [O19, O20, O21, O22, O23, O24]   # carry the entire discriminating power
+  most_populated: [O1, O2, O6, O14]                  # together 33 apparatus entries
+  note_O6: "O6 (decompose) is the first step in 9 apparatuses and the finding in none"
+
+# --- §4 Redundancy clusters: apparatuses that perform the same operation ---
+redundancy_cluster:
+  cluster:
+    - id: C1
+      name: Constructedness
+      operation: O1
+      n_apparatuses: 8
+    - id: C2
+      name: Grid application
+      operation: O2
+      n_apparatuses: 9
+    - id: C3
+      name: Place of production
+      operation: O4
+      n_apparatuses: 5
+    - id: C4
+      name: "declared self-dissolutions"
+      type: pairs
+      n_pairs: 4
+  decisive_test: "Blind-assignment test — one artefact, two cluster apparatuses, outputs de-named, a blind third reader assigns them. Chance level => one apparatus with two dialects. ~20 runs for the four clusters. (catalogue.md §4)"
+
+# --- §5 Falsifiability gradient ---
+falsifiability:
+  class_A_throughout: [asemic-pattern-detection, content-analysis, source-criticism]
+  class_B_split:   # checkable periphery, immunised core
+    [speech-act-theory, systems-theory, pragmatism, artifact-triage, semiotics, phenomenology, structuralism, multimodal-analysis]
+  class_C_apparent_or_none:
+    [critical-theory, postcolonial-theory, feminist-theory, poststructuralism, hermeneutics, existentialism, eastern-philosophy, stoicism, form-linter]
+  tally:
+    severity_meeting: 3
+    only_periphery_testable: 8
+    not_testable: 9
+    carries_evaluative_normative: "14 / 20"
+    normative_no: [structuralism, phenomenology, content-analysis, artifact-triage, asemic-pattern-detection]
+    statement_only_descriptive_relational: [content-analysis, artifact-triage, asemic-pattern-detection]
+  core_finding_laundering:
+    text: >
+      Falsifiability laundering: the three falsifiable apparatuses are, by interop blueprint,
+      the suppliers of the nine non-testable ones. "In 40 of 60 texts X is missing" is reproducible;
+      "that is systematic silencing" is not — but inherits the authority of the count.
+    suppliers: [content-analysis, source-criticism, phenomenology]
+    in_no_file_carried_as_conflict: true
+
+# --- §6 Residue finding: what does the proper name carry? (the mediating variable) ---
+residue:
+  mediating_variable: "not name density, but what the name carries"
+  classes:
+    - what_the_name_carries: "Recipe attribution (who standardised the procedure)"
+      residue: high
+      falsifier: hard
+      cases: [content-analysis, asemic-pattern-detection, source-criticism, structuralism, multimodal-analysis]
+    - what_the_name_carries: "Value-setting without procedure (the licence to conclude)"
+      residue: high
+      falsifier: none
+      cases: [stoicism, phenomenology, form-linter, speech-act-theory, systems-theory]
+      note: "weakest row — heterogeneous cases (catalogue.md §6 hedge)"
+    - what_the_name_carries: "Ontological predecision (brought-along answer about the world, declared as L1)"
+      residue: low
+      falsifier: none
+      cases: [eastern-philosophy, postcolonial-theory, existentialism, feminist-theory, critical-theory, poststructuralism, hermeneutics]
+      marker: "L1 is not the premise of a procedure but the anticipated conclusion ('nothing is neutral', 'freedom cannot be escaped') — one defect with two symptoms, not two correlated ones"
+  vocabulary_no_method: [eastern-philosophy, postcolonial-theory, existentialism, feminist-theory, semiotics, critical-theory]
+  survives_de_naming: [content-analysis, asemic-pattern-detection, source-criticism, form-linter, artifact-triage, speech-act-theory, pragmatism, phenomenology, multimodal-analysis, systems-theory, stoicism, structuralism]
+
+# --- §7 Coverage gaps ---
+coverage_gaps:
+  modality_x_scale:   # cells with carriers (not apparatuses that merely formally trigger)
+    text:                    {single_item: 17, corpus: 6}
+    institution_practice:    {single_item: 11, corpus: 3}
+    interaction_transcript:  {single_item: 8,  corpus: 1}   # corpus: only content-analysis
+    image:                   {single_item: 2,  corpus: 1}   # single: multimodal,semiotics; corpus: asemic
+    mixed_media:             {single_item: 1,  corpus: 2}
+    sound_moving_image:      {single_item: 0,  corpus: 0}
+    number_log_table:        {single_item: 0,  corpus: 0}
+    code_specification:      {single_item: 0,  corpus: 0}
+  findings:
+    - "Everything numerical: 19/20 files list it in the idle field yet still produce prose there. The only counting apparatus codes language."
+    - "Sound and moving image: no apparatus lists the modality."
+    - "Image without a second channel and without a corpus falls through multimodal (>=2 channels), semiotics (reconstructable meant), asemic (quantity)."
+    - "Transcript corpus: one cell, one inhabitant. Crossing quantity x performance unoccupied."
+    - "Effect: no apparatus measures it. Four files declare the reception gap and refer to one another in a circle — the falsifier that three name for their main finding and none serves."
+  output_forms:
+    measurement_with_significance: [content-analysis, asemic-pattern-detection]
+    forecast: 0    # systems-theory explicitly excludes it
+    effect_size: 0
+  missing_operation:
+    what: "an abort condition as a pipeline stage — an upstream test that checks whether the artefact meets the precondition of the chosen apparatus, and on non-fulfilment refuses the output"
+    blueprint_exists_at: [artifact-triage, asemic-pattern-detection]   # both in non-genealogical files; no interpretation apparatus has one
+  docking_point_triage_gate:
+    text: "artifact-triage §7 requires a 'prompt-library framework catalog' in the context, which does not exist as an artefact — the gate has no designated referent. This catalogue is a candidate."
+    caveat: "instantiation-patterns.md requires a 'second independent occurrence' for a new classification class — whether an external question matrix + artifact-triage §6 count as two independent occurrences is a judgement, not a fact."
+
+boundaries:
+  - "Reading of 20 files, no test on artefacts (catalogue.md §8)."
+  - "Collision/cluster claims are hypotheses; the decisive one would be the blind-assignment test."
+  - "Reasoning, verify-retractions and hedges live ONLY in catalogue.md — this YAML carries the structure, not the justification. On discrepancy the prose governs."
