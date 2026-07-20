@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>art-ops — a register of operations for cultural artefacts</title>
+<meta name="description" content="A toolkit that decomposes analysis of cultural artefacts into de-named, evidence-honest operations, instead of routing through theory schools.">
+<style>
+
+/* ============ tokens ============ */
+:root{
+  --paper: #E7E9E6;
+  --paper-raised: #F2F3EF;
+  --ink: #1B2521;
+  --ink-soft: #4A544E;
+  --line: #B8BBAF;
+  --line-strong: #8D9089;
+  --accent: #1E3A4C;
+  --accent-soft: #DDE4E6;
+  --proven: #3C6E47;
+  --reading: #8B8574;
+  --falsified: #9C3B32;
+  --probabilistic: #946A22;
+  --shadow: 0 1px 0 rgba(27,37,33,0.06);
+  --serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, Georgia, serif;
+  --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper: #12181A;
+    --paper-raised: #161D20;
+    --ink: #E8E6DC;
+    --ink-soft: #A9B0A9;
+    --line: #33403F;
+    --line-strong: #4A5856;
+    --accent: #86B4BB;
+    --accent-soft: #1D2C30;
+    --proven: #6FAE79;
+    --reading: #A6A08D;
+    --falsified: #D97B70;
+    --probabilistic: #C99A4A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper: #12181A; --paper-raised: #161D20; --ink: #E8E6DC; --ink-soft: #A9B0A9;
+  --line: #33403F; --line-strong: #4A5856; --accent: #86B4BB; --accent-soft: #1D2C30;
+  --proven: #6FAE79; --reading: #A6A08D; --falsified: #D97B70; --probabilistic: #C99A4A;
+}
+:root[data-theme="light"]{
+  --paper: #E7E9E6; --paper-raised: #F2F3EF; --ink: #1B2521; --ink-soft: #4A544E;
+  --line: #B8BBAF; --line-strong: #8D9089; --accent: #1E3A4C; --accent-soft: #DDE4E6;
+  --proven: #3C6E47; --reading: #8B8574; --falsified: #9C3B32; --probabilistic: #946A22;
+}
+
+/* ============ base ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{
+  margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms!important; transition-duration:0.01ms!important;} }
+
+h1,h2,h3{ font-family:var(--serif); font-weight:600; text-wrap:balance; color:var(--ink); margin:0; }
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+code, .mono{ font-family:var(--mono); }
+
+.wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+.measure{ max-width:62ch; }
+
+/* ============ theme toggle ============ */
+.toggle{
+  position:fixed; top:18px; right:18px; z-index:20;
+  width:38px; height:38px; border-radius:3px; border:1px solid var(--line);
+  background:var(--paper-raised); color:var(--ink-soft); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; font-size:15px;
+}
+.toggle:hover{ border-color:var(--line-strong); color:var(--ink); }
+
+/* ============ hero (title-block) ============ */
+.hero{
+  border-bottom:1px solid var(--line-strong);
+  padding:64px 0 40px;
+}
+.hero .kicker{
+  display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;
+}
+.tag{
+  font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 8px; border:1px solid var(--line-strong); border-radius:2px; color:var(--ink-soft);
+  background:var(--paper-raised);
+}
+.tag.accent{ color:var(--accent); border-color:var(--accent); }
+.hero h1{
+  font-size:clamp(2.4rem, 5vw, 3.4rem); line-height:1.05; letter-spacing:-0.01em;
+}
+.hero .sub{
+  margin-top:18px; font-size:1.15rem; color:var(--ink-soft); max-width:56ch;
+}
+.hero .plate{
+  margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+  border:1px solid var(--line-strong); border-radius:2px; overflow:hidden;
+}
+.plate div{
+  padding:14px 18px; border-left:1px solid var(--line);
+}
+.plate div:first-child{ border-left:none; }
+.plate .k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); }
+.plate .v{ font-family:var(--serif); font-size:1.05rem; margin-top:3px; }
+@media (max-width:640px){ .plate{ grid-template-columns:1fr; } .plate div{ border-left:none; border-top:1px solid var(--line); } .plate div:first-child{border-top:none;} }
+
+/* ============ section rhythm ============ */
+section{ padding:56px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:10px; display:block;
+}
+.section-title{ font-size:1.7rem; margin-bottom:18px; }
+
+/* ============ thesis (ledger lines) ============ */
+.ledger-line{
+  display:grid; grid-template-columns:44px 1fr; gap:18px; padding:20px 0;
+  border-top:1px solid var(--line);
+}
+.ledger-line:first-child{ border-top:1px solid var(--line-strong); }
+.ledger-line .num{ font-family:var(--serif); font-size:1.6rem; color:var(--line-strong); }
+.ledger-line p{ max-width:64ch; }
+.ledger-line strong{ color:var(--ink); }
+
+/* ============ evidence ledger ============ */
+.evidence-table{ width:100%; border-collapse:collapse; }
+.evidence-table th{
+  text-align:left; font-family:var(--mono); font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--ink-soft); font-weight:500; padding:0 12px 10px 0;
+  border-bottom:1px solid var(--line-strong);
+}
+.evidence-table td{
+  padding:14px 12px 14px 0; border-bottom:1px solid var(--line); vertical-align:top; font-size:0.95rem;
+}
+.evidence-table tr:last-child td{ border-bottom:none; }
+.stamp{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; text-transform:uppercase;
+  padding:3px 7px; border-radius:2px; white-space:nowrap; display:inline-block;
+}
+.stamp.proven{ color:var(--proven); border:1px solid var(--proven); }
+.stamp.falsified{ color:var(--falsified); border:1px solid var(--falsified); text-decoration:line-through; text-decoration-thickness:1px; }
+.stamp.probabilistic{ color:var(--probabilistic); border:1px solid var(--probabilistic); }
+.stamp.reading{ color:var(--reading); border:1px dashed var(--reading); }
+.evidence-table .support{ font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); }
+.table-scroll{ overflow-x:auto; }
+
+/* ============ register grid (24 ops, by stage) ============ */
+.stage-group{ margin-top:30px; }
+.stage-group:first-child{ margin-top:0; }
+.stage-head{
+  display:flex; align-items:baseline; gap:10px; margin-bottom:12px;
+}
+.stage-head .n{ font-family:var(--serif); font-size:1.3rem; color:var(--accent); }
+.stage-head .label{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); }
+.op-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:10px;
+}
+.op-card{
+  background:var(--paper-raised); border:1px solid var(--line); padding:14px 16px; min-height:92px;
+  display:flex; flex-direction:column; gap:6px; justify-content:space-between;
+}
+.op-card .id{ font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.03em; }
+.op-card .lbl{ font-size:0.88rem; line-height:1.4; color:var(--ink); }
+.op-card .exp{ font-family:var(--mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); align-self:flex-start; }
+
+/* ============ schema (chain vs parallel) ============ */
+.schema-pair{ display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px; }
+@media (max-width:640px){ .schema-pair{ grid-template-columns:1fr; } }
+.schema-card{ border:1px solid var(--line-strong); border-radius:2px; padding:22px; background:var(--paper-raised); }
+.schema-card h3{ font-size:1.05rem; margin-bottom:4px; }
+.schema-card .cap{ font-size:0.85rem; color:var(--ink-soft); margin-bottom:18px; }
+.chain{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-family:var(--mono); font-size:13px; }
+.chain .op{ padding:5px 9px; border:1px solid var(--accent); border-radius:2px; color:var(--accent); }
+.chain .arrow{ color:var(--line-strong); }
+.parallel{ display:flex; gap:20px; align-items:center; font-family:var(--mono); font-size:13px; }
+.parallel .op{ padding:5px 9px; border:1px solid var(--line-strong); border-radius:2px; color:var(--ink-soft); }
+.parallel .no-edge{ font-size:11px; color:var(--reading); font-family:var(--sans); font-style:italic; }
+
+/* ============ examples ============ */
+.examples{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:24px; }
+.ex-card{
+  border:1px solid var(--line-strong); border-radius:2px; padding:20px; background:var(--paper-raised);
+  display:flex; flex-direction:column; gap:10px;
+}
+.ex-card .modality{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); }
+.ex-card h3{ font-size:1.1rem; }
+.ex-card p{ font-size:0.9rem; color:var(--ink-soft); }
+.ex-card .ops{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); margin-top:auto; padding-top:10px; border-top:1px solid var(--line); }
+.ex-card a{ font-size:0.85rem; text-decoration:none; }
+.ex-card a:hover{ text-decoration:underline; }
+
+/* ============ limits ============ */
+.limits{ display:grid; gap:14px; margin-top:20px; }
+.limit-row{ display:grid; grid-template-columns:200px 1fr; gap:18px; padding:14px 0; border-top:1px solid var(--line); }
+.limit-row:first-child{ border-top:1px solid var(--line-strong); }
+.limit-row .term{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); }
+.limit-row p{ font-size:0.92rem; }
+@media (max-width:640px){ .limit-row{ grid-template-columns:1fr; gap:6px; } }
+
+/* ============ colophon ============ */
+footer{ padding:40px 0 64px; }
+.colophon{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; font-size:0.85rem; color:var(--ink-soft); }
+.colophon a{ color:var(--ink-soft); }
+.colophon a:hover{ color:var(--accent); }
+.attest{ font-size:0.85rem; color:var(--ink-soft); margin-top:22px; padding-top:22px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<button class="toggle" id="themeToggle" aria-label="Toggle light/dark theme">◐</button>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">
+      <span class="tag accent">draft</span>
+      <span class="tag">CC BY-SA 4.0</span>
+      <span class="tag">24 operations · 20 apparatuses read</span>
+    </div>
+    <h1>A register of operations,<br>not a school of thought.</h1>
+    <p class="sub">art-ops decomposes the analysis of cultural artefacts into de-named, evidence-honest
+      <strong>operations</strong> — single moves on material — instead of routing a question through a
+      theory school.</p>
+    <div class="plate">
+      <div><div class="k">Working level</div><div class="v">the operation</div></div>
+      <div><div class="k">Not</div><div class="v">the apparatus</div></div>
+      <div><div class="k">Enforces</div><div class="v">nothing — declares</div></div>
+    </div>
+  </header>
+
+  <section id="thesis">
+    <span class="eyebrow">The idea in three sentences</span>
+    <div class="ledger-line">
+      <span class="num">1</span>
+      <p>Analytical traditions contradict each other in their <strong>justifications</strong> —
+        but many of their <strong>moves</strong> are identical or combinable. art-ops works at
+        the level of the move.</p>
+    </div>
+    <div class="ledger-line">
+      <span class="num">2</span>
+      <p>Every operation is a profile: what it needs from the <strong>material</strong>, what it
+        demands of the <strong>analyst</strong>, what it <strong>produces</strong>, what it
+        <strong>forbids</strong>. Analysis sequences are planned mechanically from these
+        profiles — including the conflicts between operations.</p>
+    </div>
+    <div class="ledger-line">
+      <span class="num">3</span>
+      <p><strong>Honesty is a construction principle:</strong> the register distinguishes
+        empirically tested statements from reading-derived hypotheses, and every generated plan
+        declares this line by line.</p>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <span class="eyebrow">The evidence ledger</span>
+    <h2 class="section-title">What is actually tested — as of today</h2>
+    <p class="measure" style="color:var(--ink-soft); font-size:0.95rem;">Most of the register is
+      still hypothesis. Four material findings stand. The most notable one is not a success
+      story — a declared conflict was put to a test and did not survive it.</p>
+    <div class="table-scroll" style="margin-top:24px;">
+      <table class="evidence-table">
+        <thead><tr><th>Status</th><th>Finding</th><th>Support</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="stamp falsified">falsified</span></td>
+            <td>O8 × O2 does <strong>not</strong> collide within the same pass — the first
+              conflict of the register ever put to a test does not hold.</td>
+            <td class="support">o8-knot-v3<br>C 3/3 · GATE 6/6 · AC1 1.0</td>
+          </tr>
+          <tr>
+            <td><span class="stamp proven">practice-proven</span></td>
+            <td>The authorship rule (both clauses — a source's own valuation may be reproduced,
+              but only marked).</td>
+            <td class="support">o8-knot v1–v3<br>three runs</td>
+          </tr>
+          <tr>
+            <td><span class="stamp proven">practice-proven</span></td>
+            <td>O12 provisionally relieved across two material grades — the a-priori "high"
+              exposure rank stays formally listed, but does not collapse in practice.</td>
+            <td class="support">o19-o12-authorship<br>0/3 both tiers, n=3/cell</td>
+          </tr>
+          <tr>
+            <td><span class="stamp probabilistic">real-but-probabilistic</span></td>
+            <td>O19's authorship defect is reachable — material-dependent, not knot-dependent.</td>
+            <td class="support">gnomic 1/3 collapse<br>easily-attributable 0/3</td>
+          </tr>
+          <tr>
+            <td><span class="stamp reading">reading</span></td>
+            <td>Everything else: 10 other O8 conflicts, ~35 cross-operation conflicts, 223
+              interop edges, 8 remaining exposed operations.</td>
+            <td class="support">untested hypothesis</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="register">
+    <span class="eyebrow">The register</span>
+    <h2 class="section-title">24 operations, ordered by stage</h2>
+    <p class="measure" style="color:var(--ink-soft); font-size:0.95rem;">Distilled from 21
+      analysis-prompt files of a curated collection. Stage is a precondition ordering, not an
+      importance ranking — stage 0 operations ask nothing of what came before.</p>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">0</span><span class="label">no precondition — cutting, suspending, fixing status</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O3</span><span class="lbl">Extract the load-bearing pair of opposites</span></div>
+        <div class="op-card"><span class="id">O6</span><span class="lbl">Cut into smallest self-contained parts</span><span class="exp">low exposure</span></div>
+        <div class="op-card"><span class="id">O8</span><span class="lbl">Suspend one's own categories; describe only</span></div>
+        <div class="op-card"><span class="id">O10</span><span class="lbl">Split the situation into fixed and influenceable</span></div>
+        <div class="op-card"><span class="id">O12</span><span class="lbl">Fix the material's status before interpreting</span><span class="exp">high exposure · tested</span></div>
+        <div class="op-card"><span class="id">O13</span><span class="lbl">Inventory the channels; state their ranking</span></div>
+        <div class="op-card"><span class="id">O16</span><span class="lbl">Reconstruct the mode of address toward the addressee</span></div>
+        <div class="op-card"><span class="id">O19</span><span class="lbl">Locate the tip-over from unremarkable to remarkable</span><span class="exp">high exposure · tested</span></div>
+      </div>
+    </div>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">1</span><span class="label">reads a first structure</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O2</span><span class="lbl">Hold a ready-made compartment list up to the material</span></div>
+        <div class="op-card"><span class="id">O7</span><span class="lbl">List the web of conditions; no part stands alone</span></div>
+        <div class="op-card"><span class="id">O9</span><span class="lbl">Check whether the presentation is covered by the substance</span></div>
+        <div class="op-card"><span class="id">O17</span><span class="lbl">Log one's own preassumption; track its shift</span></div>
+        <div class="op-card"><span class="id">O18</span><span class="lbl">Differentiate two renderings of the same content</span></div>
+        <div class="op-card"><span class="id">O20</span><span class="lbl">Sort sign-binding by similarity / contact / convention</span></div>
+      </div>
+    </div>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">2</span><span class="label">reads position and distribution</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O4</span><span class="lbl">Trace a neutrally-presenting statement back to its place of production</span></div>
+        <div class="op-card"><span class="id">O11</span><span class="lbl">Count the kinds; hold the distribution against chance</span><span class="exp">exposed</span></div>
+        <div class="op-card"><span class="id">O15</span><span class="lbl">Assign a person's position/role</span><span class="exp">exposed</span></div>
+        <div class="op-card"><span class="id">O23</span><span class="lbl">Find the spot where pressing produces the counter-pressure</span><span class="exp">exposed</span></div>
+        <div class="op-card"><span class="id">O24</span><span class="lbl">Check the independence of concurring pieces of evidence</span><span class="exp">exposed</span></div>
+      </div>
+    </div>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">3</span><span class="label">reads absence</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O5</span><span class="lbl">Register absence as a finding</span></div>
+      </div>
+    </div>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">4</span><span class="label">exposes construction</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O1</span><span class="lbl">Expose what presents itself as self-evident as made</span></div>
+      </div>
+    </div>
+
+    <div class="stage-group">
+      <div class="stage-head"><span class="n">5–6</span><span class="label">proposes or checks stakes — the tail, never the start</span></div>
+      <div class="op-grid">
+        <div class="op-card"><span class="id">O14</span><span class="lbl">Propose an intervention</span></div>
+        <div class="op-card"><span class="id">O21</span><span class="lbl">Check whether a dispute has stakes</span></div>
+        <div class="op-card"><span class="id">O22</span><span class="lbl">Test the crossing of several belonging-markers for an effect that arises only there</span><span class="exp">stage undetermined</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schema">
+    <span class="eyebrow">Not everything is a pipeline</span>
+    <h2 class="section-title">A chain has edges. A pass set may not.</h2>
+    <p class="measure" style="color:var(--ink-soft); font-size:0.95rem;">The register only
+      claims an ordering or data edge between two operations where one is actually declared.
+      Where none exists, the honest plan says so — instead of inventing a sequence.</p>
+    <div class="schema-pair">
+      <div class="schema-card">
+        <h3>A real chain</h3>
+        <div class="cap">Uncle Sam poster — segmentation feeds typology feeds reading</div>
+        <div class="chain">
+          <span class="op">O6</span><span class="arrow">→</span>
+          <span class="op">O20</span><span class="arrow">→</span>
+          <span class="op">O1</span>
+        </div>
+      </div>
+      <div class="schema-card">
+        <h3>Two complementary passes</h3>
+        <div class="cap">Call transcript — no interop edge O13→O16 exists</div>
+        <div class="parallel">
+          <span class="op">O13</span>
+          <span class="no-edge">no edge</span>
+          <span class="op">O16</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples">
+    <span class="eyebrow">Worked examples</span>
+    <h2 class="section-title">Three artefacts, three modalities</h2>
+    <div class="examples">
+      <div class="ex-card">
+        <span class="modality">text · 1863</span>
+        <h3>Gettysburg Address</h3>
+        <p>The inclusive "we/us" folds speaker and hearer into one obligation-community — and
+          quietly excludes the enslaved, whose status the war concerned.</p>
+        <div class="ops">O16 — manner of address</div>
+        <a href="https://github.com/mentalpinG-Ops/art-ops/blob/main/examples/gettysburg-address.md">Read the plan →</a>
+      </div>
+      <div class="ex-card">
+        <span class="modality">image · 1917</span>
+        <h3>Uncle Sam poster</h3>
+        <p>The "personal" address is industrial reproduction — the same pointing finger, printed
+          for millions, addresses no one in particular.</p>
+        <div class="ops">O6 → O20 → O1 — chain</div>
+        <a href="https://github.com/mentalpinG-Ops/art-ops/blob/main/examples/uncle-sam-poster.md">Read the plan →</a>
+      </div>
+      <div class="ex-card">
+        <span class="modality">dialogue · synthetic, CC0</span>
+        <h3>Call transcript</h3>
+        <p>A bot fails on schema-exclusion; a human agent repairs by abandoning it. The channel
+          switch is itself an address switch.</p>
+        <div class="ops">O13 + O16 — complementary</div>
+        <a href="https://github.com/mentalpinG-Ops/art-ops/blob/main/examples/call-transcript.md">Read the plan →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="limits">
+    <span class="eyebrow">What it cannot do — yet</span>
+    <h2 class="section-title">The limits, laid open</h2>
+    <div class="limits">
+      <div class="limit-row"><span class="term">register</span><p>Mostly hypothesis. Profiles and conflicts are derived from source wording, not tested against material — see the evidence ledger above.</p></div>
+      <div class="limit-row"><span class="term">the planner</span><p>Plans; does not execute. A run mode is deliberately deferred until the register is more broadly validated.</p></div>
+      <div class="limit-row"><span class="term">interpretive ops</span><p>Have no hard falsifier. Their outputs are justified readings with a mandatory counter-reading, not measurements.</p></div>
+      <div class="limit-row"><span class="term">modality</span><p>Sound, moving image, numerical data and code are not covered. Image citation rests on an untested region convention (RCC).</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="colophon">
+      <span>art-ops — distilled from 21 prompts, 20 apparatuses, into 24 de-named operations.</span>
+      <span><a href="https://github.com/mentalpinG-Ops/art-ops">Repository</a> · <a href="https://github.com/mentalpinG-Ops/art-ops/blob/main/LICENSE">CC BY-SA 4.0</a></span>
+    </div>
+    <p class="attest">Draft. The register recommends and declares; it enforces nothing. Release
+      to public visibility is an author decision made outside this page.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  var saved = localStorage.getItem('art-ops-theme');
+  if(saved){ root.setAttribute('data-theme', saved); }
+  function current(){
+    var attr = root.getAttribute('data-theme');
+    if(attr) return attr;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  btn.addEventListener('click', function(){
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('art-ops-theme', next);
+  });
+})();
+</script>
+</body>
+</html>
