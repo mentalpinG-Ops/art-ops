@@ -1,9 +1,9 @@
 # catalogue.yaml — machine-readable version of the catalogue analysis
 #
-# version: 0.1.1
-# derived_from: catalogue.md @ 0.1.1        # PROSE IS AUTHORITATIVE on any discrepancy
+# version: 0.1.2
+# derived_from: catalogue.md @ 0.1.2        # PROSE IS AUTHORITATIVE on any discrepancy
 # status: draft
-# last_changed: 2026-07-19
+# last_changed: 2026-07-20
 # provenance: "[AI+] faithful derivation from catalogue.md, author's commission (machine-read-optimised).
 #              No finding newly produced; prose source read directly, not from memory.
 #              ; [AI+] full EN translation per author decision 2026-07-19"

@@ -1,14 +1,14 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.3
+version: 0.1.4
 status: draft
-last_changed: 2026-07-19
+last_changed: 2026-07-20
 pins:
   operations-register: "operations.yaml @ 0.2.1"      # primary machine-readable data source
   operations-spec: "operations-spec.md @ 0.5.1"        # prose authority on any discrepancy
   artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
-  catalogue: "catalogue.md @ 0.1.1"
-provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19"
+  catalogue: "catalogue.md @ 0.1.2"
+provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
 pin_update: >
   [AI+] 0.1.2 (2026-07-19): spec pin 0.4.0→0.5.0 (frontmatter + plan-format template) +
   evidence footer and §Limits pulled to the current material-test state — they still said
@@ -186,7 +186,7 @@ Write to `plans/YYYY-MM-DD-<artefact-slug>.md`:
 
 ```
 # Operations plan <artefact> — <date>
-Register pinned: operations.yaml@0.2.1 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.1
+Register pinned: operations.yaml@0.2.1 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.2
 
 ## The user's analytical interest
 Goal item (verbatim): "<…>" (O<n>)  ·  Null output: y/n  ·  Position: inside/outside  ·  Intervention: y/n
@@ -274,12 +274,16 @@ material for the O19/O12 authorship tests).
 5. **No governance/tradition slot.** Deliberately omitted (v0): the operations level is
    de-named; a tradition anchor would have no register need here and no pinnable version.
 6. **External plan sharing** → through the **publication-clearance** check (T0–T3), not ad
-   hoc: plans quote proprietary register items verbatim.
+   hoc: plans quote register items verbatim, which is now permitted under CC BY-SA (attribution
+   + share-alike), but the clearance gate still applies for other reasons (material boundary,
+   evidence honesty).
 
 ## Licence note
 
-This prompt and the plans live in `repos/artefact-operations` (proprietary, proprietary form). They
-quote the register items verbatim — permissible only repo-internally. `artifact-triage`
-(prompt-library, CC BY-SA) is invoked as an external tool **not embedded** (no
-triage text migrates here; practitioner use covered). DFS referenced by field name only.
-No copy-paste across licence boundaries.
+This prompt and the plans live in `repos/artefact-operations`, licensed **CC BY-SA 4.0** — the
+same licence as `prompt-library`. They quote the register items verbatim; sharing them (in
+whole or adapted) requires attribution and, for adaptations, the same licence (share-alike).
+`artifact-triage` (prompt-library, CC BY-SA) is invoked as an external tool **not embedded** (no
+triage text migrates here; practitioner use covered) — not a licence necessity any more since
+both repos share a licence, but kept as a design boundary (the triage tool is maintained
+elsewhere). DFS referenced by field name only, regardless of licence.

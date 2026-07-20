@@ -75,8 +75,9 @@ full test documentation is not part of this repo.
 ## Status & licence
 
 Under development (`draft`); API and register content may change.
-**Licence:** proprietary, all rights reserved — reading and scrutiny welcome, reuse by
-arrangement (commercial licensing by arrangement), see [`LICENSE`](LICENSE).
+**Licence:** Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — the
+same licence as `prompt-library`, the source collection this register was distilled from. See
+[`LICENSE`](LICENSE).
 
 No employer, client, or person-related materials: analyses of real private artefacts
 (e.g. photographs) remain outside this repo as a rule; a `.gitignore` net prevents accidental

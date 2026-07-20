@@ -36,11 +36,12 @@ The working level is the **operation** (a hands-on move on the material), not th
 
 ## Licence
 
-Proprietary, all rights reserved, commercial licensing by arrangement — see
-[`LICENSE`](LICENSE). The referenced prompt schema of the source collection lives separately
-under its own licence and is referenced by field name only, never embedded. Content from
-share-alike-licensed sources does not migrate here by copy (licence incompatibility);
-adoptions are declared re-writes with a provenance note.
+**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** — see
+[`LICENSE`](LICENSE). Same licence as `prompt-library`, the source collection this register was
+distilled from; the two repos are now licence-compatible, so material may migrate between them
+with attribution and under the same terms (adoptions still carry a provenance note — licence
+compatibility is not a substitute for saying where something came from). The referenced prompt
+schema itself is referenced by field name only, never embedded, regardless of licence.
 
 ## Current state
 

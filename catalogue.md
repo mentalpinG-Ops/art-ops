@@ -1,11 +1,11 @@
 ---
 name: methods-apparatus-functional-catalog
-version: 0.1.1
+version: 0.1.2
 status: draft
 dfs_schema_version: n/a
-last_changed: 2026-07-19
+last_changed: 2026-07-20
 document_class: specification
-provenance: "[AI+] full EN translation per author decision 2026-07-19"
+provenance: "[AI+] full EN translation per author decision 2026-07-19; [AI+] licence-boundary note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
 ---
 
 # Functional Catalogue of the Method Apparatus
@@ -20,9 +20,10 @@ provenance: "[AI+] full EN translation per author decision 2026-07-19"
 > **An open follow-on question:** `prompts/core/artifact-triage.md` §7 requires a "prompt-library
 > framework catalog (the frameworks' own declared L1/D1/D2/D3 blocks)" — this catalogue is
 > de-named and L3-centred, so it does not meet the wording without adaptation. Whether the gate
-> means this catalogue or another artefact remains open. Additionally now relevant: the two
-> surfaces carry **different licences** (prompt-library CC BY-SA, this repo proprietary) — an
-> artefact meant to satisfy the §7 gate would, licence-wise, have to live there, not here.
+> means this catalogue or another artefact remains open. The two surfaces now share a licence
+> (both CC BY-SA 4.0, since 2026-07-20), so a licence objection to satisfying §7 from either repo
+> no longer applies — the open question is about wording/fit (de-naming vs. framework-named
+> blocks), not about where the artefact is allowed to live.
 
 ---
 
