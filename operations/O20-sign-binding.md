@@ -8,7 +8,7 @@ last_changed: 2026-07-19
 repeatable: yes
 stage: 1
 exposed: no
-pins: {operations-spec: "0.5.1", operations-register: "0.2.1", opc: "OPC-README.md @ 0.1.1"}
+pins: {operations-spec: "0.5.1", operations-register: "0.2.2", opc: "OPC-README.md @ 0.1.1"}
 requires_material:
   - {id: "O20.rm[0]", text: "≥1 delimited carrier", checkable_on: artefact, edge: "O6.pr[0] — segmentation supplies the carriers"}
   - {id: "O20.rm[1]", text: "reconstructable meant (what is meant)", checkable_on: artefact}

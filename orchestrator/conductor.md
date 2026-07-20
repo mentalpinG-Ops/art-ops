@@ -1,13 +1,13 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.4
+version: 0.1.5
 status: draft
 last_changed: 2026-07-20
 pins:
-  operations-register: "operations.yaml @ 0.2.1"      # primary machine-readable data source
+  operations-register: "operations.yaml @ 0.2.2"      # primary machine-readable data source
   operations-spec: "operations-spec.md @ 0.5.1"        # prose authority on any discrepancy
   artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
-  catalogue: "catalogue.md @ 0.1.2"
+  catalogue: "catalogue.md @ 0.1.3"
 provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
 pin_update: >
   [AI+] 0.1.2 (2026-07-19): spec pin 0.4.0→0.5.0 (frontmatter + plan-format template) +
@@ -80,6 +80,13 @@ O12 contribution is to be handled with caution: **O12 is highly exposed** (autho
 candidate, `operations.yaml` → `authorship_exposition_screening.high`). If the artefact interprets
 itself, even the status determination can be contaminated. That is an open risk, not a solved one.
 
+**If `artifact-triage` is not available in the context** (its home collection is not yet
+public): do NOT decline and do NOT skip Pass 0. Fall back to a direct existence-marker read —
+check the goal operation's `requires_material` items against the artefact by pure sighting
+(present / absent / uncertain), classification only, no routing, no interpretation. Declare in
+the plan: "Pass 0 run as direct existence-marker read; artifact-triage unavailable." The
+fallback carries the same O12 caution as the triage itself.
+
 ---
 
 ## Step 1 — formalise the user's analytical interest into four slots
@@ -119,6 +126,9 @@ balance assignment:
   holds.*
 - **covered by an interop edge** — name the edge `A → B` and the **travelling state verbatim**
   from `operations.yaml` → `interop.edges`. The goal operation takes A into the sequence.
+  *Quoting rule: where spec and register phrase the same item differently, quote the
+  `operations.yaml` wording (it is the machine-readable citation surface); the spec remains
+  authoritative on substance, not on the quotable string.*
 - **analyst stipulation** — is **logged** (e.g. O15 attribution decision person/system).
 - **UNCOVERED** → **Decline with a named gap**: "Item '…' covered neither on the artefact nor via
   an edge; to be supplied externally or the goal is unreachable."
@@ -163,8 +173,8 @@ is the authority, not the short rule.
 **Back edges & cycles** (`interop`): O24→O12 and O22→O5 (back edges) as well as Z1 (O12↔O24) and
 Z2 (O5→O14→O22) → **plan two passes, not one**. Z1 resolvable only at stage granularity.
 
-**Do not use as a conflict source:** the entries under `conflicts.rejected` and
-`conflicts.blocked_prohibitions` — they are explicitly blocked.
+**Do not use as a conflict source:** the entries under `conflicts.discarded` and
+`conflicts.blocked_forbids` — they are explicitly blocked.
 
 ---
 
@@ -186,7 +196,7 @@ Write to `plans/YYYY-MM-DD-<artefact-slug>.md`:
 
 ```
 # Operations plan <artefact> — <date>
-Register pinned: operations.yaml@0.2.1 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.2
+Register pinned: operations.yaml@0.2.2 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.3
 
 ## The user's analytical interest
 Goal item (verbatim): "<…>" (O<n>)  ·  Null output: y/n  ·  Position: inside/outside  ·  Intervention: y/n
@@ -218,7 +228,7 @@ All conflict/interop entries carry their evidence status above. The register is 
 **practice-proven** — the authorship rule (both clauses, three runs) · O12 (provisionally relieved, across two
 material stages). **falsified** — D2 (O8×O2): no conflict (o8-knot-v3, C 3/3, GATE 6/6).
 **real-but-probabilistic** — O19 (gnomic 1/3 collapse). **Everything else is hypothesis**
-(reading): the 10 other O8 conflicts, ~35 cross-op conflicts, 223 interop edges, the 8
+(reading): the 10 other O8 conflicts, ~35 cross-op conflicts, 38 interop edges, the 8
 remaining exposed operations. This plan RECOMMENDS and DECLARES; it enforces nothing.
 Nothing here is output-validated.
 ```
@@ -260,7 +270,7 @@ material for the O19/O12 authorship tests).
 
 1. **The register is predominantly hypothesis.** Four material findings stand (2026-07-19):
    authorship rule practice-proven, O12 provisionally relieved, D2/O8×O2 falsified, O19 probabilistic — everything
-   else (the 10 other O8 conflicts, ~35 cross-op conflicts, 223 interop edges, 8 remaining
+   else (the 10 other O8 conflicts, ~35 cross-op conflicts, 38 interop edges, 8 remaining
    exposed ops) is from reading, untested. The plan orders the untested part by
    assumptions — this is why every line carries its `evidence` status, and why the plan enforces nothing.
 2. **Run mode deliberately omitted.** The equation "pass = model context = analyst" is

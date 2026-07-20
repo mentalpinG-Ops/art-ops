@@ -8,7 +8,7 @@ last_changed: 2026-07-19
 repeatable: yes
 stage: 4
 exposed: no
-pins: {operations-spec: "0.5.1", operations-register: "0.2.1", opc: "OPC-README.md @ 0.1.1"}
+pins: {operations-spec: "0.5.1", operations-register: "0.2.2", opc: "OPC-README.md @ 0.1.1"}
 requires_material:
   - {id: "O1.rm[0]", text: "quotable passage without justification — on images: an RCC region that presents itself as self-evident/given", checkable_on: artefact, gap_note: "spec item is text-shaped; RCC translation untested"}
   - {id: "O1.rm[1]", text: "literal/connoted level separable", checkable_on: artefact}

@@ -4,7 +4,7 @@ artefact: "Synthetic call-centre transcript — IVR-bot → live-agent booking"
 modality: transcript (dialogue)
 licence_of_artefact: "CC0 1.0 (dedicated to the public domain by the rights-holder)"
 source: "Written for art-ops; a synthetic, sanitised benchmark dialogue (see provenance). Not a real call; no real persons."
-register_pinned: "operations.yaml@0.2.1 · operations-spec@0.5.1 · conductor@0.1.3 · catalogue@0.1.1"
+register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.1 · conductor@0.1.5 · catalogue@0.1.3"
 status: draft
 last_changed: 2026-07-20
 provenance: "[AI+] worked example of art-ops on a dialogue artefact. The transcript is a synthetic role-play scenario the rights-holder dedicates to the public domain under CC0. Sanitised for public release: real-brand tokens replaced with fictional equivalents, and the example e-mail set to the RFC-2606 reserved domain (@example.com). All names, brands and contact details are fictional; any resemblance to real persons or entities is coincidental."
@@ -79,7 +79,7 @@ repo.
 
 ## 1 · Conductor plan
 
-Register pinned: `operations.yaml@0.2.1 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.1`
+Register pinned: `operations.yaml@0.2.2 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.3`
 
 ### The analytical interest (Step 1, four slots)
 - **Slot 1 — goal item (verbatim):** `"manner of address"` (**O16**) — same operation as the

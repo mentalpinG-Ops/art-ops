@@ -5,7 +5,7 @@ status: draft
 last_changed: 2026-07-19
 pins:
   operations-spec: "operations-spec.md @ 0.5.1"
-  operations-register: "operations.yaml @ 0.2.1"
+  operations-register: "operations.yaml @ 0.2.2"
 provenance: "[AI+] Author brief 'build step 3, working toward the target output'. LEAN cut of a broader modules draft down to the actually triggered sequence of one image analysis (O6→O20→O1); verdict repairs incorporated, see below; [AI+] full EN translation per author decision 2026-07-19."
 ---
 

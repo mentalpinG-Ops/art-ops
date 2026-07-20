@@ -32,6 +32,28 @@ which can be combined — and whose reliability is declared item by item.
 **How to read:** the prose files are authoritative (they carry justifications and caveats);
 the YAML files are the machine-readable derivation. Where they disagree, the prose governs.
 
+## How to use this
+
+These are **LLM prompts**, not a software package — "execution" means a session of an AI
+assistant that you run and judge. Three ways in:
+
+1. **Plan an analysis:** give an LLM [`orchestrator/conductor.md`](orchestrator/conductor.md)
+   together with [`operations.yaml`](operations.yaml) and your artefact. The Conductor proposes
+   a goal item from the register (you confirm it — never a silent choice) and produces a
+   conflict-checked operations plan with an evidence status on every line. It plans; running
+   the planned operations is your session.
+2. **Run a single operation:** the three modules in [`operations/`](operations/) are
+   self-contained prompts (image segmentation · sign-binding · constructedness exposure) —
+   paste one into an LLM with your artefact.
+3. **Work by hand:** follow the four-step procedure in `operations-spec.md` §7 — the same
+   mechanism without any AI in the loop.
+
+The Conductor's entry triage references a tool (`artifact-triage`) from the source collection,
+which is **not yet public**; the Conductor carries a declared fallback for exactly this case
+(direct existence-marker read), so nothing here depends on files you cannot get. A rendered
+overview of the register lives at the
+[project page](https://mentalping-ops.github.io/art-ops/).
+
 ## What it can do
 
 - Translate an analysis question into an **ordered sequence of moves** instead of a theory

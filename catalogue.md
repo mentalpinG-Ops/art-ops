@@ -1,11 +1,11 @@
 ---
 name: methods-apparatus-functional-catalog
-version: 0.1.2
+version: 0.1.3
 status: draft
 dfs_schema_version: n/a
 last_changed: 2026-07-20
 document_class: specification
-provenance: "[AI+] full EN translation per author decision 2026-07-19; [AI+] licence-boundary note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
+provenance: "[AI+] full EN translation per author decision 2026-07-19; [AI+] licence-boundary note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20; [AI+] reader glossary added after external cold-read review, 2026-07-20"
 ---
 
 # Functional Catalogue of the Method Apparatus
@@ -14,6 +14,16 @@ provenance: "[AI+] full EN translation per author decision 2026-07-19; [AI+] lic
 **Basis:** reading of the files, each adversarially evidence-checked. No test on artefacts (see §8).
 **Commission:** author session 2026-07-16 — "catalogue the present method apparatus, but not from a genealogical standpoint, rather from a functional one."
 **Machine-readable version:** [`catalogue.yaml`](catalogue.yaml) (derived_from **this** file — this prose is authoritative on any discrepancy; the YAML carries the structure, not the reasoning/the hedges). Master index: [`manifest.yaml`](manifest.yaml).
+
+**Reader's glossary** (terms inherited from the source collection's schema, used throughout):
+**DFS** = Declarative Frame Schema, the source collection's prompt format. Its blocks:
+**L1** ontological commitments (what the framework holds to exist) · **L2** analytical objects
+(what it looks at) · **L3** linguistic operations (what it *does* — the level this catalogue
+works on) · **D1** scale · **D2** observer position · **D3** temporality. **`in-test`** is a
+lifecycle status of that collection (schema-conformant, not yet output-validated).
+**`[AI]`/`[AI+]`** are authorship-provenance markers: `[AI]` = introduced by the AI;
+`[AI+]` = an author's seed (idea/commission), systematised by the AI. The source collection is
+not yet public; these terms are defined here so this catalogue reads stand-alone.
 
 > **Origin:** This file arose 2026-07-16/17 as an internal methodology note and was moved here
 > as the operating basis of the tool (a cut, not a copy — so that two versions do not drift).

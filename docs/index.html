@@ -150,6 +150,7 @@ section:last-of-type{ border-bottom:none; }
 .stamp.falsified{ color:var(--falsified); border:1px solid var(--falsified); text-decoration:line-through; text-decoration-thickness:1px; }
 .stamp.probabilistic{ color:var(--probabilistic); border:1px solid var(--probabilistic); }
 .stamp.reading{ color:var(--reading); border:1px dashed var(--reading); }
+.stamp.relieved{ color:var(--proven); border:1px dashed var(--proven); }
 .evidence-table .support{ display:flex; flex-direction:column; gap:5px; max-width:22ch; }
 .evidence-table .support .mono{ font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); }
 .evidence-table .support .gloss{ font-family:var(--sans); font-size:0.8rem; color:var(--ink-soft); line-height:1.4; }
@@ -337,7 +338,9 @@ footer{ padding:40px 0 64px; }
       is still hypothesis. A <strong>conflict</strong> is the register's term for a rule saying two
       operations can't run in the same analytical pass — most such rules are still untested reading.
       Four material findings stand. The most notable one is not a success story — a declared
-      conflict was put to a test and did not survive it.</p>
+      conflict was put to a test and did not survive it. <em>The underlying test documentation
+      is internal and not published with this repo — the ledger cites it; it cannot yet be
+      independently inspected.</em></p>
     <div class="table-scroll" style="margin-top:24px;">
       <table class="evidence-table">
         <thead><tr><th>Status</th><th>Finding</th><th>Support</th></tr></thead>
@@ -352,12 +355,13 @@ footer{ padding:40px 0 64px; }
             <td><span class="stamp proven">practice-proven</span></td>
             <td>The authorship rule (both clauses — a source's own valuation may be reproduced,
               but only marked).</td>
-            <td class="support"><span class="mono">o8-knot v1–v3</span><span class="gloss">held across three independent test runs</span></td>
+            <td class="support"><span class="mono">o8-knot v1–v3</span><span class="gloss">built out of two failed runs, held in the third (0/3 → 1/3 → 3/3)</span></td>
           </tr>
           <tr>
-            <td><span class="stamp proven">practice-proven</span></td>
-            <td>O12 provisionally relieved across two material grades — the a-priori "high"
-              exposure rank stays formally listed, but does not collapse in practice.</td>
+            <td><span class="stamp relieved">provisionally relieved</span></td>
+            <td>O12 across two material grades — the a-priori "high"
+              exposure rank stays formally listed, but the defect did not appear in practice
+              (a null result at n=3 per cell, deliberately not stamped practice-proven).</td>
             <td class="support"><span class="mono">o19-o12-authorship</span><span class="gloss">the defect never appeared, on either material grade, 3 trials each</span></td>
           </tr>
           <tr>
@@ -367,7 +371,7 @@ footer{ padding:40px 0 64px; }
           </tr>
           <tr>
             <td><span class="stamp reading">reading</span></td>
-            <td>Everything else: 10 other O8 conflicts, ~35 cross-operation conflicts, 223
+            <td>Everything else: 10 other O8 conflicts, ~35 cross-operation conflicts, 38
               interop edges, 8 remaining exposed operations.</td>
             <td class="support"><span class="gloss">untested hypothesis — no trial run yet</span></td>
           </tr>
@@ -451,8 +455,7 @@ footer{ padding:40px 0 64px; }
       <span>art-ops — distilled from 21 prompts, 20 apparatuses, into 24 de-named operations.</span>
       <span><a href="https://github.com/mentalpinG-Ops/art-ops">Repository</a> · <a href="https://github.com/mentalpinG-Ops/art-ops/blob/main/LICENSE">CC BY-SA 4.0</a></span>
     </div>
-    <p class="attest">Draft. The register recommends and declares; it enforces nothing. Release
-      to public visibility is an author decision made outside this page.</p>
+    <p class="attest">Draft. The register recommends and declares; it enforces nothing.</p>
   </footer>
 
 </div>

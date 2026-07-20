@@ -8,7 +8,7 @@ last_changed: 2026-07-19
 repeatable: yes
 stage: 0
 exposed: low              # screening §5; informs, does not gate
-pins: {operations-spec: "0.5.1", operations-register: "0.2.1", opc: "OPC-README.md @ 0.1.1"}
+pins: {operations-spec: "0.5.1", operations-register: "0.2.2", opc: "OPC-README.md @ 0.1.1"}
 requires_material:
   - {id: "O6.rm[0]", text: "multi-part (several distinguishable elements)", checkable_on: artefact}
   - {id: "O6.rm[1]", text: "fixed rendering; quotability via RCC instead of a verbatim passage", checkable_on: artefact, gap_note: "spec item is text-shaped; RCC is the image translation, untested"}

@@ -21,10 +21,10 @@
 
 meta:
   name: operations-register
-  version: 0.2.1
-  last_changed: "2026-07-19"
+  version: 0.2.2
+  last_changed: "2026-07-20"
   status: draft-derived
-  derived_from: "operations-spec.md @ 0.4.0 (last_changed 2026-07-19)"
+  derived_from: "operations-spec.md @ 0.5.1 (last_changed 2026-07-19)"
   derivation_date: "2026-07-19"
   derivation_provenance: >
     [AI] Claude (Fable 5), author-commissioned — first derivation
