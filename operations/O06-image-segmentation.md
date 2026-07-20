@@ -2,13 +2,13 @@
 name: O6-image-segmentation
 op_id: O6
 variant: image            # image instance of O6 — the actually triggered module (image plan 2026-07-19)
-version: 0.1.1
+version: 0.1.2
 status: draft
-last_changed: 2026-07-19
+last_changed: 2026-07-20
 repeatable: yes
 stage: 0
 exposed: low              # screening §5; informs, does not gate
-pins: {operations-spec: "0.5.1", operations-register: "0.2.2", opc: "OPC-README.md @ 0.1.1"}
+pins: {operations-spec: "0.5.1", operations-register: "0.2.2", opc: "OPC-README.md @ 0.1.2"}
 requires_material:
   - {id: "O6.rm[0]", text: "multi-part (several distinguishable elements)", checkable_on: artefact}
   - {id: "O6.rm[1]", text: "fixed rendering; quotability via RCC instead of a verbatim passage", checkable_on: artefact, gap_note: "spec item is text-shaped; RCC is the image translation, untested"}
@@ -28,7 +28,7 @@ forbids:
   - {id: "O6.fb[2]", text: "simultaneous boundary contestation (do not contest one's own cutting boundaries within the same pass)", checkable_on: output}
 declarations_from_plan: []   # image plan 2026-07-19: no soft conflicts in the sequence
 evidence: "Profile: reading. D9 ordering (O6 before O1): reading/hypothesis. RCC: untested convention."
-provenance: "[AI+] from operations.yaml@0.2.1 O6 profile, image variant via RCC; author brief step 3; [AI+] full EN translation per author decision 2026-07-19."
+provenance: "[AI+] from operations.yaml@0.2.1 O6 profile, image variant via RCC; author brief step 3; [AI+] full EN translation per author decision 2026-07-19; [AI+] object-anchor preference added per RCC pilot 2026-07-20."
 ---
 
 # O6 (image) — cut into smallest self-contained parts
@@ -48,6 +48,8 @@ make each referenceable via the Region Citation Convention (RCC, see `OPC-README
 > 1. **Element list:** one line per element, `[E<n> | <location>] <interpretation-free name>`.
 >    `<location>` is a nameable image region: a grid reference ("upper third, left"), a
 >    relational reference ("between E2 and E4") or an object anchor ("on the bench, centre").
+>    When the element IS an object, prefer the object anchor — name the object type; in a busy
+>    surround a grid or relational reference alone can leave several candidates.
 >    The location says **where** — never what it means.
 > 2. **Cutting criterion:** one sentence — what your cut followed (e.g. "each independently
 >    nameable person/object/surroundings zone plus visible relations").

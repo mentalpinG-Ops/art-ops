@@ -1,12 +1,12 @@
 ---
 name: OPC-contract-stub
-version: 0.1.1
+version: 0.1.2
 status: draft
-last_changed: 2026-07-19
+last_changed: 2026-07-20
 pins:
   operations-spec: "operations-spec.md @ 0.5.1"
   operations-register: "operations.yaml @ 0.2.2"
-provenance: "[AI+] Author brief 'build step 3, working toward the target output'. LEAN cut of a broader modules draft down to the actually triggered sequence of one image analysis (O6→O20→O1); verdict repairs incorporated, see below; [AI+] full EN translation per author decision 2026-07-19."
+provenance: "[AI+] Author brief 'build step 3, working toward the target output'. LEAN cut of a broader modules draft down to the actually triggered sequence of one image analysis (O6→O20→O1); verdict repairs incorporated, see below; [AI+] full EN translation per author decision 2026-07-19; [AI+] RCC rule 1 sharpened (object-anchor preference) from a blinded single-reader pilot 2026-07-20 — a pilot, not a test; status stays untested."
 ---
 
 # OPC — Operations Profile Contract (stub, LEAN version)
@@ -52,7 +52,9 @@ passage" (O1) are text-shaped; an image satisfies them only via a region convent
 1. **Element ID + region reference:** every segmented element receives `[E<n> | <location>]`,
    where `<location>` is a nameable image region — a grid reference (e.g. "upper third,
    left"), a relational reference ("between E2 and E4") or an object anchor ("on the table,
-   centre").
+   centre"). **When the target is an object, prefer the object anchor** (name the object
+   type): in a busy surround, a grid or relational reference alone can leave several
+   candidates in the region.
 2. **Quotation = element reference:** where a text operation demands "quote the passage",
    `[E<n>]` takes the place of the verbatim quote. The finding thereby remains checkable by
    third parties against the image — that is the purpose of quoting, not the text form.
@@ -60,8 +62,11 @@ passage" (O1) are text-shaped; an image satisfies them only via a region convent
    means.
 
 **Status: convention, untested** (reading-derived analogy from the purpose of quoting).
-Whether it actually carries checkability is shown only by a run with a third-party reader —
-not claimed.
+A first **blinded single-reader pilot** (2026-07-20; a pilot, not a pre-registered test)
+found location references resolvable in 5 of 6 cases and referenced claims checkable —
+including two deliberately false control claims, both refuted; the one ambiguous case
+produced the object-anchor preference in rule 1. The status stays **untested**: whether
+checkability holds is shown only by a pre-registered multi-reader run — not claimed.
 
 ## Limits
 
