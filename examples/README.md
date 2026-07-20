@@ -22,7 +22,7 @@ laid open.**
   into a chain.
 - **Evidence honesty is carried through.** Every conflict a plan pulls (D5, U9, U7, D9 …) is
   cited with its `evidence` status — here all `reading`, i.e. untested hypotheses, marked as
-  such. The plans **recommend and declare; they enforce nothing.**
+  such — the enforcement stance is stated in each plan's evidence footer.
 - **Image citation is a declared convention.** The image example cites regions via the Region
   Citation Convention (RCC, `[E<n> | location]`) — an untested convention, declared as such.
 

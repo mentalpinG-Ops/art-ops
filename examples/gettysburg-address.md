@@ -4,7 +4,7 @@ artefact: "Abraham Lincoln, Gettysburg Address (Bliss copy), 1863"
 modality: text
 licence_of_artefact: public domain (delivered 1863; author d. 1865)
 source: "en.wikisource.org/wiki/Gettysburg_Address_(Bliss_copy)"
-register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.1 · conductor@0.1.5 · catalogue@0.1.3"
+register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.2 · conductor@0.1.6 · catalogue@0.1.4"
 status: draft
 last_changed: 2026-07-20
 provenance: "[AI+] worked example of art-ops on a public-domain artefact; goal item (Slot 1) chosen by the author: O16 'manner of address'. The Conductor plans; the operation is then executed directly from its operations.yaml profile (no O16 module file exists yet — this run is the kind of trigger from which one would be built)."
@@ -48,7 +48,7 @@ domain, so it can live in a public repo.
 
 ## 1 · Conductor plan
 
-Register pinned: `operations.yaml@0.2.2 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.3`
+Register pinned: `operations.yaml@0.2.2 · operations-spec@0.5.2 · artifact-triage@1.2.2 · catalogue@0.1.4`
 
 ### The analytical interest (Step 1, four slots)
 - **Slot 1 — goal item (verbatim):** `"manner of address"` (**O16**). *Chosen by the author from

@@ -1,6 +1,6 @@
 ---
 name: methods-apparatus-functional-catalog
-version: 0.1.3
+version: 0.1.4
 status: draft
 dfs_schema_version: n/a
 last_changed: 2026-07-20
@@ -27,7 +27,7 @@ not yet public; these terms are defined here so this catalogue reads stand-alone
 
 > **Origin:** This file arose 2026-07-16/17 as an internal methodology note and was moved here
 > as the operating basis of the tool (a cut, not a copy — so that two versions do not drift).
-> **An open follow-on question:** `prompts/core/artifact-triage.md` §7 requires a "prompt-library
+> **An open follow-on question:** `prompts/core/artifact-triage.md` (a source-collection file) §7 requires a "prompt-library
 > framework catalog (the frameworks' own declared L1/D1/D2/D3 blocks)" — this catalogue is
 > de-named and L3-centred, so it does not meet the wording without adaptation. Whether the gate
 > means this catalogue or another artefact remains open. The two surfaces now share a licence
@@ -334,9 +334,9 @@ Five findings:
 **The missing operation.** Not a further apparatus, but **an abort condition as a pipeline stage**: an upstream test that checks whether the artefact *meets* the `precondition` of the chosen apparatus, and on non-fulfilment refuses the output. The blueprint exists twice — artifact-triage refuses without a catalogue ("do NOT route"), asemic refuses without a segmentable unit ("declare and refuse rather than force-fit"). **Both refusal gates sit in non-genealogical files. No interpretation apparatus has one.** And artifact-triage itself routes on the *Key Analytical Question* but never checks the precondition of the target apparatus — the heuristics are assignment settings without a success condition ("a recommendation, not a constraint").
 
 **Docking points for this catalogue** (from the routing inventory, not newly invented):
-- The catalogue that `artifact-triage` §7 demands as a gate ("is a prompt-library framework catalog … present in your context?") does not exist as an artefact. `docs/taxonomy-review-schema.md` is the nearest (16 frameworks × L1/L2/L3 + D1–D3), but framed as a review checklist and expressly anti-functional ("not classification into fixed categories"). **The gate has no designated referent.**
-- The question axis in `artifact-triage` §6 is declared and underpinned: only 2 of 10 heuristics are question-shaped, the rest are type/modality/scale predicates. The docking point is §7's heuristic list, not a new file (`skills/triage.md` l.150: single-source rule).
-- `docs/instantiation-patterns.md` sets the evidence bar for a new classification class: "documented from repeated instances, not invented from single ones", n=2. Whether an external question matrix (business questions) + artifact-triage §6 (analytical questions) count as two *independent* occurrences is a judgement, not a fact in the files.
+- The catalogue that `artifact-triage` §7 demands as a gate ("is a prompt-library framework catalog … present in your context?") does not exist as an artefact. `docs/taxonomy-review-schema.md` (a source-collection file, not in this repo) is the nearest (16 frameworks × L1/L2/L3 + D1–D3), but framed as a review checklist and expressly anti-functional ("not classification into fixed categories"). **The gate has no designated referent.**
+- The question axis in `artifact-triage` §6 is declared and underpinned: only 2 of 10 heuristics are question-shaped, the rest are type/modality/scale predicates. The docking point is §7's heuristic list, not a new file (`skills/triage.md` l.150, source collection: single-source rule).
+- `docs/instantiation-patterns.md` (source collection) sets the evidence bar for a new classification class: "documented from repeated instances, not invented from single ones", n=2. Whether an external question matrix (business questions) + artifact-triage §6 (analytical questions) count as two *independent* occurrences is a judgement, not a fact in the files.
 - **Functional axis ⊥ conformity axis, unreconciled.** A functional catalogue routes onto apparatuses that are declared-but-not-conformity-checked (9 of 16). Nothing in the repo says what routing onto a deferred framework means.
 
 ---

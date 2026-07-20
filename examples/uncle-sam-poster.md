@@ -4,7 +4,7 @@ artefact: "James Montgomery Flagg, 'I Want You for U.S. Army', 1917"
 modality: image
 licence_of_artefact: public domain (author d. 1960; PD-old-60-expired; published before 1931)
 source: "commons.wikimedia.org/wiki/File:J._M._Flagg,_I_Want_You_for_U.S._Army_poster_(1917).jpg"
-register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.1 · conductor@0.1.5 · catalogue@0.1.3"
+register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.2 · conductor@0.1.6 · catalogue@0.1.4"
 status: draft
 last_changed: 2026-07-20
 provenance: "[AI+] worked example of art-ops on a public-domain image. The three modules used (O6/O20/O1) are the only executable modules in the repo; this is the second run on an image after the Region Citation Convention (RCC) was introduced. Descriptive claims taken from direct inspection of the image, not from memory of the icon."
@@ -25,15 +25,16 @@ Public domain, so it can live in a public repo.
 
 ## 0 · The artefact
 
-The image is referenced, not reproduced altered (O6 forbids paraphrase). File:
-`artefact-a-uncle-sam.jpg` — Flagg, *I Want You for U.S. Army — nearest recruiting station*,
-1917. Public domain (see frontmatter). Inspected directly for the segmentation below.
+The image is referenced, not reproduced altered (O6 forbids paraphrase): Flagg, *I Want You
+for U.S. Army — nearest recruiting station*, 1917, public domain —
+[view the poster on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:J._M._Flagg,_I_Want_You_for_U.S._Army_poster_(1917).jpg)
+(the RCC regions below are checkable against it). Inspected directly for the segmentation below.
 
 ---
 
 ## 1 · Conductor plan
 
-Register pinned: `operations.yaml@0.2.2 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.3`
+Register pinned: `operations.yaml@0.2.2 · operations-spec@0.5.2 · artifact-triage@1.2.2 · catalogue@0.1.4`
 
 ### The analytical interest (Step 1, four slots)
 - **Slot 1 — goal item (verbatim):** `"production claim + beneficiary"` (**O1**). *Set for this

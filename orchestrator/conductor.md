@@ -1,13 +1,13 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.5
+version: 0.1.6
 status: draft
 last_changed: 2026-07-20
 pins:
   operations-register: "operations.yaml @ 0.2.2"      # primary machine-readable data source
-  operations-spec: "operations-spec.md @ 0.5.1"        # prose authority on any discrepancy
+  operations-spec: "operations-spec.md @ 0.5.2"        # prose authority on any discrepancy
   artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
-  catalogue: "catalogue.md @ 0.1.3"
+  catalogue: "catalogue.md @ 0.1.4"
 provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
 pin_update: >
   [AI+] 0.1.2 (2026-07-19): spec pin 0.4.0→0.5.0 (frontmatter + plan-format template) +
@@ -94,8 +94,8 @@ fallback carries the same O12 caution as the triage itself.
 **Slot 1 — goal state (mandatory).** Scan the `produces` fields of all operations in
 `operations.yaml`. Propose to the user **1–3 candidate items quoted verbatim** that come closest
 to their question; the user chooses. The translation question→item is thereby auditable, not a
-free judgment. Example: question "whom does the writing exclude?" → candidate "unoccupied voice
-positions" (O5) · "exclusion list" (O1) · "gaps in the representational inventory" (O22).
+free judgment. Example: question "whom does the writing exclude?" → candidate "unfilled voice
+positions" (O5) · "exclusion list" (O1) · "gaps in the representation stock" (O22).
 
 **Slot 2 — null-output need (yes/no).** Whether-questions ("is X present?") need an operation
 whose `produces` carries a **decision or a null finding**. For this, scan the `produces` fields
@@ -196,7 +196,7 @@ Write to `plans/YYYY-MM-DD-<artefact-slug>.md`:
 
 ```
 # Operations plan <artefact> — <date>
-Register pinned: operations.yaml@0.2.2 · operations-spec@0.5.1 · artifact-triage@1.2.2 · catalogue@0.1.3
+Register pinned: operations.yaml@0.2.2 · operations-spec@0.5.2 · artifact-triage@1.2.2 · catalogue@0.1.4
 
 ## The user's analytical interest
 Goal item (verbatim): "<…>" (O<n>)  ·  Null output: y/n  ·  Position: inside/outside  ·  Intervention: y/n
@@ -253,7 +253,7 @@ Put before yourself the worked example of the spec (§7): **institutional circul
 (text + layout)**, question **"Whose perspective does it carry, whom does it exclude?"**
 
 The Conductor MUST reproduce:
-- Slot 1: "unoccupied voice positions" (O5, position variant) · null output no · position
+- Slot 1: "unfilled voice positions" (O5, position variant) · null output no · position
   outside · intervention no
 - Sequence: **O12 → O13 → O17 → O15 → O5**
 - Conflict pass: D5 (hard) ✓ · U7 → **outside version** of O13 · W2 → "grid binding, O5
