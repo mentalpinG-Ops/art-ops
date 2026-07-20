@@ -1,12 +1,12 @@
 ---
 name: OPC-contract-stub
-version: 0.1.2
+version: 0.1.3
 status: draft
 last_changed: 2026-07-20
 pins:
   operations-spec: "operations-spec.md @ 0.5.1"
   operations-register: "operations.yaml @ 0.2.2"
-provenance: "[AI+] Author brief 'build step 3, working toward the target output'. LEAN cut of a broader modules draft down to the actually triggered sequence of one image analysis (O6→O20→O1); verdict repairs incorporated, see below; [AI+] full EN translation per author decision 2026-07-19; [AI+] RCC rule 1 sharpened (object-anchor preference) from a blinded single-reader pilot 2026-07-20 — a pilot, not a test; status stays untested."
+provenance: "[AI+] Author brief 'build step 3, working toward the target output'. LEAN cut of a broader modules draft down to the actually triggered sequence of one image analysis (O6→O20→O1); verdict repairs incorporated, see below; [AI+] full EN translation per author decision 2026-07-19; [AI+] RCC rule 1 sharpened (object-anchor preference) from a blinded single-reader pilot 2026-07-20 — a pilot, not a test; status stays untested; [AI+] rcc-mr-2026-07-20 finding entered per pre-registered NO-branch consequence."
 ---
 
 # OPC — Operations Profile Contract (stub, LEAN version)
@@ -61,12 +61,21 @@ passage" (O1) are text-shaped; an image satisfies them only via a region convent
 3. **No interpretation in the region reference:** the location says where — never what it
    means.
 
-**Status: convention, untested** (reading-derived analogy from the purpose of quoting).
-A first **blinded single-reader pilot** (2026-07-20; a pilot, not a pre-registered test)
-found location references resolvable in 5 of 6 cases and referenced claims checkable —
-including two deliberately false control claims, both refuted; the one ambiguous case
-produced the object-anchor preference in rule 1. The status stays **untested**: whether
-checkability holds is shown only by a pre-registered multi-reader run — not claimed.
+**Status: convention, untested — now with a first pre-registered finding
+(`rcc-mr-2026-07-20`, single artefact).** A blinded three-reader run with a constructed
+gold key and a judge GATE (all judges 4/4, unanimity, AC1 1.0) split the convention's claim
+in two:
+- **What held (18/18, incl. rejection of all constructed false claims):** *claim checking*
+  over full RCC references (location + carrier naming) — the purpose of citing.
+- **What did not hold (14/24 resolved):** *location-alone resolution*. Errors cluster in
+  three known limit classes: **(1) zone grids over multi-element zones** (readers name the
+  stack, not the element), **(2) lexical collision** of the location wording with features
+  of other elements (a "band" location resolving to a striped border — once *confidently
+  wrong*, the most dangerous form), **(3) small elements with imprecise fine-position.**
+  Object anchors resolved best (0.833), grids worst (0.333) — supporting the anchor
+  preference in rule 1.
+The status stays **untested** overall (the pre-registered H1 threshold was missed; n=1
+artefact): cite with location + carrier naming, do not rely on location alone.
 
 ## Limits
 

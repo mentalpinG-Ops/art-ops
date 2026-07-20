@@ -7,7 +7,7 @@ source: "commons.wikimedia.org/wiki/File:J._M._Flagg,_I_Want_You_for_U.S._Army_p
 register_pinned: "operations.yaml@0.2.2 · operations-spec@0.5.2 · conductor@0.1.6 · catalogue@0.1.4"
 status: draft
 last_changed: 2026-07-20
-provenance: "[AI+] worked example of art-ops on a public-domain image. The three modules used (O6/O20/O1) are the only executable modules in the repo; this is the second run on an image after the Region Citation Convention (RCC) was introduced. Descriptive claims taken from direct inspection of the image, not from memory of the icon."
+provenance: "[AI+] worked example of art-ops on a public-domain image. The three modules used (O6/O20/O1) are the only executable modules in the repo; this is the second run on an image after the Region Citation Convention (RCC) was introduced. Descriptive claims taken from direct inspection of the image, not from memory of the icon; [AI+] E2 attribute corrected (dark band, pale star) after three independent blinded readers converged against the original wording — rcc-mr-2026-07-20, descriptive-accuracy fix."
 ---
 
 # Worked example — Uncle Sam poster · chain O6 → O20 → O1
@@ -100,7 +100,7 @@ Cutting criterion: each independently nameable figure-part / object / text block
 | Element | Interpretation-free name |
 |---|---|
 | `[E1 | upper half, centre]` | older man, white hair and goatee, heavy brows, direct frontal gaze |
-| `[E2 | on E1's head, top centre]` | tall top hat, pale band bearing a five-pointed star |
+| `[E2 | on E1's head, top centre]` | tall top hat, dark band bearing a pale five-pointed star |
 | `[E3 | centre, foreground]` | outstretched arm and index finger, foreshortened, pointing at the viewer |
 | `[E4 | around E1, mid]` | dark-blue coat with wide lapels |
 | `[E5 | E1's neck]` | red bow tie |
