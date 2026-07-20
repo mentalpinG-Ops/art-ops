@@ -150,7 +150,9 @@ section:last-of-type{ border-bottom:none; }
 .stamp.falsified{ color:var(--falsified); border:1px solid var(--falsified); text-decoration:line-through; text-decoration-thickness:1px; }
 .stamp.probabilistic{ color:var(--probabilistic); border:1px solid var(--probabilistic); }
 .stamp.reading{ color:var(--reading); border:1px dashed var(--reading); }
-.evidence-table .support{ font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); }
+.evidence-table .support{ display:flex; flex-direction:column; gap:5px; max-width:22ch; }
+.evidence-table .support .mono{ font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); }
+.evidence-table .support .gloss{ font-family:var(--sans); font-size:0.8rem; color:var(--ink-soft); line-height:1.4; }
 .table-scroll{ overflow-x:auto; }
 
 /* ============ register grid (24 ops, by stage) ============ */
@@ -260,50 +262,6 @@ footer{ padding:40px 0 64px; }
     </div>
   </section>
 
-  <section id="evidence">
-    <span class="eyebrow">The evidence ledger</span>
-    <h2 class="section-title">What is actually tested — as of today</h2>
-    <p class="measure" style="color:var(--ink-soft); font-size:0.95rem;">Most of the register is
-      still hypothesis. Four material findings stand. The most notable one is not a success
-      story — a declared conflict was put to a test and did not survive it.</p>
-    <div class="table-scroll" style="margin-top:24px;">
-      <table class="evidence-table">
-        <thead><tr><th>Status</th><th>Finding</th><th>Support</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="stamp falsified">falsified</span></td>
-            <td>O8 × O2 does <strong>not</strong> collide within the same pass — the first
-              conflict of the register ever put to a test does not hold.</td>
-            <td class="support">o8-knot-v3<br>C 3/3 · GATE 6/6 · AC1 1.0</td>
-          </tr>
-          <tr>
-            <td><span class="stamp proven">practice-proven</span></td>
-            <td>The authorship rule (both clauses — a source's own valuation may be reproduced,
-              but only marked).</td>
-            <td class="support">o8-knot v1–v3<br>three runs</td>
-          </tr>
-          <tr>
-            <td><span class="stamp proven">practice-proven</span></td>
-            <td>O12 provisionally relieved across two material grades — the a-priori "high"
-              exposure rank stays formally listed, but does not collapse in practice.</td>
-            <td class="support">o19-o12-authorship<br>0/3 both tiers, n=3/cell</td>
-          </tr>
-          <tr>
-            <td><span class="stamp probabilistic">real-but-probabilistic</span></td>
-            <td>O19's authorship defect is reachable — material-dependent, not knot-dependent.</td>
-            <td class="support">gnomic 1/3 collapse<br>easily-attributable 0/3</td>
-          </tr>
-          <tr>
-            <td><span class="stamp reading">reading</span></td>
-            <td>Everything else: 10 other O8 conflicts, ~35 cross-operation conflicts, 223
-              interop edges, 8 remaining exposed operations.</td>
-            <td class="support">untested hypothesis</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <section id="register">
     <span class="eyebrow">The register</span>
     <h2 class="section-title">24 operations, ordered by stage</h2>
@@ -369,6 +327,52 @@ footer{ padding:40px 0 64px; }
         <div class="op-card"><span class="id">O21</span><span class="lbl">Check whether a dispute has stakes</span></div>
         <div class="op-card"><span class="id">O22</span><span class="lbl">Test the crossing of several belonging-markers for an effect that arises only there</span><span class="exp">stage undetermined</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <span class="eyebrow">The evidence ledger</span>
+    <h2 class="section-title">What is actually tested — as of today</h2>
+    <p class="measure" style="color:var(--ink-soft); font-size:0.95rem;">Most of the register above
+      is still hypothesis. A <strong>conflict</strong> is the register's term for a rule saying two
+      operations can't run in the same analytical pass — most such rules are still untested reading.
+      Four material findings stand. The most notable one is not a success story — a declared
+      conflict was put to a test and did not survive it.</p>
+    <div class="table-scroll" style="margin-top:24px;">
+      <table class="evidence-table">
+        <thead><tr><th>Status</th><th>Finding</th><th>Support</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="stamp falsified">falsified</span></td>
+            <td>O8 × O2 does <strong>not</strong> collide within the same pass — the first
+              conflict of the register ever put to a test does not hold.</td>
+            <td class="support"><span class="mono">o8-knot-v3</span><span class="gloss">pre-registered test, blinded judges — control held clean 3/3 · judges passed their own calibration check 6/6 · judges agreed completely (AC1 1.0)</span></td>
+          </tr>
+          <tr>
+            <td><span class="stamp proven">practice-proven</span></td>
+            <td>The authorship rule (both clauses — a source's own valuation may be reproduced,
+              but only marked).</td>
+            <td class="support"><span class="mono">o8-knot v1–v3</span><span class="gloss">held across three independent test runs</span></td>
+          </tr>
+          <tr>
+            <td><span class="stamp proven">practice-proven</span></td>
+            <td>O12 provisionally relieved across two material grades — the a-priori "high"
+              exposure rank stays formally listed, but does not collapse in practice.</td>
+            <td class="support"><span class="mono">o19-o12-authorship</span><span class="gloss">the defect never appeared, on either material grade, 3 trials each</span></td>
+          </tr>
+          <tr>
+            <td><span class="stamp probabilistic">real-but-probabilistic</span></td>
+            <td>O19's authorship defect is reachable — material-dependent, not knot-dependent.</td>
+            <td class="support"><span class="mono">gnomic vs. easily-attributable</span><span class="gloss">harder material: defect in 1 of 3 trials · easier material: never</span></td>
+          </tr>
+          <tr>
+            <td><span class="stamp reading">reading</span></td>
+            <td>Everything else: 10 other O8 conflicts, ~35 cross-operation conflicts, 223
+              interop edges, 8 remaining exposed operations.</td>
+            <td class="support"><span class="gloss">untested hypothesis — no trial run yet</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
