@@ -26,6 +26,7 @@ which can be combined — and whose reliability is declared item by item.
 | [`operations-spec.md`](operations-spec.md) / [`operations.yaml`](operations.yaml) | **Mechanism:** the 24 operation profiles, the conflict register (which operations exclude each other within the same pass) and the interop graph (which feed into each other) |
 | [`orchestrator/conductor.md`](orchestrator/conductor.md) | **Planner:** takes an artefact + an analytical interest and produces an ordered, conflict-checked operations plan — with an evidence status attached to every recommendation. It plans; it does not execute. |
 | [`operations/`](operations/) | **Modules:** executable single prompts per operation (so far the three of one real image analysis), plus a Region Citation Convention for images |
+| [`examples/`](examples/) | **Worked examples:** the workflow on three artefacts (text / image / dialogue) — plan + execution per artefact |
 | [`manifest.yaml`](manifest.yaml) | **Machine-readable index:** artefacts, versions, derivation relations, evidence state |
 
 **How to read:** the prose files are authoritative (they carry justifications and caveats);
