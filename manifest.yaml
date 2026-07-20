@@ -5,7 +5,7 @@
 #   what is machine-readable vs. prose, and the evidence state of the register.
 # This file is an INDEX, not a data source — it duplicates no content, it points.
 
-version: 0.2.5
+version: 0.2.6
 last_changed: 2026-07-20
 repo: art-ops   # official name (author, 2026-07-19); local path: repos/artefact-operations
 responsibility: maintainer (author + AI assistance)
@@ -49,7 +49,7 @@ artefacts:
       companion_yaml: catalogue.yaml
   orchestrator:
     - file: orchestrator/conductor.md
-      version: "0.1.6"
+      version: "0.1.7"
       role: "LLM prompt (plan mode). Natural language by nature — not a YAML target. Reads operations.yaml as its primary source."
       pins: {operations-spec: "0.5.2", operations.yaml: "0.2.2", artifact-triage: "1.2.2 (external, not yet public)", catalogue.md: "0.1.4"}
       machine_readable: false

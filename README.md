@@ -1,8 +1,9 @@
 # art-ops
 
 **A toolkit for the analysis of cultural artefacts** — texts, images, documents, practices.
-art-ops describes analysis as **operations**: single, nameable moves performed on the
-material. Because every operation carries a profile — what it needs, what it produces, what it
+The aim: **read as much out of an artefact as it will bear — without crossing into
+speculation.** art-ops serves that aim by describing analysis as **operations**: single,
+nameable moves performed on the material. Because every operation carries a profile — what it needs, what it produces, what it
 forbids — analyses can be planned mechanically, moves from different traditions can be
 combined, and the reliability of every step is declared item by item.
 

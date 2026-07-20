@@ -1,6 +1,6 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.6
+version: 0.1.7
 status: draft
 last_changed: 2026-07-20
 pins:
@@ -30,11 +30,12 @@ The Conductor takes **one artefact** + **one analytical interest** and produces 
 checked against the conflict and interop registers. It mechanises the four-step procedure of
 spec §7.
 
-**Why the following disciplines:** The Conductor is the instrument of a responsible,
-publishable methodology — it serves that goal by **not pursuing it**, but only carrying the
-honesty constraints the goal demands (a tool that *optimised* for "publishable" would bend its
-evidence in that direction — the goal is protected as long as the Conductor merely does its
-narrow task honestly; the publishability clearance itself is a downstream gate, not its concern).
+**Why the following disciplines:** The Conductor is the instrument of one goal — **read as
+much out of an artefact as it will bear, without crossing into speculation** (the author's
+stated aim, 2026-07-20) — and it serves that goal by **not pursuing it**, only carrying the
+honesty constraints the goal demands (a tool that *optimised* for yield would bend its evidence
+toward more findings — the goal is protected exactly as long as the Conductor does its narrow
+task honestly; yield comes from the operations, the speculation boundary from the declarations).
 
 **It plans, it does not run.** Output is a plan document, not an analysis. The execution of the
 planned operations (run mode) is **not part of this version** — deliberately: run mode
