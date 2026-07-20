@@ -13,9 +13,9 @@ laid open.**
 
 ## What the set is meant to show
 
-- **The operation, not the tradition, is the unit.** The same operation **O16** ("manner of
-  address") is run on a speech *and* on a call transcript — the tool asks "which move do you lay
-  on the material", not "which theory school applies". De-naming in practice.
+- **The operation is the unit.** The same operation **O16** ("manner of address") is run on a
+  speech *and* on a call transcript — the working question is "which move do you lay on the
+  material", and the answer transfers across modalities. De-naming in practice.
 - **Not every operation set is a pipeline.** Uncle Sam is a real **chain** (O6→O20→O1, with
   documented data/ordering edges in the register). The transcript is **two complementary
   stage-0 passes** (O13, O16) with *no* edge between them — shown honestly rather than forced

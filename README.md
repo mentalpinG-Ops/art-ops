@@ -1,9 +1,10 @@
 # art-ops
 
 **A toolkit for the analysis of cultural artefacts** — texts, images, documents, practices.
-Instead of routing questions through theory schools ("what would school X say?"), art-ops
-decomposes analysis into **operations**: single, nameable moves performed on the material,
-which can be combined — and whose reliability is declared item by item.
+art-ops describes analysis as **operations**: single, nameable moves performed on the
+material. Because every operation carries a profile — what it needs, what it produces, what it
+forbids — analyses can be planned mechanically, moves from different traditions can be
+combined, and the reliability of every step is declared item by item.
 
 ---
 
@@ -56,9 +57,8 @@ overview of the register lives at the
 
 ## What it can do
 
-- Translate an analysis question into an **ordered sequence of moves** instead of a theory
-  label ("first segment, then sort sign-bindings, then expose naturalisations" — rather than
-  "do a semiotic analysis").
+- Translate an analysis question into an **ordered sequence of moves**: "first segment, then
+  sort sign-bindings, then expose naturalisations" — each step nameable, each step checkable.
 - **Make conflicts visible** before they spoil the analysis: which moves demand mutually
   exclusive stances from the analyst, which orderings are forced.
 - **Analyse images**, although the underlying prompts are text-shaped — via a Region Citation
