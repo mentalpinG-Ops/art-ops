@@ -21,10 +21,10 @@
 
 meta:
   name: operations-register
-  version: 0.2.2
-  last_changed: "2026-07-20"
+  version: 0.2.5
+  last_changed: "2026-07-26"
   status: draft-derived
-  derived_from: "operations-spec.md @ 0.5.1 (last_changed 2026-07-19)"
+  derived_from: "operations-spec.md @ 0.5.5 (last_changed 2026-07-26)"
   derivation_date: "2026-07-19"
   derivation_provenance: >
     [AI] Claude (Fable 5), author-commissioned — first derivation
@@ -95,6 +95,15 @@ authorship_exposition_screening:
       in total) — despite the same 'high' rank as O19. Provisionally cleared (2 material
       instances, n=3 per cell) — not revised (the rank stays a-priori reading), but the
       collapse possibility has not materialised here. Evidence: the same runs.
+    mitigated_condition: >
+      Ran 2026-07-19 for BOTH operations: the authorship rule actively DEMANDED of the
+      runner instead of left to spontaneous compliance (cells B19g/B12g, gnomic material).
+      6 runners + 3 judges, GATE 6/6, minimal-pair flip correct, AC1 1.0.
+      Result: B19g 0/3 collapse, B12g 0/3 collapse — demanding the rule explicitly
+      reintroduced the defect in neither operation. This closes the question the earlier
+      runs left open (does the rule reach the runner, or only the rubric?) and is why
+      O19-author-mitigated no longer appears under next_tests.
+      Evidence: gnomic follow-up test 2026-07-19 (internal test documentation).
   high: [O19, O12, O7, O9]
   medium: [O24, O23, O11, O13, O15]
   low: [O6]
@@ -700,9 +709,9 @@ conflicts:
     - { id: U3, a: O8, b: O15, type: K2, resolution: "O8→O15", what: "suspending / assign a position set", evidence: reading }
     - { id: U4, a: O8, b: O12, type: K2, resolution: "O12→O8 (O12 is only-before-others)", what: "inside enactment / interpretation-free outside classification", evidence: reading }
     - { id: U5, a: O8, b: O5,  type: K2, resolution: "O8→O5", what: "counter-concept/position variant", evidence: reading }
-    - { id: U6, a: O7, b: O10, type: "K1+K2", resolution: "NOT by order — only separate passes with a declared precedence", what: "no part stands alone / person as the locus of movability", evidence: reading, hedge: "§8: the sharpest and at the same time most uncertain case — the hardness classification is a derivation, no file coverage" }
+    - { id: U6, a: O7, b: O10, type: "K1+K2", resolution: "NOT by order — only separate passes with a declared precedence", what: "no part stands alone / person as the locus of movability", evidence: reading, hedge: "§8: the sharpest and at the same time most uncertain case — the hardness classification is a derivation, no file coverage", anchor_status: "NOT LOCATABLE (2026-07-26): the B-side state named in `what` — person as the locus of movability — appears in no O10 field. Recorded under-specified; NOT withdrawn and NOT evidence of overproduction. See spec section 8." }
     - { id: U7, a: O13, b: O13, type: K2, resolution: "choose one version; the rankings are not additive", what: "first-person ranking / outside-classification ranking", evidence: reading }
-    - { id: U8, a: O18, b: O24, type: K1, resolution: "O24→O18, or O18 supplies the descent finding to O24 — not both in the same ring", what: "version differentiation presupposes descent / the independence check determines it", evidence: reading }
+    - { id: U8, a: O18, b: O24, type: K1, resolution: "O24→O18, or O18 supplies the descent finding to O24 — not both in the same ring", what: "version differentiation presupposes descent / the independence check determines it", evidence: reading, anchor_status: "NOT LOCATABLE (2026-07-26): the A-side item O18.requires_analyst[0] is disqualified by spec section 2 as a bare disposition (knowledge). Relation also looks like supply rather than destruction — interop carries edge O18 to O24 — so the K1 type may be mistaken. Recorded under-specified; NOT withdrawn." }
     - { id: U9,  unary: true, a: O16, against: "effect finding", type: K1, resolution: "carry the two effect quantities separately into the pass", evidence: reading }
     - { id: U10, unary: true, a: O18, against: "null-finding check", type: K1, resolution: "none — the whether-question gets no outcome", evidence: reading }
     - { id: U11, unary: true, a: O18, against: "direction circle", type: K1, resolution: "obtain direction knowledge externally (O12)", evidence: reading }
@@ -714,6 +723,22 @@ conflicts:
       (O1, O2, O5, O9, O11, O15, O22) and every outside-positioned operation
       (O3, O12, O24): ~27 class instances. Rule: O8 always first (exception U4: O12→O8).
     evidence: reading
+    class_composition: >
+      Added 2026-07-26, readable off this register, no test needed — it bounds every
+      generalisation from D2's fall. The K2 class holds 10 entries and 8 are O8-borne:
+      U1, U2, U3, U4, U5, D1, D2 (falsified), D3. The only non-O8 K2 entries are U6
+      (typed K1+K2, and carrying its own hedge "the sharpest and at the same time most
+      uncertain case — no file coverage") and U7 (O13×O13, an intra-operation version
+      choice, not a cross-operation pair). CONSEQUENCE: the K2 class cannot be sampled
+      independently of O8. No further K2 run — at any cost — can separate "the derivation
+      procedure overproduces" from "O8's prohibition text was underdetermined". Deciding
+      that needs a probe outside O8, and outside K2.
+    derivation_denominator: >
+      The state-negation derivation emitted 22 entries (11 undeclared_hard + 11
+      declared_hard). The 4 soft entries are NOT its products — see soft.derivability. A
+      further 6 candidates were rejected by its own pre-filter before entry (see
+      discarded), so the procedure demonstrably filters. Against 22: 1 tested, 1
+      falsified. What D2 established is a mechanism, not a rate.
     evidence_detail: >
       Only D2 is representatively tested (O8×O2, declared — not part of this UNDECLARED
       list): run three times, v3 FALSIFIED (o8-knot-v3-2026-07-19, see declared_hard/D2).
@@ -722,17 +747,17 @@ conflicts:
       state negation' overproduces), not a class refutation.
 
   declared_hard:
-    - { id: D1,  a: O8,  b: O1,  type: K2, resolution: "O8→O1", evidence: reading }
+    - { id: D1,  a: O8,  b: O1,  type: K2, resolution: "O8→O1", evidence: reading, attempts: "2 runs, both VOID (2026-07-20, 2026-07-21) — the hypothesis was reached neither time. Both ended on the pre-registered control row at solo-O8 control 2/3, the failing cell a solo description cell in both cases. evidence stays reading. Design note: the solo-O8 condition carries its item in 10/12 pooled cells, so a 3-cell arm clears a 3/3 bar in ~0.58 of runs — the gate self-fires in ~4 runs in 10. A third attempt under the same gate tests the gate, not D1.", evidence_item: "Test runs d1-knot-2026-07-20 / d1-knot-v2-2026-07-21 (internal test documentation)" }
     - { id: D2,  a: O8,  b: O2,  type: K2, status: falsified, resolution: "NO conflict — one agent holds both states in the same pass (simultaneous arm 3/3, positive control 3/3, GATE 6/6, AC1 1.0)", evidence: falsified, evidence_detail: "o8-knot-v3-2026-07-19: first tested conflict of the register, does not hold — an artefact of the underdetermined O8 instruction (two-clause fix), not a property of the operations", evidence_item: "Test run o8-knot-v3 (internal test documentation)" }
     - { id: D3,  a: O8,  b: O11, type: K2, resolution: "O8→O11", evidence: reading }
     - { id: D4,  a: O17, b: O8,  type: K1, resolution: "direction-forced O17→O8: O8 destroys the quantity that O17 logs", evidence: reading }
     - { id: D5,  a: O12, b: "O1/O16/O17", type: K1, resolution: "O12→X (status before interpretation)", evidence: reading }
     - { id: D6,  a: O24, b: O17, type: K1, resolution: "O24→O17", evidence: reading }
-    - { id: D7,  a: O11, b: O20, type: K1, resolution: "NOT AT ALL — O20 requires reconstructable meant; annulling the status forces a complete re-run", evidence: reading }
-    - { id: Governance-decision,  a: O22, b: O11, type: K1, resolution: "asymmetric: only O22→O11; O22 also forbids the ALREADY COMPLETED decomposition", evidence: reading }
-    - { id: D9,  a: "O11/O6", b: O1, type: K1, resolution: "O6/O11→O1 (counting or cutting / interpreting in the same pass)", evidence: reading }
-    - { id: D10, a: O7,  b: O19, type: K1, resolution: "O19→O7", evidence: reading }
-    - { id: D11, a: O7,  b: O8,  type: K1, resolution: "O8→O7", evidence: reading }
+    - { id: D7,  a: O11, b: O20, type: K1, resolution: "NOT AT ALL — O20 requires reconstructable meant; annulling the status forces a complete re-run", evidence: reading, anchor_status: "NOT LOCATABLE (2026-07-26): the status this turns on (meaning-side not accessible) is not an O11 requires item; it occurs only inside O11.forbids_hard[2]. A K1 test has no requires item to ask about. Recorded under-specified; NOT withdrawn." }
+    - { id: D8,  a: O22, b: O11, type: K1, resolution: "asymmetric: only O22→O11; O22 also forbids the ALREADY COMPLETED decomposition", evidence: reading, former_id: "Governance-decision — renamed 2026-07-26 to give the entry a citable handle (D8 was unused). The old name recorded that this entry came from an author decision rather than from the state-negation derivation; that provenance is kept here. It is NOT the same thing as enforcement_gates.rule, which is also called a governance rule and governs something else entirely." }
+    - { id: D9,  a: "O11/O6", b: O1, type: K1, resolution: "O6/O11→O1 (counting or cutting / interpreting in the same pass)", evidence: reading, anchor_status: "NOT LOCATABLE (2026-07-26): the a field is not a single operation but the string O11/O6; which of the two carries the collision is not declared, and their profiles differ. Recorded under-specified; NOT withdrawn." }
+    - { id: D10, a: O7,  b: O19, type: K1, resolution: "O19→O7", evidence: reading, label_note: "The resolution runs b to a, the reverse of the a/b labels (as with U4 and U8). Noted 2026-07-26; labels deliberately NOT swapped — the reversed order is already cited elsewhere and a swap would break references. Read A=O19, B=O7. Ordering additionally forced by the partial order and by interop edge O19 to O7." }
+    - { id: D11, a: O7,  b: O8,  type: K1, resolution: "O8→O7", evidence: reading, label_note: "Same reversal: read A=O8, B=O7. Noted 2026-07-26. Section 4.2 already places O8 at stage 0 as structurally unsuppliable, so this ordering is forced there too." }
 
   soft:
     derivability: "NOT derivable from profiles — register inventory as-is (§3.3); resolution is always a declaration duty in the output"
@@ -835,16 +860,17 @@ enforcement_gates:
     free, but carries the evidence status in the output.
   decisive_tests:
     K2: "Two runs on the same artefact: simultaneous vs. sequenced. Does the simultaneous output carry both defining items? → refuted"
-    K1: "Run after B, then A. Is A.requires still ascertainable on the artefact?"
+    K1: "Run after B, then A. Is A.requires still ascertainable — on the artefact for requires_material items, on the finished output for requires_analyst items (spec section 2)? Locus corrected 2026-07-26: K1 conflicts are generated over requires_analyst, so 'on the artefact' alone named the wrong locus for the class."
     hardness: "Present the simultaneous output to a third party: are the defining items still nameable? no→hard, shortened→soft"
     interop_edge: "B with A output as the only input. Does B run without a resupply?"
     stage_ordering: "The same chain on three artefacts of different genre. Does the ordering hold?"
     cycle_O12_O24: "Attempt a linear sequence without stage decomposition of O12. If it succeeds, O12 was cut wrongly"
   # O19-author/O12-author (unmitigated) COMPLETED 2026-07-18/19 (see
-  # authorship_exposition_screening.tested). Next cheap step per gnomic-result.md
-  # Phase 4: the mitigated cells (B19g/B12g) — tests whether the authorship rule reaches the
-  # runner. O7/O9 are the remaining untested 'high' cases.
+  # authorship_exposition_screening.tested). The mitigated cells (B19g/B12g — does the
+  # authorship rule reach the RUNNER, not just the rubric?) COMPLETED 2026-07-19:
+  # 6 runners + 3 judges, GATE 6/6, AC1 1.0 — B19g 0/3 collapse, B12g 0/3 collapse.
+  # Demanding the rule explicitly reintroduced the defect in neither operation.
+  # O7/O9 are the remaining untested 'high' cases.
   next_tests:
-    - "O19-author-mitigated (B19g/B12g, gnomic)"
     - O7-author
     - O9-author

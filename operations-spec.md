@@ -1,9 +1,71 @@
 ---
 name: operations-spec
-version: 0.5.2
+version: 0.5.5
 status: draft
-last_changed: 2026-07-20
+last_changed: 2026-07-26
 ---
+
+<!-- 0.5.5 (2026-07-26): three register-internal defects recorded, none of them a finding about
+     any conflict. All three were verified entry by entry against the profiles before writing.
+     (a) FOUR entries cannot be located on either channel §2 declares — U6 (the B-side state it
+     names appears in no O10 field), U8 (its A-side item is a bare disposition, which §2 itself
+     disqualifies; and the relation looks like supply, not destruction), D7 (the status it turns
+     on is not an O11 `requires` item but sits inside a `forbids` item), D9 (its `a` field is the
+     string `O11/O6`, not one operation). NO anchor is supplied — that would mean inventing a
+     derivation that may never have been made. All four keep `evidence: reading`; they are
+     recorded as under-specified TRANSCRIPTION, explicitly not as evidence of overproduction.
+     (b) The `forbids` channel has no decisive test: §2 declares two derivation channels, the
+     §8 table supplies tests only for the `requires` one. Affects D8 and both anchors of D9;
+     the three unary entries U9-U11 additionally have no B operation to run the K1 test on.
+     (c) FOUR entries carry a resolution running b→a, the reverse of their a/b labels: U4, U8,
+     D10, D11. U4 and U8 already explain this in line; D10 and D11 now do too. Labels
+     deliberately NOT swapped — `D11 O8×O7` is cited in that reversed order in the orchestrator,
+     and a swap would break the reference.
+     PATCH: no profile, no conflict entry, no evidence field, no ordering changed.
+     [AI+] Claude, maintainer upkeep, drift-fix direct commission 2026-07-26.
+     Evidence: register-internal (profiles vs. conflict entries, machine-parsed). -->
+
+<!-- 0.5.4 (2026-07-26): three mechanical corrections from a checkability screen over the 22
+     derived conflict entries. The screen's own result was NEGATIVE and is deliberately NOT
+     recorded: applied against current text its "underdetermined" class empties to zero, but
+     it also fails its own calibration case (D2 screens as checkable on its collision items
+     alone, and D2 is the entry that demonstrably fell on that very defect) — so the empty
+     class is evidence that the criterion does not discriminate here, not a clean bill. That
+     is the same limit §5 pre-registered for its own screening ("it says where the defect can
+     occur, not where it occurs"); nothing is added to the register on its account.
+     Corrected instead, each a stated fact or an internal inconsistency:
+     (a) §8's K1 decisive test named the artefact as the locus for both item kinds. K1
+     conflicts are generated over `requires_analyst`, which §2 assigns to the finished output
+     — so the table named the wrong locus for the class it tests. Split by item kind.
+     (b) The conflict entry called "Governance decision" is now **D8** (the id was unused).
+     It was the only entry without a citable handle, and its old name collided with the
+     unrelated governance rule under `enforcement_gates`. Provenance — author decision, not
+     state-negation derivation — kept in the YAML's `former_id`.
+     (c) The mitigated-condition result (B19g/B12g, 2026-07-19) reached the prose in 0.5.3
+     but not the derived YAML, which still listed it under `next_tests`. Synchronised.
+     PATCH: no profile, no conflict entry, no evidence field, no test verdict changed.
+     [AI+] Claude, maintainer upkeep, drift-fix direct commission 2026-07-26.
+     Evidence: register-internal (§2 vs §8, id inventory); gnomic follow-up test 2026-07-19
+     (internal test documentation) for (c). -->
+
+<!-- 0.5.3 (2026-07-26): two drift-fixes in §5's status note, both factual, no claim added.
+     (a) The note listed the mitigated cells B19g/B12g as "not yet run". They RAN on 2026-07-19
+     (6 runners + 3 judges, GATE 6/6, AC1 1.0; B19g 0/3 collapse, B12g 0/3 collapse) — the same
+     day the note was written, in the follow-up wave it cites. Corrected to the result; "open"
+     reduced to O7/O9.
+     (b) §8's "the derivation procedure overproduces" passage carried no count of what the
+     procedure actually emitted. Added: 22 derived entries (undeclared_hard + declared_hard);
+     the 4 soft entries are declared non-derivable inventory (§3.3) and 6 further candidates
+     were rejected by the procedure's own pre-filter (§3.4) — so the denominator for any
+     overproduction rate is 22, and the procedure demonstrably filters.
+     Also added, from the same review: the composition fact that bounds every generalisation
+     from D2 — 8 of the register's 10 K2 entries are O8-borne, so the K2 class cannot be
+     sampled independently of O8.
+     PATCH: corrects stated facts and adds counts readable off the register itself;
+     no profile, no conflict entry, and no evidence state changed.
+     [AI+] Claude, maintainer upkeep, drift-fix direct commission 2026-07-26.
+     Evidence: test run o19-o12-urheber (internal test documentation, gnomic/ addendum
+     2026-07-19); register arithmetic recomputed from operations.yaml. -->
 
 <!-- 0.5.1 (2026-07-19): full EN translation of the entire file (prose, tables, HTML comments) —
      translation only, no content added, dropped, or reinterpreted; British spelling "artefact".
@@ -28,8 +90,6 @@ last_changed: 2026-07-20
      supports the ~63%-inconsequential thesis with 1 data point. K2 class as a whole still untested.
      [AI+] Claude Opus 4.8 on author commission; finding from the test run.
      Evidence: test run o8-knot-v3 (internal test documentation) -->
-
-<!-- 0.3.0 (2026-07-18): marking clause added to the authorship rule (§5) — from PRACTICE
 
 <!-- 0.3.0 (2026-07-18): marking clause added to the authorship rule (§5) — from PRACTICE
      (test run o8-knot-v2-2026-07-17, again VOID for H1, but GATE 5/5 and a more precise finding):
@@ -128,17 +188,17 @@ U9–U11 are **unary**: one operation collides with a state, not with a second o
 
 | # | A × B | Type | Resolution |
 |---|---|---|---|
-| D1 | **O8 × O1** — suspend / expose as made | K2 | O8→O1 |
+| D1 | **O8 × O1** — suspend / expose as made | K2 | O8→O1 · **attempted twice, both VOID — the hypothesis was never reached.** Both runs died on the *solo-O8 control gate* (control 2/3 against a pre-registered 3/3 bar), neither on the pair. `evidence` stays `reading`. Details: §Tested conflicts below. |
 | ~~D2~~ | ~~**O8 × O2** — suspend / hold a compartment list~~ **→ EMPIRICALLY REFUTED 2026-07-19** (`o8-knot-v3`): no conflict. One agent carries both states in the same pass (A both 3/3, control C 3/3, GATE 6/6, AC1 1.0). The "conflict" was an artefact of the underdetermined O8 instruction, not of the operations. **First tested conflict of the register — it does not hold.** Details: §Tested conflicts below. | ~~K2~~ | — |
 | D3 | **O8 × O11** — suspend / count out | K2 | O8→O11 |
 | D4 | **O17 × O8** — log a preassumption / suspend a preassumption | K1 | **direction-forced O17→O8**: O8 destroys the quantity that O17 logs |
 | D5 | **O12 × O1 / O16 / O17** — status before interpretation | K1 | O12→X |
 | D6 | **O24 × O17** — check independence / carry along a preassumption | K1 | O24→O17 |
 | D7 | **O11 × O20** — count out under the status "meaning-side not accessible" / sort binding | K1 | **not at all** — O20 requires a reconstructable meant; lifting the status forces a complete re-run |
-| Governance decision | **O22 × O11** — crossing effect / count out single effects | K1 | **asymmetric: only O22→O11**. O22 also forbids the *already completed* decomposition |
+| D8 | **O22 × O11** — crossing effect / count out single effects | K1 | **asymmetric: only O22→O11**. O22 also forbids the *already completed* decomposition. *(Called "Governance decision" until 2026-07-26 — renamed to give it a citable handle; `D8` was unused. The old name recorded that this entry came from an author decision, not from the state-negation derivation, and that provenance is kept in the YAML. Not to be confused with the governance rule under `enforcement_gates`, which governs something else.)* |
 | D9 | **O11 / O6 × O1** — count or cut / interpret in the same pass | K1 | O6/O11→O1 |
-| D10 | **O7 × O19** — web of conditions / tip-over in the experiencer | K1 | O19→O7 |
-| D11 | **O7 × O8** | K1 | O8→O7 |
+| D10 | **O7 × O19** — web of conditions / tip-over in the experiencer | K1 | O19→O7 · *(resolution runs b→a, i.e. the reverse of the a/b labels — as with U4 and U8. Noted 2026-07-26; the labels are NOT swapped, because `D11 O8×O7` is already cited in that reversed order elsewhere and a swap would break the reference. Read: A = O19, B = O7. The ordering is additionally already forced by the partial order and by interop edge O19→O7.)* |
+| D11 | **O7 × O8** | K1 | O8→O7 · *(same reversal; read A = O8, B = O7. Noted 2026-07-26. §4.2 already puts O8 at stage 0 as structurally unsuppliable, so this ordering is forced there too.)* |
 
 ### 3.3 Soft
 
@@ -309,7 +369,8 @@ O8 and O19 are necessarily stage 0: their preconditions are *negative* — any s
 > - **O19 — really reachable, probabilistic, not dominant.** On easily-attributable material: **0/3 collapse**, GATE 6/6, AC1 1.0 — the defect did not occur. On gnomic material, same runner, same operation, only the material difficulty changed: **1/3 unanimous collapse** (the source's causal sentence migrates unmarked into one's own description). The null finding of the easy tier was **material-dependent, not knot-dependent** — the "high" exposure is thereby **confirmed, not refuted**, but probabilistic instead of the 3/3 full collapse that O8 showed.
 > - **O12 — more robust than its rank.** **0/3 collapse on both material tiers** (6/6 clean cells in total), despite an identical "high" rank to O19. The screening exposure is a possibility statement, not a collapse prediction — O12 shows that "high" must not be confused with "equally likely". Provisionally relieved (2 material instances, n=3/cell), the a-priori rank itself remains unrevised.
 > - **Consequence for the balance above:** O19 remains on the high list, now with a test finding instead of a conjecture. O12 remains formally listed there, but is practically relieved.
-> - **What remains open:** the mitigated cells (authorship rule actively demanded rather than spontaneously followed) have not yet been run (B19g/B12g) — next cheap step (gnomic-result.md phase 4). O7 and O9, the other two "high" cases, are still untested.
+> - **The mitigated condition has since run (2026-07-19).** B19g/B12g — the authorship rule *actively demanded* of the runner instead of left to be followed spontaneously — ran with 6 runners + 3 judges, GATE 6/6, minimal-pair flip correct, AC1 1.0. **Result: B19g 0/3 collapse, B12g 0/3 collapse.** Demanding the rule explicitly reintroduced the defect in neither operation.
+> - **What remains open:** O7 and O9, the other two "high" cases, are still untested.
 >
 > **Evidence:** `test run o19-o12-urheber (internal test documentation) (`phase-0`…`phase-4`, `gnomic/gnomic-result.md`). [AI+] Claude, author commission as maintainer upkeep, drift-fix direct commission 2026-07-19; finding from the test run, not from prior knowledge.
 
@@ -460,6 +521,85 @@ No apparatus was chosen. The sequence fell out of `requires`/`produces`.
 > - **Consequence for §6.4:** the re-indexing proposal gets its **first** empirical evidence — in the direction "the declarations are too generous". **But:** one pair out of 11 O8 conflicts. The K2 class as a whole remains untested; the other 10 are different partners (O22/O9/O15/O12/O5) and unchecked.
 > - **The procedure "conflict = state negation"** here *predicted a conflict that does not exist*. One pair is not a refutation of the procedure, but a warning signal: the derivation from pre-/postconditions overproduces conflicts that practice does not confirm.
 >
+> **The denominator, so the warning signal is not read as a rate (added 2026-07-26).** The
+> state-negation derivation emitted **22** entries — the 11 `undeclared_hard` plus the 11
+> `declared_hard`. The 4 `soft` entries are *not* its products: §3.3 declares them
+> non-derivable register inventory. A further 6 candidates were rejected by the procedure's
+> own pre-filter before entry (§3.4 `discarded`) — so the procedure demonstrably filters, and
+> the filter's yield is unknown, not zero. Against that denominator: **1 entry tested, 1
+> falsified.** An overproduction rate is compatible with almost any value; the *mechanism* is
+> what D2 established, not a proportion. This is the calibrated reading of "warning signal".
+>
+> **Status of D1 after two attempts (2026-07-20 / 2026-07-21, both VOID).** The second K2 pair
+> put to material, `O8 × O1`, was attempted twice and **reached its hypothesis neither time**.
+> Both runs ended on the same pre-registered row — controls dominate, solo control below bar —
+> at **control 2/3** both times, and in both cases the failing cell was a *solo* description
+> cell, not a combination cell. Neither run says anything about `O8 × O1`; both are correctly
+> silent, and D1's `evidence` stays `reading`.
+>
+> What the two attempts did establish, as a by-product, is about the **test design**, not the
+> pair: pooled across both runs the solo-O8 condition carries its item in **10 of 12** cells
+> (the two runs' arms `B1` and `C` share one prompt string and are one condition). At that
+> rate a three-cell arm clears a 3/3 bar in ~0.58 of runs — **the design self-voids in roughly
+> four runs in ten**, independently of any clause, judge or hypothesis. Two VOIDs are the
+> expected outcome of that gate, not a finding about D1. A third attempt under the same gate
+> would test the gate.
+>
+> Two further findings from those runs, both instrument-level: the failing cells fall into
+> **classes no clause addresses** (hindsight-salience insertion; deletion of the source's own
+> hedge) — so they are not answered by refining the existing prohibitions; and a clause
+> sharpened for the *runner* removed its class there while the residual moved to the judge
+> layer, because the same edit dropped the scope that said which *part* of a mixed output the
+> rule is assessed on. **Nothing here is promoted to the register:** the O8 profile is
+> untouched, and the residual rate is deliberately *not* recorded, since one artefact, one
+> model family and n ≤ 6 per condition cannot separate a property of the operation from a
+> property of the measuring apparatus.
+>
+> **Evidence:** `test runs d1-knot-2026-07-20 and d1-knot-v2-2026-07-21 (internal test
+> documentation)`. [AI+] Claude, maintainer upkeep, drift-fix direct commission 2026-07-26;
+> finding from the test runs, not from prior knowledge.
+
+> **Four entries cannot be pointed at on a declared channel (added 2026-07-26).** §2 derives a
+> conflict on exactly two channels: an item of `A.requires_analyst` negating an item of
+> `B.requires_analyst`, or `A.forbids` naming a state that B establishes. Checked entry by entry
+> against the profiles, **four entries cannot be located on either** — each for a different
+> reason, and no anchor is supplied here, because supplying one would mean inventing a
+> derivation that may never have been made:
+>
+> | # | what is missing |
+> |---|---|
+> | **U6** (O7 × O10) | The B-side state the entry names — "person as the locus of movability" — appears in **no** O10 field. O10's profile carries `cutting rule noted in advance`, `declared inference figure`, `two cutting rules at once`, `a third bin`. The collision as worded has no counterpart in the profile it names. |
+> | **U8** (O18 × O24) | The A-side item exists (`O18.requires_analyst[0]`) but is **disqualified by §2 itself**: "a condition that can only be formulated as a disposition ('readiness', 'knowledge') is none" — and it reads *direction knowledge INDEPENDENT of the difference finding*. Additionally the relation looks like **supply, not destruction**: interop carries an edge `O18 → O24`, so the K1 type may be mistaken. |
+> | **D7** (O11 × O20) | The status the entry turns on — *meaning-side not accessible* — is not an O11 `requires` item at all; it occurs only inside `O11.forbids_hard[2]`. A K1 test asking whether A's `requires` item survives has nothing to ask about. |
+> | **D9** (O11/O6 × O1) | The `a` field is not a single operation but the string `O11/O6`. Which of the two carries the collision is not declared, and the two have different profiles. |
+>
+> **What this is and is not.** It is a statement about how these entries were **written down**,
+> not about whether the collisions they name are real. An entry whose anchor was never recorded
+> may still name a genuine conflict the derivation produced. These four therefore count towards
+> *"the procedure's products were recorded under-specified"* — **not** towards *"the procedure
+> overproduces"*. Conflating the two would manufacture an overproduction finding out of a
+> bookkeeping defect. All four keep `evidence: reading` and are neither withdrawn nor demoted.
+
+> **The `forbids` channel has no decisive test (added 2026-07-26).** §2 declares two derivation
+> channels (above), but the decisive-test table below supplies tests only for the `requires`
+> channel — K1 asks whether A's `requires` item survives, K2 whether both *defining* items are
+> carried. Entries derived **solely** on the `forbids` branch therefore have no test as the
+> table stands: **D8** (its anchor is `O22.forbids_hard[0]`, not any O22 `requires` item) and
+> both available anchors of **D9**. Separately, the three unary entries **U9, U10, U11** have no
+> B operation at all, so the K1 test — "run after B, then A" — cannot be run on them in any
+> form. Recorded as a structural gap; no test form is proposed here, since any proposal would be
+> reading, and the table's entries are meant to be decisive procedures.
+
+> **What bounds every generalisation from D2 (added 2026-07-26).** The K2 class — whose
+> decisive test is the simultaneous-vs-sequenced comparison the whole test series implements —
+> holds **10** entries, and **8 are O8-borne**: U1–U5, D1, D2, D3. The only non-O8 K2 entries
+> are **U6** (typed `K1+K2` and already carrying this spec's own hedge — "the sharpest and at
+> the same time most uncertain case … no file coverage") and **U7** (O13×O13, an
+> intra-operation version choice, not a cross-operation pair). **The K2 class therefore cannot
+> be sampled independently of O8.** No further K2 run can separate "the procedure
+> overproduces" from "O8's prohibition text was underdetermined"; a probe outside O8 — and
+> outside K2 — is required for that. Readable off the register itself, no test needed.
+>
 > **Evidence:** `test run o8-knot-v3 (internal test documentation)` (phase-1-4, GATE 6/6, raw/).
 
 ### The decisive test per class
@@ -467,7 +607,7 @@ No apparatus was chosen. The sequence fell out of `requires`/`produces`.
 | Class | Claim | Decisive test |
 |---|---|---|
 | **K2 (state collision)** | An analyst cannot hold both states at once | Two runs on the same artefact: once both operations in the same pass, once sequenced. Does the simultaneous output carry both defining items? If yes, the conflict is refuted. |
-| **K1 (state destruction)** | B destroys what A requires | Run after B, then A. Is A's `requires` item still determinable on the artefact? |
+| **K1 (state destruction)** | B destroys what A requires | Run after B, then A. Is A's `requires` item still determinable — **on the artefact** for `requires_material` items, **on the finished output** for `requires_analyst` items (§2)? *(Locus corrected 2026-07-26: the table previously named the artefact for both. Since K1 conflicts are generated over `requires_analyst` (§2), that named the wrong locus for the class it tests. No claim changed.)* |
 | **Hardness hard vs. soft** | With `hard` the output becomes invalid, not just weaker | Present the simultaneous output to a third party: can they still name the operation's defining item? No → hard. Yes, but shortened → soft. |
 | **Interop edge** | A.produces covers B.requires | Run B with A's output as the sole input. Does B run through without the analyst supplying more? |
 | **Stage order** | The partial order is material-independent | The same chain on three artefacts of different genre. Does the order hold? |

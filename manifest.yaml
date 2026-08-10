@@ -5,8 +5,8 @@
 #   what is machine-readable vs. prose, and the evidence state of the register.
 # This file is an INDEX, not a data source — it duplicates no content, it points.
 
-version: 0.2.7
-last_changed: 2026-07-20
+version: 0.2.10
+last_changed: 2026-07-26
 repo: art-ops   # official name (author, 2026-07-19); local path: repos/artefact-operations
 responsibility: maintainer (author + AI assistance)
 licence: CC BY-SA 4.0                            # LICENSE; same licence as the source collection (author decision 2026-07-20); repo public since 2026-07-20
@@ -26,9 +26,9 @@ authority:
 artefacts:
   register:
     - file: operations.yaml
-      version: "0.2.2"
+      version: "0.2.5"
       role: "canonical machine-readable register core (24 operations with pre/postconditions, conflicts, interop, screening, gates)"
-      derived_from: "operations-spec.md @ 0.5.1"
+      derived_from: "operations-spec.md @ 0.5.5"
       machine_readable: true
     - file: catalogue.yaml
       version: "0.1.3"
@@ -38,7 +38,7 @@ artefacts:
       machine_readable: true
   prose_authority:
     - file: operations-spec.md
-      version: "0.5.2"
+      version: "0.5.5"
       role: "prose authority: conflict/interop derivation, reasoning, evidence states (§8), authorship rule (§5)"
       machine_readable: false
       companion_yaml: operations.yaml
@@ -49,9 +49,9 @@ artefacts:
       companion_yaml: catalogue.yaml
   orchestrator:
     - file: orchestrator/conductor.md
-      version: "0.1.7"
+      version: "0.1.8"
       role: "LLM prompt (plan mode). Natural language by nature — not a YAML target. Reads operations.yaml as its primary source."
-      pins: {operations-spec: "0.5.2", operations.yaml: "0.2.2", artifact-triage: "1.2.2 (external, not yet public)", catalogue.md: "0.1.4"}
+      pins: {operations-spec: "0.5.5", operations.yaml: "0.2.5", artifact-triage: "1.2.2 (external, not yet public)", catalogue.md: "0.1.4"}
       machine_readable: false
       mode: plan             # it plans, it does not run; run mode deliberately deferred
   modules:   # OPC — executable single prompts per operation; built when a real analysis plan (image artefact) called for them (image modality gap)
@@ -70,17 +70,23 @@ artefacts:
     - {file: CLAUDE.md, role: "repo context, material boundary, known defects"}
     - {file: plans/, role: "Conductor plan outputs. NOTE: person-related demo runs do NOT belong here (.gitignore protection)"}
 
-# --- Evidence state of the register (as of 2026-07-19) ---
+# --- Evidence state of the register (as of 2026-07-26) ---
 # The load-bearing honesty: the register is mostly hypothesis. Four material findings stand.
 evidence_state:
   practice_proven:
-    - {claim: "authorship rule (both clauses: valuation/explanation of the source permitted, but marked)", support: "o8-knot v1-v3, three runs"}
+    - {claim: "authorship rule (both clauses: valuation/explanation of the source permitted, but marked)", support: "o8-knot v1-v3, three runs", note: "the mitigated condition ran 2026-07-19 (rule actively demanded of the runner, not left to spontaneous compliance): B19g 0/3 collapse, B12g 0/3 collapse, GATE 6/6, AC1 1.0"}
   provisionally_relieved:   # null result, n=3/cell — deliberately NOT filed under practice_proven
     - {claim: "O12 provisionally relieved across two material grades (0/3 both tiers, n=3/cell, 2 instances; a-priori high rank unrevised)", support: "o19-o12-authorship 2026-07-19"}
   falsified:
     - {claim: "O8 x O2 (§3.2 D2) does NOT collide within the same pass", support: "o8-knot-v3, C 3/3, GATE 6/6, AC1 1.0", note: "first conflict of the register ever tested — does not hold"}
   real_but_probabilistic:
     - {claim: "O19 authorship defect reachable", support: "gnomic 1/3 collapse, easily-attributable 0/3"}
+  attempted_not_reached:   # runs that ended before their hypothesis — NOT evidence either way
+    - {claim: "O8 x O1 (§3.2 D1) — 2 runs, both VOID, hypothesis never reached", support: "d1-knot-2026-07-20, d1-knot-v2-2026-07-21", note: "both ended on the solo-O8 control gate at 2/3, the failing cell a solo description cell in both cases; evidence stays reading"}
+  design_finding:   # about the test apparatus, not about any register entry
+    - {claim: "the 3-cell / 3-of-3 control gate self-fires in ~4 runs in 10", support: "solo-O8 carries its item in 10/12 pooled cells across both d1 runs; P(3-cell arm clears 3/3) ~= 0.58", note: "both d1 VOIDs are the expected outcome of that gate; a third attempt under it tests the gate, not D1. No residual rate is written into the register: one artefact, one model family, n <= 6 per condition cannot separate a property of the operation from one of the measuring apparatus"}
+    - {claim: "the K2 class cannot be sampled independently of O8 — 8 of its 10 entries are O8-borne", support: "readable off operations.yaml conflicts (U1-U5, D1, D2, D3; non-O8 only U6 self-hedged and U7 intra-operation)", note: "no further K2 run can separate 'the procedure overproduces' from 'O8's prohibition text was underdetermined'; that needs a probe outside O8 and outside K2"}
+    - {claim: "the state-negation derivation emitted 22 entries, not 26", support: "4 soft entries declared non-derivable inventory; 6 further candidates rejected by the procedure's own pre-filter", note: "denominator for any overproduction rate; against it 1 tested, 1 falsified — D2 established a mechanism, not a proportion"}
   hypothesis_untested:
     scope: "everything else"
     including: ["10 other O8 conflicts", "~35 cross-op conflicts", "38 interop edges", "8 remaining exposed operations (O7/O9/O24/O23/O11/O13/O15/O6)"]

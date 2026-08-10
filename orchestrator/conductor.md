@@ -1,11 +1,11 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.7
+version: 0.1.8
 status: draft
-last_changed: 2026-07-20
+last_changed: 2026-07-26
 pins:
-  operations-register: "operations.yaml @ 0.2.2"      # primary machine-readable data source
-  operations-spec: "operations-spec.md @ 0.5.2"        # prose authority on any discrepancy
+  operations-register: "operations.yaml @ 0.2.5"      # primary machine-readable data source
+  operations-spec: "operations-spec.md @ 0.5.5"        # prose authority on any discrepancy
   artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
   catalogue: "catalogue.md @ 0.1.4"
 provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
