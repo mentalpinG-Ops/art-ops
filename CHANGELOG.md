@@ -44,7 +44,8 @@ need to adapt.
   *Versioning note.* These are additive analytical moves and warranted a **minor** bump to
   `0.2.0` under the rules above; they were released as two patch bumps. Recorded rather than
   rewritten — the versions are already committed, and a consumer who pinned `0.1.10` should find
-  it where it was published.
+  it where it was published. The series is corrected **forward** instead: the next bump of this
+  file goes to `0.2.0`, not `0.1.11`.
 
 ### Fixed
 
@@ -53,6 +54,13 @@ need to adapt.
   "verdict set with 'undecidable'" is `O9.requires_analyst[3]` — something the analyst brings,
   not something the operation produces; `O9.produces` carries no decision or null item. The
   error was found when a run followed the list and could not locate the item under `produces`.
+
+- **The evidence section's own date stamp** (`manifest.yaml` 0.2.12 → 0.2.13). The section was
+  headed *as of 2026-07-26*, although the 2026-08-10 upkeep changed eight of its lines — and the
+  stamp matched no commit that ever touched the file. Corrected to 2026-08-10, read off the
+  commit history rather than assumed. It was corrected and not removed because it carries what
+  the header cannot: when the evidence was last re-examined, as against when the file was last
+  edited.
 
 - **The version record the repairs were missing** (`manifest.yaml` 0.2.10 → 0.2.11).
   `manifest.yaml` still carried the Conductor at `0.1.9` after the file had moved to `0.1.10`,

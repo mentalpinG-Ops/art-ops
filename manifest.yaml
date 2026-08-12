@@ -5,7 +5,7 @@
 #   what is machine-readable vs. prose, and the evidence state of the register.
 # This file is an INDEX, not a data source — it duplicates no content, it points.
 
-version: 0.2.12
+version: 0.2.13
 last_changed: 2026-08-13
 repo: art-ops   # official name (author, 2026-07-19); local path: repos/artefact-operations
 responsibility: maintainer (author + AI assistance)
@@ -71,7 +71,7 @@ artefacts:
     - {file: CLAUDE.md, role: "repo context, material boundary, known defects"}
     - {file: plans/, role: "Conductor plan outputs. NOTE: person-related demo runs do NOT belong here (.gitignore protection)"}
 
-# --- Evidence state of the register (as of 2026-07-26) ---
+# --- Evidence state of the register (as of 2026-08-10) ---
 # The load-bearing honesty: the register is mostly hypothesis. Four material findings stand.
 evidence_state:
   practice_proven:
