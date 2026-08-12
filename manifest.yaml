@@ -5,8 +5,8 @@
 #   what is machine-readable vs. prose, and the evidence state of the register.
 # This file is an INDEX, not a data source — it duplicates no content, it points.
 
-version: 0.2.11
-last_changed: 2026-08-12
+version: 0.2.12
+last_changed: 2026-08-13
 repo: art-ops   # official name (author, 2026-07-19); local path: repos/artefact-operations
 responsibility: maintainer (author + AI assistance)
 licence: CC BY-SA 4.0                            # LICENSE; same licence as the source collection (author decision 2026-07-20); repo public since 2026-07-20
@@ -66,6 +66,7 @@ artefacts:
     - {file: examples/call-transcript.md, role: "dialogue — complementary passes O13 + O16 on a synthetic CC0 transcript"}
   other:
     - {file: README.md, role: "positioning + usage entry point"}
+    - {file: CHANGELOG.md, role: "Keep a Changelog format; per-artefact versioning (maintainer decision, 2026-05-12) — every entry cites artefact + new version so a consumer can pin a single file. No repo version, no release tags; sections are dated. Carries no frontmatter by convention (it dates every entry itself)"}
     - {file: docs/index.html, role: "public landing page (GitHub Pages) — register overview, evidence ledger, examples", machine_readable: false}
     - {file: CLAUDE.md, role: "repo context, material boundary, known defects"}
     - {file: plans/, role: "Conductor plan outputs. NOTE: person-related demo runs do NOT belong here (.gitignore protection)"}
