@@ -1,14 +1,14 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.8
+version: 0.1.10
 status: draft
-last_changed: 2026-07-26
+last_changed: 2026-08-12
 pins:
   operations-register: "operations.yaml @ 0.2.5"      # primary machine-readable data source
   operations-spec: "operations-spec.md @ 0.5.5"        # prose authority on any discrepancy
   artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
   catalogue: "catalogue.md @ 0.1.4"
-provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20"
+provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20; [AI+] 0.1.9–0.1.10 (2026-08-12): four repairs, each traced to a defect found in a real O9 run — a negative statement per Slot-1 candidate (the gloss steers the choice, not the quoted item), a proof requirement for externally supplied items, removal of O9 from the whether-question blocked list (the 'undecidable' item is requires_analyst, not produces), and the countermeasure receipt for screened goal operations (author decision: it compels a statement about a measure, not the measure)"
 pin_update: >
   [AI+] 0.1.2 (2026-07-19): spec pin 0.4.0→0.5.0 (frontmatter + plan-format template) +
   evidence footer and §Limits pulled to the current material-test state — they still said
@@ -98,13 +98,46 @@ to their question; the user chooses. The translation question→item is thereby 
 free judgment. Example: question "whom does the writing exclude?" → candidate "unfilled voice
 positions" (O5) · "exclusion list" (O1) · "gaps in the representation stock" (O22).
 
+**Each candidate carries three things, in this order:**
+1. the `produces` item **verbatim**;
+2. the operation's `label` **verbatim** — not a paraphrase of what it does;
+3. a **negative statement**: which part of the user's question this candidate does **not**
+   answer. One sentence, concrete, in the user's own terms.
+
+*Why (3) exists — 2026-08-12.* Quoting the item verbatim makes the CHOICE auditable, but not the
+DESCRIPTION offered alongside it — and the description is what steers the choice. In a run of
+`O9`, whose label reads "Check whether the presentation is covered by the substance", the
+candidate was glossed to the user as "validity in the narrower sense". The user's question had
+asked for arguments *and their validity*; the operation delivers coverage of claims by sources,
+which is a different thing. The gloss, not the register, made the difference — and only half the
+question got answered. The negative statement is the cheapest available guard: it forces the
+mismatch into the open **before** the user chooses, where they can still act on it.
+
+**This does not make the translation safe.** A negative statement can be written weakly, and
+nothing here prevents that. It creates a written claim to check the finished analysis against —
+no more. Where two candidates each cover a different half of the question, say so and offer the
+chain as a third option rather than letting one half quietly stand for the whole.
+
 **Slot 2 — null-output need (yes/no).** Whether-questions ("is X present?") need an operation
 whose `produces` carries a **decision or a null finding**. For this, scan the `produces` fields
-for such items (among them O11 "test result … decision", O21 "difference OR null finding", O9
-"undecidable", O24 classification, O12 "… unresolved", O13 "switch finding"). **Blocked for
-whether-questions:** O1 (`produces`: "verdict only where positive") and O18 (register U10: the
-whether-question receives no output). No suitable carrier → **Decline**: "The register does not
-cover this whether-question."
+for such items (among them O11 "test result … decision", O21 "difference OR null finding", O24
+"independence classification", O12 "material status (… /unresolved)", O13 "switch finding").
+**Blocked for whether-questions:** O1 (`produces`: "verdict only where positive") and O18
+(register U10: the whether-question receives no output). No suitable carrier → **Decline**: "The
+register does not cover this whether-question."
+
+*Correction 2026-08-12: this list previously also named O9 "undecidable". It does not belong
+here — in `operations.yaml`, "verdict set with 'undecidable'" is `O9.requires_analyst[3]`, i.e.
+something the ANALYST brings, not something the operation produces. `O9.produces` carries no
+decision or null item. The error was found when a run followed the list, could not locate the
+item under `produces`, and wrote the slot off against `requires_analyst` instead of reporting
+the contradiction — the exact "free judgment" this step exists to prevent.*
+
+**Verify the list, do not trust it.** Before using any candidate above, check that the quoted
+item really stands under that operation's `produces` in `operations.yaml`. If it does not, the
+candidate is void for Slot 2, and **the discrepancy is reported in the plan** — never resolved
+by substituting a different field. A hand-maintained list drifts against the register; the
+register decides.
 
 **Slot 3 — position (inside / outside / doesn't matter).** Decides version choices: inside →
 O8/O19/O23; outside → O12/O24/O3; U7 (O13: **one** version, never add two rankings); W3
@@ -133,8 +166,74 @@ balance assignment:
 - **analyst stipulation** — is **logged** (e.g. O15 attribution decision person/system).
 - **UNCOVERED** → **Decline with a named gap**: "Item '…' covered neither on the artefact nor via
   an edge; to be supplied externally or the goal is unreachable."
+- **supplied externally** — an item the analyst fetches from outside the artefact (a primary
+  source, a corpus, a standard). Permitted, and the intended way out of UNCOVERED — but it is
+  **not covered by the act of fetching**. See the proof requirement below.
 
 Recursively, until all items are covered. The result is the raw forward sequence.
+
+### Proof requirement for externally supplied items (added 2026-08-12)
+
+An item marked **supplied externally** is covered only once the plan carries, **before the run**:
+
+1. **What was fetched**, with its origin and a hash or equivalent fixed identifier.
+2. **One verbatim locus per claim class the item has to bear** — an actual quoted string from the
+   fetched material, found by opening it, showing that the material carries what the item
+   promises. Not a table of contents entry, not a chapter title, not a description of where it
+   should be.
+3. **The finding, if a class has no locus** — recorded as a gap in that class, not smoothed over.
+   A class without a locus cannot later yield a positive verdict; say so in the plan, so the run
+   inherits the limit instead of discovering it.
+
+*Why — 2026-08-12.* A run took `O9.requires_material[3] "external reference point"` as covered
+because the source texts had been fetched. The excerpt built from them matched two chapter
+**titles in a table of contents** rather than the chapters, so two of seven reference sections
+carried no subject matter at all. The defect survived one further pass, because a correction was
+written to the source file but never reached the directory the run read from. Both were caught
+only by the analyst's own citation duty, mid-run, after judgements had been formed against empty
+sections.
+
+Fetching is not covering. The item is covered when a **quoted string** from the fetched material
+proves it — verified in the file the run will actually read, not in the file the analyst edited.
+
+**Cost, stated plainly:** this adds one verification pass before every externally supplied item.
+It is the cheapest step in the plan and the only one that catches a defect which otherwise
+surfaces after the analysis, when the outputs already look finished.
+
+### Countermeasure receipt for exposed goal operations (added 2026-08-12)
+
+If the goal operation appears in `operations.yaml` →
+`authorship_exposition_screening.high` / `.medium`, the plan does two things instead of one:
+
+1. **Name the exposed spot** — which of that operation's own items can collapse at the output,
+   quoted verbatim, and why (as before).
+2. **Propose a countermeasure, written out** — one concrete, checkable sentence that could go
+   straight into the analyst's stipulations. Not "mind the marking duty", but the actual test:
+   *"every attribution in the output takes the form 'the sentence claims X', never 'the author
+   means X'; a reviewer checks the output against this."*
+
+**The receipt.** The run's stipulations must then **account for the proposal** — either adopted
+(quoted where it now stands) or **rejected with a reason**. An unanswered proposal is a defect
+of the run record, not of the plan.
+
+*Why — 2026-08-12.* A plan named `O9`'s exposed spot correctly and called it "the main hazard of
+this run". The stipulations written next carried only a general marking duty, nothing aimed at
+that spot. Nobody noticed, because nothing required an answer. A warning that no one has to
+respond to is indistinguishable, in the record, from a warning no one read.
+
+**Where this sits against "it marks, it does not enforce" (line 45).** It does not force a
+countermeasure — it forces a *statement about* one. That is a reading of the 2026-07-18
+governance rule, not a self-evident consequence of it, and it was taken as an author decision
+(2026-08-12) with the ambiguity on the table: compelling an answer is formally a compulsion,
+even where the answer may be "rejected, because …". Recorded here so the choice stays visible
+and revisable, rather than settling in as if it had always followed.
+
+**The limit this rule carries with it.** The screening is tagged
+`status: candidate-list-not-finding`, and it means it: of the four `high` candidates, `O19` was
+confirmed by test and `O12` came out clean across 9 cells despite the identical rank. "High"
+predicts where a defect *can* occur, not where it does. The receipt is therefore owed to a
+**suspicion**, and its reasoned rejection is a full answer — not a lesser one. A plan that
+treats the list as a finding has made the register's own error one level up.
 
 **Keep two kinds of edge strictly separate:**
 - **Ordering edge** (from §3 / `conflicts`): *runs-before* — says only who goes first.
