@@ -31,7 +31,8 @@ The register's conflicts are stated over analyst states: *can the same analyst h
 states in one pass?* A stateless service keeps no state between calls, so a mechanism that
 tracks analyst states across calls would be a new feature of the service. The operator can
 instead do the work before the frame is pinned, and write the outcome into slots a frame
-declaration of the sketched kind already has. This is the cheapest option. Run on real
+declaration of the sketched kind already has. This costs less than building a mechanism that
+tracks analyst states across calls. Run on real
 artefacts it would also yield the material evidence the register lacks (spec §8); planning
 alone yields none.
 
@@ -55,7 +56,7 @@ The four steps of `operations-spec.md` §7, plus a fifth for provenance:
 |---|---|
 | Sequence of operations | the description of the licensed operations, in order |
 | Hard conflict resolved by ordering (K1) | the same sequence |
-| Hard conflict resolved only by separate passes (K2) | two frames, one per pass; "a pass is one call" is a stipulation, not a fact. The one K2 pair tested so far (O8 × O2) came out as no conflict, so the class rests on reading |
+| Hard conflict resolved only by separate passes (K2) | two frames, one per pass; "a pass is one call" is a stipulation, not a fact. The one K2 pair tested so far (O8 × O2) came out as no conflict on the material of that test, so the class rests on reading |
 | Hard conflict with no resolution | a declared self-conflict; a service that treats it as blocking will refuse the frame, which is the true state |
 | Soft conflict (W-class) | a declaration in the operations description naming which side governs |
 | Evidence status of each register entry used | lines in the operations description: `basis: <id> · status: <status> · source: <spec@version §>` |
@@ -92,23 +93,26 @@ declaration:
   operations: >-
     (1) Fixes the status of the text before interpreting it; no interpretation in this step.
     (2) States the reader's preassumption in one sentence before any interpretive step.
-    (3) Assigns the positions the text opens; attribution decision: system, reported as an
-    output line. (4) Lists unfilled positions as gaps over the grid of step 3; empty categories
+    (3) Assigns the positions the text opens; attribution decision: system (the text, as a
+    system, assigns the positions, not the persons it names), reported as an output line. (4) Lists unfilled positions as gaps over the grid of step 3; empty categories
     are reported, not deleted.
     Declarations. Grid governance: the grid is binding for step 4 and is not revised by the
     preassumption (W2, soft). Intent: the issuer's stated purpose is rendered only as the
     text's own statement, marked "the text states"; the reading introduces no intent of its
     own (authorship rule, applied here to the prohibition on meaning from intent that the
-    register lists under O12). Channels: text only; no claim about layout.
+    register lists under O12, operations.yaml O12 forbids_hard). Channels: text only; no claim about layout.
     Status. basis: D5 · status: reading, untested · source: operations-spec@0.5.5 §3.2.
     basis: W2 · status: reading, untested · source: operations-spec@0.5.5 §3.3.
-    basis: authorship rule · status: practice-proven on operation O8 (a source that states
-    its own evaluations; three runs of one test, the first two ended VOID on their positive
-    control and the third passed its gate, the rule's two clauses stem from the first two),
-    declared generic for all operations; its use on intent is not itself tested · source:
-    operations-spec@0.5.5 §5 and operations.yaml (authorship_rule). The sequence as a whole
-    has not been enacted on an artefact; of its operations only O12 has met material in a
-    register test (authorship screening, 2026-07-18/19) · source: manifest.yaml and
+    basis: authorship rule · status: practice-proven (the register's status for a statement
+    that passed a test on material) on operation O8, with a source that states its own
+    evaluations; three runs of one test: the first two ended VOID, because their positive
+    control (the operation run alone, without disturbance) missed its preset bar and so
+    decided nothing, and the third passed its gate; the rule's two clauses stem from the
+    first two. Declared generic for all operations; its use on intent is not itself tested ·
+    source: operations-spec@0.5.5 §5 and operations.yaml (authorship_rule). The sequence as
+    a whole has not been enacted on an artefact; of its operations only O12 has met material
+    in a register test (authorship screening, 2026-07-18/19; no collapse on either material
+    tier, a result about the screening and not about the chain) · source: manifest.yaml and
     operations.yaml (evidence_global), as read 2026-10-25.
   observer: >-
     A reader outside the issuing institution, classifying the text from outside and stating
@@ -137,8 +141,9 @@ Found while writing the sketch; each is a limit of a *declarative slot*, not of 
   author and that a rendering of the source be marked. A lexical pattern list cannot tell the
   analyst's own statement from a marked quotation, so the sketch declares no patterns. The
   prohibition stands in the description only, unchecked.
-- **Non-text operations.** O13 (channel inventory) has nothing to work on when the service
-  takes text only, and the image module for O6 (`operations/O06-image-segmentation.md`) is
+- **Non-text operations.** O13 (channel inventory) can report only a single channel and the
+  absent ones when the service takes text only; there is no ranking to make, so the chain
+  drops it. The image module for O6 (`operations/O06-image-segmentation.md`) is
   unusable there. O6 itself is modality-neutral in the register (cut into smallest
   self-contained parts) and can be planned on text.
 - **Hard conflicts across passes** are expressible only as separate frames; nothing links them.
@@ -146,8 +151,14 @@ Found while writing the sketch; each is a limit of a *declarative slot*, not of 
 ## Status
 
 Every register entry the sketch rests on is `reading`, except the authorship rule, which is
-practice-proven on O8; the chain as a whole has not been enacted on an artefact, and of its
-operations only O12 has met material in a register test. The sketch shows that the plan fits
-a declarative frame, not that the reading it produces is sound. Enforcing any part of it
-(refusing a request, compiling a frame from the register) would need a passed material test per operationalisation first; until then the
-practice stays declarative.
+practice-proven on O8; the chain as a whole has not been enacted on an artefact. Of its
+operations only O12 has met material, in the authorship screening, which the register
+records as a screening result and not as a test of the chain. The sketch shows that the plan
+fits a declarative frame, not that the reading it produces is sound.
+
+The register's governance rule (`operations.yaml`, `enforcement_gates`) lets declarative use
+stand with its evidence status and requires a passed material test, per operationalisation,
+only for enforcing encoding of an entry: blocking, discarding, forcing a partition. A
+service that refused requests on the strength of a register conflict, or a frame compiled
+from the register to do so, would fall under it. Until such a test has passed, the practice
+stays declarative.
