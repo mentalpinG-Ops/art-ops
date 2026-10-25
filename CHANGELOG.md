@@ -22,6 +22,15 @@ need to adapt.
 
 ## [Unreleased]
 
+### Added
+
+- **`examples/frame-from-a-chain.md` (0.1.0, draft)** — an application note on planning an
+  operations chain and writing it into a declared frame for a stateless analysis service, with
+  one sketched frame for the §7 circular. Planning only: no operation of its chain was enacted
+  on an artefact, every register entry it rests on is `reading`. Indexed in `manifest.yaml`
+  0.2.13 → 0.2.14 (**patch**: index entry added, no artefact version changed) and in
+  `examples/README.md`.
+
 ## 2026-08-13
 
 ### Changed

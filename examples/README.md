@@ -11,6 +11,11 @@ laid open.**
 | [`uncle-sam-poster.md`](uncle-sam-poster.md) | image | Flagg, "I Want You" poster (1917) | **O6 → O20 → O1** (chain) | public domain |
 | [`call-transcript.md`](call-transcript.md) | dialogue | synthetic IVR-bot → agent booking call | **O13 + O16** (complementary passes) | CC0 (synthetic) |
 
+One further file is not an artefact example: [`frame-from-a-chain.md`](frame-from-a-chain.md)
+is an application note on the step *before* a run — planning an operations chain and writing
+the result into a declared frame for a stateless analysis service. Planning only; no operation
+of its chain has been enacted on an artefact.
+
 ## What the set is meant to show
 
 - **The operation is the unit.** The same operation **O16** ("manner of address") is run on a
