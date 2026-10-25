@@ -5,16 +5,24 @@ register_pinned: "operations.yaml@0.2.5 · operations-spec@0.5.5"
 version: 0.1.0
 status: draft
 last_changed: 2026-10-25
-provenance: "[AI+] application note, maintainer-commissioned. Hand-authored planning example; no operation of the chain was enacted on an artefact, and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
+provenance: "[AI+] application note, drafted by Claude (Sonnet 5.5) on the maintainer's commission, 2026-10-25; no sub-agent was used for the drafting, token total not recorded. Planning example only: no operation of the chain was enacted on an artefact, and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
 ---
 
 # Application note — planning a declared frame from an operations chain
 
 The other examples run operations on an artefact. This note does the step before: an operator
-who wants a **stateless analysis service** to apply a chain of operations plans the chain
-first, then writes the result into a **frame declaration** the service resolves per request.
-Nothing here is enforced by art-ops (the tool recommends and declares), and nothing shows in a
-service response that the chain was followed.
+who wants a **stateless analysis service** (one that keeps no state between calls) to apply a chain of operations plans the chain
+first, then writes the result into a **frame declaration**: a versioned description of the lens,
+the objects, the licensed operations, the observer position and the confidence discipline that
+the service resolves per request. Nothing here is enforced by art-ops (the tool recommends and
+declares), and a response of the kind sketched below carries no sign that the chain was
+followed.
+
+Terms used below: **pass** is one run of one analyst over the material (here: one service
+call, by stipulation). **K1** is a conflict that ordering resolves; **K2** is a pair of analyst
+states that one analyst cannot hold in the same pass. **W-class** conflicts are soft: both
+operations stay valid, one side must be declared as governing. **`reading`** is the register's
+evidence status for an entry derived from reading the prompts and not tested on an artefact.
 
 ## Why planning instead of a mechanism
 
@@ -22,8 +30,9 @@ The register's conflicts are stated over analyst states: *can the same analyst h
 states in one pass?* A stateless service keeps no state between calls, so a mechanism that
 tracks analyst states across calls would be a new feature of the service. The operator can
 instead do the work before the frame is pinned, and write the outcome into slots a frame
-declaration already has. This is the cheapest option; it is also the one that produces the
-material evidence the register lacks (spec §8).
+declaration of the sketched kind already has. This is the cheapest option. Run on real
+artefacts it would also yield the material evidence the register lacks (spec §8); planning
+alone yields none.
 
 ## The steps
 
@@ -44,7 +53,7 @@ The four steps of `operations-spec.md` §7, plus a fifth for provenance:
 |---|---|
 | Sequence of operations | the description of the licensed operations, in order |
 | Hard conflict resolved by ordering (K1) | the same sequence |
-| Hard conflict resolved only by separate passes (K2) | two frames, one per pass; "a pass is one call" is a stipulation, not a fact |
+| Hard conflict resolved only by separate passes (K2) | two frames, one per pass; "a pass is one call" is a stipulation, not a fact. The one K2 pair tested so far (O8 × O2) came out as no conflict, so the class rests on reading |
 | Hard conflict with no resolution | a declared self-conflict; a service that treats it as blocking will refuse the frame, which is the true state |
 | Soft conflict (W-class) | a declaration in the operations description naming which side governs |
 | Evidence status of each register entry used | lines in the operations description: `basis: <id> · status: <status> · source: <spec@version §>` |
@@ -54,10 +63,12 @@ The four steps of `operations-spec.md` §7, plus a fifth for provenance:
 
 ## Worked sketch — the §7 circular
 
-**Artefact:** an institutional circular announcing a regulation (text only).
+**Artefact:** an institutional circular announcing a regulation, reduced to its text (the
+circular of the spec's worked example also carries layout).
 **Question:** whose perspective does the letter carry, and whom does it exclude?
-**Chain** (spec §7, worked example): `O12 → O17 → O15 → O5`. O13 (channels) is not run: the
-service takes text, so no layout channel exists to rank. Conflicts held against the sequence:
+**Chain** (spec §7, worked example): `O12 → O17 → O15 → O5`. The spec's chain starts with O13
+(channels); it is not run here: the service takes text, so the layout channel is not given and
+not ranked. Conflicts held against the sequence:
 D5 (O12 before O17, hard; the order is the resolution), W2 (O17 × O5, soft; declared below),
 the authorship rule for prohibitions of the form "no X" (spec §5).
 
@@ -65,7 +76,7 @@ the authorship rule for prohibitions of the form "no X" (spec §5).
 # Illustration only. Not the format of any particular service; not validated against any schema.
 frame: position-gap-circular
 version: v1
-register: ops-spec@0.5.5
+register: operations-spec@0.5.5
 
 declaration:
   lens: >-
@@ -83,11 +94,15 @@ declaration:
     Declarations. Grid governance: the grid is binding for step 4 and is not revised by the
     preassumption (W2, soft). Intent: the issuer's stated purpose is rendered only as the
     text's own statement, marked "the text states"; the reading introduces no intent of its
-    own (authorship rule). Channels: text only; no claim about layout.
-    Status. basis: D5 · status: reading, untested · source: ops-spec@0.5.5 §3.2.
-    basis: W2 · status: reading, untested · source: ops-spec@0.5.5 §3.3.
-    basis: authorship rule · status: tested on one self-interpreting source · source:
-    ops-spec@0.5.5 §5. The sequence as a whole has not been enacted on an artefact.
+    own (authorship rule, applied here to the prohibition on meaning from intent that the
+    register lists under O12). Channels: text only; no claim about layout.
+    Status. basis: D5 · status: reading, untested · source: operations-spec@0.5.5 §3.2.
+    basis: W2 · status: reading, untested · source: operations-spec@0.5.5 §3.3.
+    basis: authorship rule · status: practice-proven in two test runs on operation O8 (a
+    source that states its own evaluations), declared generic for all operations; its use
+    on intent is not itself tested · source: operations-spec@0.5.5 §5 and operations.yaml
+    (authorship_rule). The sequence as a whole has not been enacted on an artefact
+    (manifest.yaml, evidence_state, as read 2026-10-25).
   observer: >-
     A reader outside the issuing institution, classifying the text from outside and stating
     that standpoint as a position, not as neutrality.
@@ -109,20 +124,22 @@ self_conflicts: []
 
 Found while writing the sketch; each is a limit of a *declarative slot*, not of the register.
 
-- **Sequence and status are prose.** Nothing checks that the described order is the planned
-  one, or that the status lines match the register.
+- **Sequence and status are prose.** In the sketched format nothing checks that the described
+  order is the planned one, or that the status lines match the register.
 - **Prohibitions of the form "no X".** The register requires that such a prohibition name its
   author and that a rendering of the source be marked. A lexical pattern list cannot tell the
   analyst's own statement from a marked quotation, so the sketch declares no patterns. The
   prohibition stands in the description only, unchecked.
-- **Non-text operations.** O13 (channel inventory) and O6 (image segmentation) have nothing to
-  work on when the service takes text only.
+- **Non-text operations.** O13 (channel inventory) has nothing to work on when the service
+  takes text only, and the image module for O6 (`operations/O06-image-segmentation.md`) is
+  unusable there. O6 itself is modality-neutral in the register (cut into smallest
+  self-contained parts) and can be planned on text.
 - **Hard conflicts across passes** are expressible only as separate frames; nothing links them.
 
 ## Status
 
-Every register entry the sketch rests on is `reading`: the chain has not been enacted on an
-artefact. The sketch shows that the plan fits a declarative frame, not that the reading it
-produces is sound. Enforcing any part of it (refusing a request, compiling a frame from the
+Every register entry the sketch rests on is `reading`, except the authorship rule, which is
+practice-proven on O8 only; the chain has not been enacted on an artefact. The sketch shows
+that the plan fits a declarative frame, not that the reading it produces is sound. Enforcing any part of it (refusing a request, compiling a frame from the
 register) would need a passed material test per operationalisation first; until then the
 practice stays declarative.
