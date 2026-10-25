@@ -5,7 +5,7 @@ register_pinned: "operations.yaml@0.2.5 · operations-spec@0.5.5"
 version: 0.1.0
 status: draft
 last_changed: 2026-10-25
-provenance: "[AI+] application note, drafted by Claude (Sonnet 5.5) on the maintainer's commission, 2026-10-25; no sub-agent was used for the drafting, token total not recorded. Planning example only: no operation of the chain was enacted on an artefact, and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
+provenance: "[AI+] application note, drafted by Claude (Sonnet 5.5) on the maintainer's commission, 2026-10-25; no sub-agent was used for the drafting, token total not recorded. Planning example only: the chain as a whole was not enacted on an artefact (of its operations only O12 has met material in a register test), and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
 ---
 
 # Application note — planning a declared frame from an operations chain
@@ -21,8 +21,9 @@ followed.
 Terms used below: **pass** is one run of one analyst over the material (here: one service
 call, by stipulation). **K1** is a conflict that ordering resolves; **K2** is a pair of analyst
 states that one analyst cannot hold in the same pass. **W-class** conflicts are soft: both
-operations stay valid, one side must be declared as governing. **`reading`** is the register's
-evidence status for an entry derived from reading the prompts and not tested on an artefact.
+operations stay valid, one side must be declared as governing. (K1, K2: spec §2; W-class:
+spec §3.3.) **`reading`** is the register's evidence status for an entry derived from reading
+the prompts and not tested on an artefact.
 
 ## Why planning instead of a mechanism
 
@@ -40,7 +41,8 @@ The four steps of `operations-spec.md` §7, plus a fifth for provenance:
 
 1. **Target state.** What should the output carry? Pick the operation whose `produces` names it.
 2. **Backward through `requires`.** Each `requires` item the artefact does not carry becomes a
-   query to the interop register. The result is the forward sequence.
+   query to the interop register (the register's supply edges between operations, spec §4.1).
+   The result is the forward sequence.
 3. **Conflict register against the sequence**, pair by pair. Hard conflicts keep the prescribed
    order or split the sequence; soft ones need a declaration of which side governs.
 4. **Stage check** against §4.2.
@@ -66,9 +68,11 @@ The four steps of `operations-spec.md` §7, plus a fifth for provenance:
 **Artefact:** an institutional circular announcing a regulation, reduced to its text (the
 circular of the spec's worked example also carries layout).
 **Question:** whose perspective does the letter carry, and whom does it exclude?
-**Chain** (spec §7, worked example): `O12 → O17 → O15 → O5`. The spec's chain starts with O13
-(channels); it is not run here: the service takes text, so the layout channel is not given and
-not ranked. Conflicts held against the sequence:
+**Chain** (spec §7, worked example): the spec's sequence is `O12 → O13 → O17 → O15 → O5`. Here
+it runs as `O12 → O17 → O15 → O5`: O13 (channels) is dropped, because the service takes text,
+so the layout channel is not given and not ranked. The operations are O12 (fix the material's
+status before interpreting), O17 (log one's own preassumption), O15 (assign a position or
+role), O5 (register absence as a finding). Conflicts held against the sequence:
 D5 (O12 before O17, hard; the order is the resolution), W2 (O17 × O5, soft; declared below),
 the authorship rule for prohibitions of the form "no X" (spec §5).
 
@@ -98,11 +102,14 @@ declaration:
     register lists under O12). Channels: text only; no claim about layout.
     Status. basis: D5 · status: reading, untested · source: operations-spec@0.5.5 §3.2.
     basis: W2 · status: reading, untested · source: operations-spec@0.5.5 §3.3.
-    basis: authorship rule · status: practice-proven in two test runs on operation O8 (a
-    source that states its own evaluations), declared generic for all operations; its use
-    on intent is not itself tested · source: operations-spec@0.5.5 §5 and operations.yaml
-    (authorship_rule). The sequence as a whole has not been enacted on an artefact
-    (manifest.yaml, evidence_state, as read 2026-10-25).
+    basis: authorship rule · status: practice-proven on operation O8 (a source that states
+    its own evaluations; three runs of one test, the first two ended VOID on their positive
+    control and the third passed its gate, the rule's two clauses stem from the first two),
+    declared generic for all operations; its use on intent is not itself tested · source:
+    operations-spec@0.5.5 §5 and operations.yaml (authorship_rule). The sequence as a whole
+    has not been enacted on an artefact; of its operations only O12 has met material in a
+    register test (authorship screening, 2026-07-18/19) · source: manifest.yaml and
+    operations.yaml (evidence_global), as read 2026-10-25.
   observer: >-
     A reader outside the issuing institution, classifying the text from outside and stating
     that standpoint as a position, not as neutrality.
@@ -139,7 +146,8 @@ Found while writing the sketch; each is a limit of a *declarative slot*, not of 
 ## Status
 
 Every register entry the sketch rests on is `reading`, except the authorship rule, which is
-practice-proven on O8 only; the chain has not been enacted on an artefact. The sketch shows
-that the plan fits a declarative frame, not that the reading it produces is sound. Enforcing any part of it (refusing a request, compiling a frame from the
-register) would need a passed material test per operationalisation first; until then the
+practice-proven on O8; the chain as a whole has not been enacted on an artefact, and of its
+operations only O12 has met material in a register test. The sketch shows that the plan fits
+a declarative frame, not that the reading it produces is sound. Enforcing any part of it
+(refusing a request, compiling a frame from the register) would need a passed material test per operationalisation first; until then the
 practice stays declarative.
