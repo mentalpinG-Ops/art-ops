@@ -13,8 +13,9 @@ laid open.**
 
 One further file is not an artefact example: [`frame-from-a-chain.md`](frame-from-a-chain.md)
 is an application note on the step *before* a run — planning an operations chain and writing
-the result into a declared frame for a stateless analysis service. Planning only; no operation
-of its chain has been enacted on an artefact.
+the result into a declared frame for a stateless analysis service. Planning only; its chain as
+a whole has not been enacted on an artefact (of its operations only O12 has met material, in a
+register test).
 
 ## What the set is meant to show
 
