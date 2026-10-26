@@ -5,7 +5,7 @@ register_pinned: "operations.yaml@0.2.5 · operations-spec@0.5.5"
 version: 0.1.0
 status: draft
 last_changed: 2026-10-25
-provenance: "[AI+] application note, drafted by Claude (Sonnet 5.5) on the maintainer's commission, 2026-10-25; no sub-agent was used for the drafting, token total not recorded. Planning example only: the chain as a whole was not enacted on an artefact (of its operations only O12 has met material in a register test), and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
+provenance: "[AI+] application note, drafted by Claude (Sonnet 5.5; the model is named in the Co-Authored-By trailer of this branch's commits) on the maintainer's commission, 2026-10-25; no sub-agent was used for the drafting, token total not recorded. Planning example only: the chain as a whole was not enacted on an artefact (of its operations only O12 has met material in a register test), and no service consumed the sketched frame. The sketch is a generic illustration, not the format of any particular service."
 ---
 
 # Application note — planning a declared frame from an operations chain
@@ -109,7 +109,8 @@ declaration:
     control (the operation run alone, without disturbance) missed its preset bar and so
     decided nothing, and the third passed its gate; the rule's two clauses stem from the
     first two. Declared generic for all operations; its use on intent is not itself tested ·
-    source: operations-spec@0.5.5 §5 and operations.yaml (authorship_rule). The sequence as
+    source: operations-spec@0.5.5 §5 (the rule) and §8 (the runs) and operations.yaml
+    (authorship_rule, evidence_global). The sequence as
     a whole has not been enacted on an artefact; of its operations only O12 has met material
     in a register test (authorship screening, 2026-07-18/19; no collapse on either material
     tier, a result about the screening and not about the chain) · source: manifest.yaml and
