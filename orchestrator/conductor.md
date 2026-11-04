@@ -1,15 +1,18 @@
 ---
 name: Conductor (operations orchestrator, plan mode)
-version: 0.1.10
+version: 0.2.0
 status: draft
-last_changed: 2026-08-12
+last_changed: 2026-11-04
 pins:
   operations-register: "operations.yaml @ 0.2.5"      # primary machine-readable data source
   operations-spec: "operations-spec.md @ 0.5.5"        # prose authority on any discrepancy
-  artifact-triage: "artifact-triage @ 1.2.2 (in-test, prompt-library)"
   catalogue: "catalogue.md @ 0.1.4"
-provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20; [AI+] 0.1.9–0.1.10 (2026-08-12): four repairs, each traced to a defect found in a real O9 run — a negative statement per Slot-1 candidate (the gloss steers the choice, not the quoted item), a proof requirement for externally supplied items, removal of O9 from the whether-question blocked list (the 'undecidable' item is requires_analyst, not produces), and the countermeasure receipt for screened goal operations (author decision: it compels a statement about a measure, not the measure)"
+provenance: "[AI+] Claude, author-commissioned. Design adversarially reviewed and verdict-repaired.; [AI+] full EN translation per author decision 2026-07-19; [AI+] licence note updated for the repo's move to CC BY-SA 4.0, author decision 2026-07-20; [AI+] 0.1.9–0.1.10 (2026-08-12): four repairs, each traced to a defect found in a real O9 run — a negative statement per Slot-1 candidate (the gloss steers the choice, not the quoted item), a proof requirement for externally supplied items, removal of O9 from the whether-question blocked list (the 'undecidable' item is requires_analyst, not produces), and the countermeasure receipt for screened goal operations (author decision: it compels a statement about a measure, not the measure); [AI+] 0.2.0 (2026-11-04): Pass 0 reads existence markers directly and no longer calls artifact-triage (author commission: settle the dependency after the triage prompt's gate change; dropping the call is Claude's proposal, not yet reviewed by the author)"
 pin_update: >
+  [AI+] 0.2.0 (2026-11-04): the artifact-triage pin is removed — Pass 0 no longer calls it
+  (see Pass 0). Reason: artifact-triage 1.4.0 (prompt-library, 2026-11-03) loads a framework catalogue
+  when it can, so its gate no longer reliably refuses to route; the standalone skill was retired the
+  same day. The minor bump the series was owed since 0.1.10.
   [AI+] 0.1.2 (2026-07-19): spec pin 0.4.0→0.5.0 (frontmatter + plan-format template) +
   evidence footer and §Limits pulled to the current material-test state — they still said
   "the only material test ended VOID twice", superseded by o8-knot-v3 (O8×O2 decided:
@@ -68,25 +71,25 @@ readable in the context.
 
 ---
 
-## Pass 0 — entry gate (triage without a framework catalogue)
+## Pass 0 — entry gate (existence-marker read)
 
-Invoke `artifact-triage` (prompt-library, @1.2.2) — **without** a framework catalogue in the
-context. Its own fail-safe (§7 GATE) then forces: **classify, do not route, name no
-framework** — exactly what the operations work needs. The triage's routing remains unused; its
-classification part supplies the artefact's existence markers.
+Read the artefact **by pure sighting** and check the goal operation's `requires_material` items
+against it (present / absent / uncertain): classification only, **no routing, no interpretation,
+no framework named**. The Conductor works at operation level and the register is de-named; a
+framework name in the plan's entry check would carry the apparatus back in.
 
-The triage fields are **explicitly mapped onto `requires_material` items** in the plan ("covered
-by: triage field X"). Triage figures in the register as executor of O12/O13/O2 — but its
-O12 contribution is to be handled with caution: **O12 is highly exposed** (authorship-defect
-candidate, `operations.yaml` → `authorship_exposition_screening.high`). If the artefact interprets
-itself, even the status determination can be contaminated. That is an open risk, not a solved one.
+The reading carries a caution: **O12 is highly exposed** (authorship-defect candidate,
+`operations.yaml` → `authorship_exposition_screening.high`). If the artefact interprets itself,
+even the status determination can be contaminated. That is an open risk, not a solved one.
 
-**If `artifact-triage` is not available in the context** (its home collection is not yet
-public): do NOT decline and do NOT skip Pass 0. Fall back to a direct existence-marker read —
-check the goal operation's `requires_material` items against the artefact by pure sighting
-(present / absent / uncertain), classification only, no routing, no interpretation. Declare in
-the plan: "Pass 0 run as direct existence-marker read; artifact-triage unavailable." The
-fallback carries the same O12 caution as the triage itself.
+**Until 0.1.10** this pass invoked `artifact-triage` (prompt-library, @1.2.2) *without* a framework
+catalogue and relied on its gate (§7) to refuse routing. Since `artifact-triage` 1.4.0 the gate
+**loads** a catalogue when it can, so the refusal no longer reliably keeps framework names out of
+the plan, and the standalone skill was retired on 2026-11-03. The pass no longer calls it. If the
+user hands over a triage output they already have, only its classification fields may serve as
+existence markers, cited as such ("covered by: triage field X"); its routing section is not used.
+
+Declare in the plan: "Pass 0 run as direct existence-marker read."
 
 ---
 
@@ -296,13 +299,13 @@ Write to `plans/YYYY-MM-DD-<artefact-slug>.md`:
 
 ```
 # Operations plan <artefact> — <date>
-Register pinned: operations.yaml@0.2.2 · operations-spec@0.5.2 · artifact-triage@1.2.2 · catalogue@0.1.4
+Register pinned: operations.yaml@0.2.2 · operations-spec@0.5.2 · catalogue@0.1.4
 
 ## The user's analytical interest
 Goal item (verbatim): "<…>" (O<n>)  ·  Null output: y/n  ·  Position: inside/outside  ·  Intervention: y/n
 
-## Pass 0 — triage (without catalogue)
-[mapping table: triage field → covered requires_material item]
+## Pass 0 — existence-marker read
+[table: requires_material item → present / absent / uncertain, with where it was seen]
 
 ## Precondition balance
 | Goal op | Item (verbatim) | Status (met/edge/stipulation/UNCOVERED) | Evidence / edge (verbatim) |
@@ -393,7 +396,6 @@ material for the O19/O12 authorship tests).
 This prompt and the plans live in `repos/artefact-operations`, licensed **CC BY-SA 4.0** — the
 same licence as `prompt-library`. They quote the register items verbatim; sharing them (in
 whole or adapted) requires attribution and, for adaptations, the same licence (share-alike).
-`artifact-triage` (prompt-library, CC BY-SA) is invoked as an external tool **not embedded** (no
-triage text migrates here; practitioner use covered) — not a licence necessity any more since
-both repos share a licence, but kept as a design boundary (the triage tool is maintained
-elsewhere). DFS referenced by field name only, regardless of licence.
+`artifact-triage` (prompt-library, CC BY-SA) is **not embedded** here and, since 0.2.0, not invoked
+either (no triage text migrates here); the triage tool is maintained elsewhere. DFS referenced by
+field name only, regardless of licence.

@@ -25,10 +25,6 @@ The working level is the **operation** (a hands-on move on the material), not th
    entry there — an entry cites artefact + new version, so a consumer can pin one file rather
    than a whole repo. Note what *patch* claims: output behaviour unchanged. A new required step
    in a prompt is additive, hence **minor**.
-   **Open correction:** `orchestrator/conductor.md` took its 0.1.9 and 0.1.10 steps as patch
-   bumps for three additive requirements that warranted a minor one. The published numbers stay
-   as they are; the series is corrected forward, so its **next bump goes to `0.2.0`, not
-   `0.1.11`**. Remove this note once that bump has happened.
 4. **Provenance discipline:** this repo is produced largely AI-assisted. AI-introduced content
    is marked as such (the `[AI]` marker family), not silently counted as prior knowledge;
    findings from test runs are cited as such, not as prior knowledge.

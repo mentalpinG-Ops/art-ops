@@ -22,6 +22,24 @@ need to adapt.
 
 ## [Unreleased]
 
+### Changed
+
+- **`orchestrator/conductor.md` (0.1.10 → 0.2.0) — Pass 0 reads existence markers directly and no longer
+  calls `artifact-triage`.** The pass relied on the triage prompt's gate (§7) refusing to route when no
+  framework catalogue was in the context, which kept framework names out of the plan. In
+  `artifact-triage` 1.4.0 (prompt-library, 2026-11-03) the gate loads a catalogue when it can, so the
+  refusal is no longer a dependable way to get "classify, do not route", and the standalone skill was
+  retired the same day. The declared fallback (existence markers by pure sighting against the goal
+  operation's `requires_material` items) is now the pass itself; a triage output the user already has may
+  still be cited, classification fields only. The `artifact-triage` pin is removed from the frontmatter,
+  the plan format and `manifest.yaml` (0.2.14 → 0.2.15, **patch**: the index follows the Conductor).
+  This is the minor bump the series was owed (see the 0.1.10 versioning note below), taken for a change
+  in behaviour: the plan's Pass 0 section changes from a triage mapping to an existence-marker table.
+  Origin: author commission 2026-11-04 to settle the dependency; the choice to drop the call rather than
+  add a classification-only mode to the triage prompt is Claude's proposal and not yet reviewed. Earlier
+  plans and the `examples/` run records keep their `artifact-triage@1.2.2` pin as the state they were
+  made under.
+
 ### Added
 
 - **`examples/frame-from-a-chain.md` (0.1.0, draft)** — an application note on planning an

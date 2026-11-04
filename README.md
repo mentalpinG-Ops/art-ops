@@ -50,9 +50,8 @@ assistant that you run and judge. Three ways in:
 3. **Work by hand:** follow the four-step procedure in `operations-spec.md` §7 — the same
    mechanism without any AI in the loop.
 
-The Conductor's entry triage references a tool (`artifact-triage`) from the source collection,
-which is **not yet public**; the Conductor carries a declared fallback for exactly this case
-(direct existence-marker read), so nothing here depends on files you cannot get. A rendered
+The Conductor's entry check (Pass 0) is a direct existence-marker read by pure sighting; it needs no
+tool from the source collection, so nothing here depends on files you cannot get. A rendered
 overview of the register lives at the
 [project page](https://mentalping-ops.github.io/art-ops/).
 
