@@ -47,7 +47,7 @@ with attribution and under the same terms (adoptions still carry a provenance no
 compatibility is not a substitute for saying where something came from). The referenced prompt
 schema itself is referenced by field name only, never embedded, regardless of licence.
 
-## Current state
+## Repository Structure
 
 - [`catalogue.md`](catalogue.md) — functional catalogue: 24 operations, distilled de-named.
 - [`operations-spec.md`](operations-spec.md) — profiles, conflict register, interop graph.
